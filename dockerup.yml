@@ -1,0 +1,15 @@
+version: "3.6"
+
+networks:
+  subnet:
+
+services:
+  api:
+    image: vendor/repository
+  ctx:
+    image: vendor/repository
+  lib:
+    image: vendor/repository
+
+volumes:
+  appdata:
