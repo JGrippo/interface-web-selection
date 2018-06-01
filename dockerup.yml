@@ -1,7 +1,12 @@
 version: "3.6"
 
+labels:
+  app.name: "application name"
+  app.owner: "fred belotte"
+  app.version: "0.1.0"
+
 networks:
-  subnet:
+  appnet:
 
 services:
   api:
