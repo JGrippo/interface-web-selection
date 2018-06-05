@@ -121,6 +121,46 @@
           }
         }
       }
+    },
+    "@revaturecloud/selection": {
+      "root": "projects/revaturecloud/selection",
+      "sourceRoot": "projects/revaturecloud/selection/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/revaturecloud/selection/tsconfig.lib.json",
+            "project": "projects/revaturecloud/selection/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/revaturecloud/selection/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/revaturecloud/selection/src/test.ts",
+            "tsConfig": "projects/revaturecloud/selection/tsconfig.spec.json",
+            "karmaConfig": "projects/revaturecloud/selection/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/revaturecloud/selection/tsconfig.lib.json",
+              "projects/revaturecloud/selection/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "interface-web-selection"
