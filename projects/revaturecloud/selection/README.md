@@ -1,7 +1,5 @@
 # interface-web-selection://readme
 
-![VSTS Build](https://revaturecloud.visualstudio.com/_apis/public/build/definitions/56fc7a24-8777-4224-afbd-26fafcce8f2d/9/badge)
-
 ## instruction
 1. download and install VirtualBox 5.2+.
 1. download and install Vagrant 2.1+.
