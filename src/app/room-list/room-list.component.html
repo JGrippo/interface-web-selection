@@ -1,0 +1,24 @@
+<div>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Location</th>
+        <th scope="col">Vacancy</th>
+        <th scope="col">Room Occupancy</th>
+        <th scope="col">Gender</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor = "let Room of Rooms">
+        <td>{{Room.RoomId}}</td>
+        <td>{{Room.Location}}</td>
+        <td>{{Room.Vacancy}}</td>
+        <td>{{Room.Occupancy}}</td>
+        <td>{{Room.Gender}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
