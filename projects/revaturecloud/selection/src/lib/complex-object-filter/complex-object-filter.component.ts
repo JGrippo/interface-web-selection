@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { RoomSearchQuery } from '../models/roomSearchQueryModel';
 
 @Component({
@@ -10,6 +10,9 @@ export class ComplexObjectFilterComponent implements OnInit {
 
   queryString: RoomSearchQuery;
 
+  @Output()
+  formatString: string;
+
   constructor(queryString: RoomSearchQuery) {
 
     this.queryString = queryString;
@@ -18,9 +21,11 @@ export class ComplexObjectFilterComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
   complexObject() {
 
-    return (
+    this.formatString =
       'Location=' + this.queryString.Location
       + '&' +
       'Batch=' + this.queryString.Batch
@@ -29,8 +34,8 @@ export class ComplexObjectFilterComponent implements OnInit {
       + '&' +
       'IsCompletelyUnassigned=' + this.queryString.IsCompletelyUnassigned
       + '&' +
-      'BatchMinimumPercentage=' + this.queryString.BatchMinimumPercentage
-    );
+      'BatchMinimumPercentage=' + this.queryString.BatchMinimumPercentage;
+
 
   }
 }
