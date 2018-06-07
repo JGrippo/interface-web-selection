@@ -37,4 +37,7 @@ export class SelectionService {
     );
   }
 
+  methodTestEx() {
+    console.log('has been called');
+  }
 }
