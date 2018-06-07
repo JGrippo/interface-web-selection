@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit, Output, Input } from '@angular/core';
 import { RoomSearchQuery } from '../models/roomSearchQueryModel';
 
 @Component({
@@ -8,14 +8,13 @@ import { RoomSearchQuery } from '../models/roomSearchQueryModel';
 })
 export class ComplexObjectFilterComponent implements OnInit {
 
+  @Input()
   queryString: RoomSearchQuery;
 
   @Output()
   formatString: string;
 
-  constructor(queryString: RoomSearchQuery) {
-
-    this.queryString = queryString;
+  constructor() {
   }
 
   ngOnInit() {
