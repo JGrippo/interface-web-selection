@@ -8,14 +8,16 @@ describe('ComplexObjectFilterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ComplexObjectFilterComponent]
+      declarations: [ ComplexObjectFilterComponent ]
     })
-      .compileComponents().then(() => {
-        fixture = TestBed.createComponent(ComplexObjectFilterComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-      });
+    .compileComponents();
   }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ComplexObjectFilterComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();
