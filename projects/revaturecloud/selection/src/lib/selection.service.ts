@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SelectionService {
-
   constructor() { }
+
+  methodTestEx() {
+    console.log('has been called');
+  }
 }
