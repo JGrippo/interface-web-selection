@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectionService } from '../public_api';
 
 @Component({
   selector: 'lib-selection',
@@ -11,9 +12,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: SelectionService) { }
 
   ngOnInit() {
+    this.service.methodTestEx();
   }
 
 }
