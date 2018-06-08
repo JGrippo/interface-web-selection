@@ -1,4 +1,4 @@
-////
+///
 /// <summary>
 ///    class is used to format a created roomquery variable into a string
 ///  formatted to use as a query string
