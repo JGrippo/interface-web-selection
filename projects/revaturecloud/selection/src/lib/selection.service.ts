@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Response } from '@angular/http';
-import { ComplexObjectFilterComponent } from './complex-object-filter/complex-object-filter.component';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { RoomAssociation } from './models/roomAssociation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,25 +19,19 @@ export class SelectionService {
 
   constructor(private http: HttpClient) { }
 
-  addUserToRoom(userId: string, roomId: string) {
-    return this.http.put(this.rootUrl + this.apiEpAddToRoom, {
-      UserId: userId,
-      RoomId: roomId
-    })
-    .pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError) // then handle the error
-    );
+  addUserToRoom(roomAssociation: RoomAssociation) {
+    return this.http.put(this.rootUrl + this.apiEpAddToRoom, roomAssociation)
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
   }
-  removeUserFromRoom(userId: string, roomId: string) {
-    return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, {
-      UserId: userId,
-      RoomId: roomId
-    })
-    .pipe(
-      retry(3), // retry a failed request up to 3 times
-      catchError(this.handleError) // then handle the error
-    );
+  removeUserFromRoom(roomAssociation: RoomAssociation) {
+    return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, roomAssociation)
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
   }
 
   // getAllRooms(queryString: ComplexObjectFilterComponent,
