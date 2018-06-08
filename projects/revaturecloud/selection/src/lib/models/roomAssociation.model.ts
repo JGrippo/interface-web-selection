@@ -1,0 +1,15 @@
+/// <summary>
+///   This is the model for room associations, used for both adding and
+///   removing someone from a room.
+/// </summary>
+/// <remarks>
+///   Because there is more than one method that utilize this same data model,
+///   it has been extracted into its own model class instead of being an
+///   anonymous object such that there is a single place where I can go to
+///   update the model for the change.
+/// </remarks>
+
+export class RoomAssociation {
+  UserId: string;
+  RoomId: string;
+}
