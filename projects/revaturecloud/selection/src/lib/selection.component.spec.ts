@@ -52,4 +52,13 @@ describe('SelectionComponent', () => {
 
     expect(spy).toHaveBeenCalled();
   });
+
+  // it('should call methodTestEx on initialization', () => {
+    //     let service = TestBed.get(SelectionService);
+    //     let spy = spyOn(service, 'methodTestEx');
+
+    //     fixture.detectChanges();
+
+    //     expect(spy).toHaveBeenCalled();
+    //   });
 });

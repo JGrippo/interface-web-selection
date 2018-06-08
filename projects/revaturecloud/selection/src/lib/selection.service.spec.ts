@@ -46,6 +46,69 @@ describe('SelectionService Tests', () => {
       Gender: "f"
     }
   ];
+  let testUsers: UserModel[] = [
+    {
+      Id: '1',
+      Location: 'Here',
+      Address: {
+        Street: 'Angular Main Rd',
+        AptNum: '3',
+        City: 'Tampa',
+        State: 'Florida',
+        PostalCode: '98798',
+        Country: 'USA'
+      },
+      Email: 'email@gmail.com',
+      Name: {
+        First: 'You',
+        Middle: 'o',
+        Last: 'Kot'
+      },
+      Gender: 'F',
+      Type: 'Unknown'
+    },
+    {
+      Id: '2',
+      Location: 'There',
+      Address: {
+        Street: 'C# Main Rd',
+        AptNum: '31',
+        City: 'Tampa',
+        State: 'Florida',
+        PostalCode: '98798',
+        Country: 'USA'
+      },
+      Email: 'email@yahoo.com',
+      Name: {
+        First: 'Me',
+        Middle: 'o',
+        Last: 'Ko'
+      },
+      Gender: 'M',
+      Type: 'Known'
+    },
+    {
+      Id: '3',
+      Location: 'Nowhere',
+      Address: {
+        Street: 'Dotnet Main St',
+        AptNum: '314',
+        City: 'Tampa',
+        State: 'Florida',
+        PostalCode: '98790',
+        Country: 'USA'
+      },
+      Email: 'email@revature.com',
+      Name: {
+        First: 'Who',
+        Middle: 'o',
+        Last: 'K'
+      },
+      Gender: 'F',
+      Type: 'Unknown'
+    }
+  ]
+;
   beforeEach(() => {
 
     TestBed.configureTestingModule({
@@ -71,5 +134,29 @@ describe('SelectionService Tests', () => {
     expect(roomsRequest.request.method).toEqual('GET');
 
     roomsRequest.flush(testRooms);
+  });
+
+  it('should GET all users', () => {
+    selectionService.getAllUsers()
+      .subscribe((data: UserModel[]) => {
+        expect(data.length).toBe(3);
+      });
+
+    let usersRequest: TestRequest = httpTestingController.expectOne(selectionService.rootUrl + selectionService.apiEpUsers);
+    expect(usersRequest.request.method).toEqual('GET');
+
+    usersRequest.flush(testUsers);
+  });
+
+  it('should GET all users', () => {
+    selectionService.getAllUnassignedUsers()
+      .subscribe((data: UserModel[]) => {
+        expect(data.length).toBe(3);
+      });
+
+    let usersRequest: TestRequest = httpTestingController.expectOne(selectionService.rootUrl + selectionService.apiEpUnassignedUsers);
+    expect(usersRequest.request.method).toEqual('GET');
+
+    usersRequest.flush(testUsers);
   });
 });
