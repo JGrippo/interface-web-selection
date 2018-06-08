@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionService } from '../public_api';
 import { mockrooms } from '../../../../../src/app/models/mock-rooms';
-import { Room } from './models/room';
+import { Room } from './models/room.model';
 import { Observable } from 'rxjs';
 
 @Component({

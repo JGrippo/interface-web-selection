@@ -3,7 +3,7 @@ import { Response } from '@angular/http';
 import { ComplexObjectFilterComponent } from './complex-object-filter/complex-object-filter.component';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Room } from './models/room';
+import { Room } from './models/room.model';
 
 @Injectable({
   providedIn: 'root'
@@ -39,7 +39,8 @@ export class SelectionService {
     );
   }
 
-  getRooms (): Observable<Room[]> {
+  getRooms(): Observable<Room[]> {
+    console.log('getting rooms');
     return this.http.get<Room[]>(this.testUrl);
   }
 

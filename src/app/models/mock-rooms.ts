@@ -1,6 +1,6 @@
 // Subject to change
-import { Room } from '../../../projects/revaturecloud/selection/src/lib/models/room';
-import { Address } from '../../../projects/revaturecloud/selection/src/lib/models/address';
+import { Room } from '../../../projects/revaturecloud/selection/src/lib/models/room.model';
+import { Address } from '../../../projects/revaturecloud/selection/src/lib/models/address.model';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 
 export class mockrooms implements InMemoryDbService {
