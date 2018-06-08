@@ -10,7 +10,6 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { RoomAssociation } from './models/roomAssociation.model';
