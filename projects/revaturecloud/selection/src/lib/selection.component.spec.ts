@@ -20,7 +20,7 @@ describe('SelectionComponent', () => {
         HttpClientTestingModule
       ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -35,7 +35,18 @@ describe('SelectionComponent', () => {
   });
 
   it('should call ngOnInit on initialization', () => {
-    let spy = spyOn(component, 'ngOnInit');
+    const spy = spyOn(component, 'ngOnInit');
+
+    fixture.detectChanges();
+
+    expect(spy).toHaveBeenCalled();
+  });
+
+  it('should call getRooms on call', () => {
+    const service = TestBed.get(SelectionService);
+    const spy = spyOn(component, 'getRooms');
+
+    component.getRooms();
 
     fixture.detectChanges();
 

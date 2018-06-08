@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SelectionService } from '../public_api';
 import { Room } from './models/room.model';
 import { Observable } from 'rxjs';
+import { RoomAssociation } from './models/roomAssociation.model';
+import { Response, ResponseOptions } from '@angular/http';
 
 @Component({
   selector: 'lib-selection',
@@ -25,6 +27,16 @@ export class SelectionComponent implements OnInit {
       this.rooms = data,    // sets rooms to retrieved data
       (err: any) => console.log(err),    // logs errors
       () => console.log('Retrieved Rooms'));    // logs success
+  }
+
+  addUserToRoom(roomAssociation: RoomAssociation): void {
+    this.service.addUserToRoom(roomAssociation).subscribe((response: Response) =>
+      (err: any) => console.log('Error Status' + err.status));
+  }
+
+  removeUserFromRoom(roomAssociation: RoomAssociation): void {
+    this.service.removeUserFromRoom(roomAssociation).subscribe((response: Response) =>
+      (err: any) => console.log('Error Status' + err.status));
   }
 
 }
