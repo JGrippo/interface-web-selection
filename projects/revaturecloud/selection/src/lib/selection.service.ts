@@ -3,6 +3,7 @@ import { Response } from '@angular/http';
 import { ComplexObjectFilterComponent } from './complex-object-filter/complex-object-filter.component';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Room } from './models/room';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
 export class SelectionService {
   // readonly rootUrl = environment.rootUrl;  //TODO: Implement this.
   readonly rootUrl = 'https://www.rooturl.com';
+  private testUrl = 'https://my-json-server.typicode.com/JGrippo/selectiondb/Rooms';
 
   constructor(private http: HttpClient) { }
 
@@ -36,6 +38,12 @@ export class SelectionService {
       onFail
     );
   }
+
+  getRooms (): Observable<Room[]> {
+    return this.http.get<Room[]>(this.testUrl);
+  }
+
+
 
   methodTestEx() {
     console.log('has been called');

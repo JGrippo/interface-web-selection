@@ -1,8 +1,8 @@
 // Subject to change
-import { Address } from "./address";
+import { Address } from './address';
 
 export class Room {
-  roomId: string;
+  RoomId: string;
   location: string;
   address: Address;
   vacancy: number;
