@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectionComponent } from './selection.component';
 import { SelectionService } from './selection.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SelectionComponent', () => {
   let component: SelectionComponent;
@@ -16,7 +17,7 @@ describe('SelectionComponent', () => {
         SelectionService
       ],
       imports: [
-
+        HttpClientTestingModule
       ]
     })
     .compileComponents();
