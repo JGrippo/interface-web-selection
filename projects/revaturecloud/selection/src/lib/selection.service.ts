@@ -22,6 +22,7 @@ import { UserModel } from './models/user.model';
 export class SelectionService {
 
   readonly rootUrl = 'https://my-json-server.typicode.com/JGrippo/selectiondb';
+
   readonly apiEpAddToRoom = '/Room/Add';
   readonly apiEpRemoveFromRoom = '/Room/Remove';
   readonly apiEpBatches = '/Batches';
@@ -30,17 +31,20 @@ export class SelectionService {
   readonly apiEpUnassignedUsers = '/Users/Unassigned';
   readonly apiEpRoomsComplexRequest = '/Rooms/ComplexObject';
 
+  readonly sentAsUrlEnc = new HttpHeaders().set('Content-Type', 'x-www-form-urlencoded');
+  readonly sentAsJson = new HttpHeaders().set('Content-Type', 'application/json');
+
   constructor(private http: HttpClient) { }
 
   addUserToRoom(roomAssociation: RoomAssociation) {
-    return this.http.put(this.rootUrl + this.apiEpAddToRoom, roomAssociation)
+    return this.http.put(this.rootUrl + this.apiEpAddToRoom, roomAssociation, {headers: this.sentAsJson})
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
   }
   removeUserFromRoom(roomAssociation: RoomAssociation) {
-    return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, roomAssociation)
+    return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, roomAssociation, {headers: this.sentAsJson})
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -52,7 +56,7 @@ export class SelectionService {
   ///  </summary>
   getComplexRequestOfRooms(searchParameters: SearchParameters): Observable<Room[]> {
     return this.http.get<Room[]>(this.rootUrl + this.apiEpRoomsComplexRequest,
-      { params: this.convertSearchParsObjToParams(searchParameters) })
+      { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error

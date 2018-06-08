@@ -1,43 +1,56 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+///  <summary>
+///    Non-functional example tests that have been commented out.
+///  </summary>
 
-import { SelectionComponent } from './selection.component';
-import { SelectionService } from './selection.service';
+// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-describe('SelectionComponent', () => {
-  let component: SelectionComponent;
-  let fixture: ComponentFixture<SelectionComponent>;
+// import { SelectionComponent } from './selection.component';
+// import { SelectionService } from './selection.service';
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [
-        SelectionComponent
-      ],
-      providers: [
-        SelectionService
-      ],
-      imports: [
+// describe('SelectionComponent', () => {
+//   let component: SelectionComponent;
+//   let fixture: ComponentFixture<SelectionComponent>;
 
-      ]
-    })
-    .compileComponents();
-  }));
+//   beforeEach(async(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [
+//         SelectionComponent
+//       ],
+//       providers: [
+//         SelectionService
+//       ],
+//       imports: [
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(SelectionComponent);
-    component = fixture.componentInstance;
-    // fixture.detectChanges();
-  });
+//       ]
+//     })
+//     .compileComponents();
+//   }));
 
-  it('should create', () => {
-    fixture.detectChanges();
-    expect(component).toBeTruthy();
-  });
+//   beforeEach(() => {
+//     fixture = TestBed.createComponent(SelectionComponent);
+//     component = fixture.componentInstance;
+//     // fixture.detectChanges();
+//   });
 
-  it('should call ngOnInit on initialization', () => {
-    let spy = spyOn(component, 'ngOnInit');
+//   it('should create', () => {
+//     fixture.detectChanges();
+//     expect(component).toBeTruthy();
+//   });
 
-    fixture.detectChanges();
+//   it('should call ngOnInit on initialization', () => {
+//     let spy = spyOn(component, 'ngOnInit');
 
-    expect(spy).toHaveBeenCalled();
-  });
-});
+//     fixture.detectChanges();
+
+//     expect(spy).toHaveBeenCalled();
+//   });
+
+//   it('should call methodTestEx on initialization', () => {
+//     let service = TestBed.get(SelectionService);
+//     let spy = spyOn(service, 'methodTestEx');
+
+//     fixture.detectChanges();
+
+//     expect(spy).toHaveBeenCalled();
+//   });
+// });
