@@ -22,9 +22,9 @@ export class SelectionComponent implements OnInit {
   /// </summary>
   getRooms(): void {
     this.service.getAllRooms().subscribe((data: Room[]) =>
-      this.rooms = data,
-      (err: any) => console.log(err),
-      () => console.log('Retrieved Rooms'));
+      this.rooms = data,    // sets rooms to retrieved data
+      (err: any) => console.log(err),    // logs errors
+      () => console.log('Retrieved Rooms'));    // logs success
   }
 
 }

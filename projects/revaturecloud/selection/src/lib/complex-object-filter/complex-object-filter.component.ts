@@ -1,3 +1,9 @@
+/**
+ * <summary>
+ *    class is used to format a created roomquery variable into a string
+ *    formatted to use as a query string
+ * </summary>
+ */
 import { Component, OnInit, Output, Input } from '@angular/core';
 import { RoomSearchQuery } from '../models/roomSearchQueryModel';
 
@@ -21,7 +27,11 @@ export class ComplexObjectFilterComponent implements OnInit {
   }
 
 
-
+  /**
+   * <summary>
+   *    formates RoomSeachQuery to url query string
+   * </summary>
+   */
   complexObject() {
 
     this.formatString =
