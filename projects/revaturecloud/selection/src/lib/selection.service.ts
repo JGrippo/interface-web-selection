@@ -1,7 +1,7 @@
 ///  <summary>
 ///    HTTP service for intaracting with RESTful housing selection service.
 ///  </summary>
-///  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
+///  <seealso cref='https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts'/>
 ///  <remarks>
 ///    As the housing selection service is itself a work in progress, this file is subject to change as
 ///    the structure of the API this service consumes also changes.
@@ -28,7 +28,7 @@ export class SelectionService {
   readonly apiEpRooms = '/Rooms';
   readonly apiEpUsers = '/Users';
   readonly apiEpUnassignedUsers = '/Users/Unassigned';
-  readonly apiEpRoomsComplexRequest = '/Rooms/ComplexObject'
+  readonly apiEpRoomsComplexRequest = '/Rooms/ComplexObject';
 
   constructor(private http: HttpClient) { }
 
@@ -109,12 +109,12 @@ export class SelectionService {
     // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
-  }; //TODO ensure method is fully applicable to use case.
+  } // TODO ensure method is fully applicable to use case.
 
   ///  <summary>
   ///    Method to convert Search SearchParameters to HttpParams.
   ///  </summary>
-  ///  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
+  ///  <seealso cref='https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts'/>
   ///  <remarks>
   ///    According to the documentation in the see also section, it seems as if the API endpoint
   ///    “/Rooms/ComplexObject” almost expects a Json object to be passed in the body of a get
@@ -125,14 +125,10 @@ export class SelectionService {
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
     return new HttpParams()
-      .set("Batch", searchParameters.Batch)
-      .set("BatchMinimumPercentage", searchParameters.BatchMinimumPercentage.toString())
-      .set("Gender", searchParameters.Gender)
-      .set("IsCompletelyUnassigned", searchParameters.IsCompletelyUnassigned.toString())
-      .set("Location", searchParameters.Location);
-  };
-
-  methodTestEx() {
-    console.log('has been called');
+      .set('Batch', searchParameters.Batch)
+      .set('BatchMinimumPercentage', searchParameters.BatchMinimumPercentage.toString())
+      .set('Gender', searchParameters.Gender)
+      .set('IsCompletelyUnassigned', searchParameters.IsCompletelyUnassigned.toString())
+      .set('Location', searchParameters.Location);
   }
 }

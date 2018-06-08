@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionService } from '../public_api';
-import { mockrooms } from '../../../../../src/app/models/mock-rooms';
 import { Room } from './models/room.model';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'lib-selection',
-  templateUrl: './selection.component.html',
+  template: '<p></p>',
   styles: []
 })
 export class SelectionComponent implements OnInit {
@@ -15,13 +14,17 @@ export class SelectionComponent implements OnInit {
   constructor(private service: SelectionService) { }
 
   ngOnInit() {
-    // this.service.methodTestEx();
   }
 
+
+  /// <summary>
+  ///     calls getAllRooms from service and sets component rooms to retrieved data\
+  /// </summary>
   getRooms(): void {
-    this.service.getRooms().subscribe((data: any[]) => {
-      console.log(data);
-    });
+    this.service.getAllRooms().subscribe((data: Room[]) =>
+      this.rooms = data,
+      (err: any) => console.log(err),
+      () => console.log('Retrieved Rooms'));
   }
 
 }
