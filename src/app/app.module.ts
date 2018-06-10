@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SelectionComponent } from '../../projects/revaturecloud/selection/src/lib/selection.component';
-import { ComplexObjectFilterComponent } from '../../projects/revaturecloud/selection/src/lib/complex-object-filter/complex-object-filter.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SelectionService } from '../../projects/revaturecloud/selection/src/lib/selection.service';
 import { HttpModule } from '@angular/http';
@@ -14,8 +13,7 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    SelectionComponent,
-    ComplexObjectFilterComponent
+    SelectionComponent
   ],
   imports: [
     BrowserModule,
