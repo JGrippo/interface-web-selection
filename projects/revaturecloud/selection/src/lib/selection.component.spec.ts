@@ -88,6 +88,9 @@ describe('SelectionComponent', () => {
       }
     ];
 
+    /**
+     * creates testing service with desired methods. and places a spy on them
+     */
     mockService = jasmine.createSpyObj(
       ['getAllRooms', 'addUserToRoom', 'getAllUsers', 'removeUserFromRoom',
         'getComplexRequestOfRooms', 'getAllUnassignedUsers']
@@ -166,29 +169,20 @@ describe('SelectionComponent', () => {
       expect(mockService.removeUserFromRoom).toHaveBeenCalledWith(roomAssociations[0]);
     });
 
-    it('should get rooms of Complex Request', () => {
-      mockService.getComplexRequestOfRooms.and.returnValue(of(Rooms));
+  it('should get rooms of Complex Request', () => {
+    mockService.getComplexRequestOfRooms.and.returnValue(of(Rooms));
 
-      componentwith.getComplexRequestOfRoomsComp(searchParameters);
+    componentwith.getComplexRequestOfRoomsComp(searchParameters);
 
-      expect(mockService.getComplexRequestOfRooms).toHaveBeenCalledWith(searchParameters);
-      expect(componentwith.rooms.length).toBe(2);
-    });
+    expect(mockService.getComplexRequestOfRooms).toHaveBeenCalledWith(searchParameters);
+    expect(componentwith.rooms.length).toBe(2);
+  });
 
-    it('should get all unassigned users ', () => {
-      mockService.getAllUnassignedUsers.and.returnValue(of(users));
+  it('should get all unassigned users ', () => {
+    mockService.getAllUnassignedUsers.and.returnValue(of(users));
 
-      componentwith.getAllUnassignedUsersComp();
+    componentwith.getAllUnassignedUsersComp();
 
-      expect(componentwith.users.length).toBe(1);
-    });
-
-  // it('should call methodTestEx on initialization', () => {
-  //     let service = TestBed.get(SelectionService);
-  //     let spy = spyOn(service, 'methodTestEx');
-
-  //     fixture.detectChanges();
-
-  //     expect(spy).toHaveBeenCalled();
-  //   });
+    expect(componentwith.users.length).toBe(1);
+  });
 });
