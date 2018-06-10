@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectionService } from '../public_api';
+import { SelectionService } from './selection.service';
 import { Room } from './models/room.model';
 import { Observable } from 'rxjs';
 
