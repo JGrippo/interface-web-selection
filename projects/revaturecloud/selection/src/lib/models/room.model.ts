@@ -17,10 +17,10 @@
 import { Address } from "./address.model";
 
 export class Room {
-  RoomId: string;
-  Location: string;
-  Address: Address;
-  Vacancy: number;
-  Occupancy: number;
-  Gender: string;
+  roomId: string;
+  location: string;
+  address: Address;
+  vacancy: number;
+  occupancy: number;
+  gender: string;
 }

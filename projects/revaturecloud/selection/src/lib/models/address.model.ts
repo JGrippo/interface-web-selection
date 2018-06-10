@@ -21,10 +21,10 @@
 */
 
 export class Address {
-  Street: string;
-  AptNum: string;
-  City: string;
-  State: string;
-  PostalCode: string;
-  Country: string;
+  street: string;
+  aptNum: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  country: string;
 }

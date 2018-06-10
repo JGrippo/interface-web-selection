@@ -11,10 +11,10 @@
 */
 
 export class Batch {
-  BatchId: string;
-  StartDate: string;
-  EndDate: string;
-  BatchName: string;
-  BatchOccupancy: number;
-  BatchSkill: string;
+  batchId: string;
+  startDate: string;
+  endDate: string;
+  batchName: string;
+  batchOccupancy: number;
+  batchSkill: string;
 }

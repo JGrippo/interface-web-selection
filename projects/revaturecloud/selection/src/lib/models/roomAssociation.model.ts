@@ -9,6 +9,6 @@
 */
 
 export class RoomAssociation {
-  UserId: string;
-  RoomId: string;
+  userId: string;
+  roomId: string;
 }
