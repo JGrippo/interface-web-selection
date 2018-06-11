@@ -26,65 +26,65 @@ describe('SelectionComponent', () => {
 
     roomAssociations = [
       {
-        UserId: '1',
-        RoomId: 'guid1'
+        userId: '1',
+        roomId: 'guid1'
       }
     ];
 
     searchParameters = {
-      Location: 'test',
-      Batch: 'test',
-      BatchMinimumPercentage: 2,
-      Gender: 'm',
-      IsCompletelyUnassigned: true
+      location: 'test',
+      batch: 'test',
+      batchMinimumPercentage: 2,
+      gender: 'm',
+      isCompletelyUnassigned: true
     };
 
     const testAddress1: Address = {
-      Street: 'Street',
-      AptNum: '314',
-      City: 'Tampa',
-      State: 'FL',
-      PostalCode: '33612',
-      Country: 'USA'
+      street: 'Street',
+      aptNum: '314',
+      city: 'Tampa',
+      state: 'FL',
+      postalCode: '33612',
+      country: 'USA'
     };
 
     const testAddress2: Address = {
-      Street: 'Street',
-      AptNum: '315',
-      City: 'Tampa',
-      State: 'FL',
-      PostalCode: '33612',
-      Country: 'USA'
+      street: 'Street',
+      aptNum: '315',
+      city: 'Tampa',
+      state: 'FL',
+      postalCode: '33612',
+      country: 'USA'
     };
 
     Rooms = [
       {
-        RoomId: 'guid1',
-        Location: 'Tampa',
-        Address: testAddress1,
-        Vacancy: 4,
-        Occupancy: 4,
-        Gender: 'm'
+        roomId: 'guid1',
+        location: 'Tampa',
+        address: testAddress1,
+        vacancy: 4,
+        occupancy: 4,
+        gender: 'm'
       },
       {
-        RoomId: 'guid2',
-        Location: 'Tampa',
-        Address: testAddress2,
-        Vacancy: 1,
-        Occupancy: 4,
-        Gender: 'f'
+        roomId: 'guid2',
+        location: 'Tampa',
+        address: testAddress2,
+        vacancy: 1,
+        occupancy: 4,
+        gender: 'f'
       }
     ];
 
     users = [
       {
-        Id: '1',
-        Location: 'test',
-        Address: testAddress1,
-        Email: 'test@test.com',
-        Name: 'name',
-        Gener: 'm',
-        Type: 'test'
+        id: '1',
+        location: 'test',
+        address: testAddress1,
+        email: 'test@test.com',
+        name: 'name',
+        gener: 'm',
+        type: 'test'
       }
     ];
 
