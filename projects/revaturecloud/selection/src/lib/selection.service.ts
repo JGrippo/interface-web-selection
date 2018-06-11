@@ -1,7 +1,7 @@
 ///  <summary>
 ///    HTTP service for intaracting with RESTful housing selection service.
 ///  </summary>
-///  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
+///  <seealso cref='https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts'/>
 ///  <remarks>
 ///    As the housing selection service is itself a work in progress, this file is subject to change as
 ///    the structure of the API this service consumes also changes.
@@ -22,25 +22,29 @@ import { UserModel } from './models/user.model';
 export class SelectionService {
 
   readonly rootUrl = 'https://my-json-server.typicode.com/JGrippo/selectiondb';
+
   readonly apiEpAddToRoom = '/Room/Add';
   readonly apiEpRemoveFromRoom = '/Room/Remove';
   readonly apiEpBatches = '/Batches';
   readonly apiEpRooms = '/Rooms';
   readonly apiEpUsers = '/Users';
   readonly apiEpUnassignedUsers = '/Users/Unassigned';
-  readonly apiEpRoomsComplexRequest = '/Rooms/ComplexObject'
+  readonly apiEpRoomsComplexRequest = '/Rooms/ComplexObject';
+
+  readonly sentAsUrlEnc = new HttpHeaders().set('Content-Type', 'x-www-form-urlencoded');
+  readonly sentAsJson = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
 
   addUserToRoom(roomAssociation: RoomAssociation) {
-    return this.http.put(this.rootUrl + this.apiEpAddToRoom, roomAssociation)
+    return this.http.put(this.rootUrl + this.apiEpAddToRoom, roomAssociation, {headers: this.sentAsJson})
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
   }
   removeUserFromRoom(roomAssociation: RoomAssociation) {
-    return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, roomAssociation)
+    return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, roomAssociation, {headers: this.sentAsJson})
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -52,7 +56,7 @@ export class SelectionService {
   ///  </summary>
   getComplexRequestOfRooms(searchParameters: SearchParameters): Observable<Room[]> {
     return this.http.get<Room[]>(this.rootUrl + this.apiEpRoomsComplexRequest,
-      { params: this.convertSearchParsObjToParams(searchParameters) })
+      { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -109,12 +113,12 @@ export class SelectionService {
     // return an observable with a user-facing error message
     return throwError(
       'Something bad happened; please try again later.');
-  }; //TODO ensure method is fully applicable to use case.
+  } // TODO ensure method is fully applicable to use case.
 
   ///  <summary>
   ///    Method to convert Search SearchParameters to HttpParams.
   ///  </summary>
-  ///  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
+  ///  <seealso cref='https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts'/>
   ///  <remarks>
   ///    According to the documentation in the see also section, it seems as if the API endpoint
   ///    “/Rooms/ComplexObject” almost expects a Json object to be passed in the body of a get
@@ -125,14 +129,10 @@ export class SelectionService {
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
     return new HttpParams()
-      .set("Batch", searchParameters.Batch)
-      .set("BatchMinimumPercentage", searchParameters.BatchMinimumPercentage.toString())
-      .set("Gender", searchParameters.Gender)
-      .set("IsCompletelyUnassigned", searchParameters.IsCompletelyUnassigned.toString())
-      .set("Location", searchParameters.Location);
-  };
-
-  methodTestEx() {
-    console.log('has been called');
+      .set('Batch', searchParameters.Batch)
+      .set('BatchMinimumPercentage', searchParameters.BatchMinimumPercentage.toString())
+      .set('Gender', searchParameters.Gender)
+      .set('IsCompletelyUnassigned', searchParameters.IsCompletelyUnassigned.toString())
+      .set('Location', searchParameters.Location);
   }
 }
