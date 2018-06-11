@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 import { RoomAssociation } from './models/roomAssociation.model';
 import { Response, ResponseOptions } from '@angular/http';
 import { SearchParameters } from './models/searchParameters.model';
-import { UserModel } from './models/user.model';
+import { User } from './models/user.model';
 
 @Component({
   selector: 'lib-selection',
@@ -20,7 +20,7 @@ import { UserModel } from './models/user.model';
 })
 export class SelectionComponent implements OnInit {
   rooms: Room[];
-  users: UserModel[];
+  users: User[];
 
   constructor(private service: SelectionService) { }
 
@@ -68,7 +68,7 @@ export class SelectionComponent implements OnInit {
   *      calls getAllUnassignedUsers from service and sets component users to retrieved data
   */
   getAllUnassignedUsersComp(): void {
-    this.service.getAllUnassignedUsers().subscribe((data: UserModel[]) =>
+    this.service.getAllUnassignedUsers().subscribe((data: User[]) =>
       this.users = data,
       (err: any) => console.log('Error Status' + err.status + ', Error : ' + err),
       () => console.log('Retrieved Users'));
@@ -78,7 +78,7 @@ export class SelectionComponent implements OnInit {
   *      calls getAllUsers from service and sets component users to retrieved data
   */
   getAllUsersComp(): void {
-    this.service.getAllUsers().subscribe((data: UserModel[]) =>
+    this.service.getAllUsers().subscribe((data: User[]) =>
       this.users = data,
       (err: any) => console.log('Error Status ' + err.status + ', Error : ' + err),
       () => console.log('Retrieved Users'));

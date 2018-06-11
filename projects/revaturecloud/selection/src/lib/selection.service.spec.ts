@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 
 import { SelectionService } from '../public_api';
 import { SearchParameters } from './models/searchParameters.model';
-import { UserModel } from './models/user.model';
+import { User } from './models/user.model';
 import { RoomAssociation } from './models/roomAssociation.model';
 import { Room } from './models/room.model';
 import { Address } from './models/address.model';
@@ -13,99 +13,113 @@ describe('SelectionService Tests', () => {
   let selectionService: SelectionService;
   let httpTestingController: HttpTestingController;
   let testAddress1: Address = {
-    Street: "Street",
-    AptNum: "314",
-    City: "Tampa",
-    State: "FL",
-    PostalCode: "33612",
-    Country: "USA"
+    address1: "Street",
+    address2: "314",
+    city: "Tampa",
+    state: "FL",
+    postalCode: "33612",
+    country: "USA"
   };
   let testAddress2: Address = {
-    Street: "Street",
-    AptNum: "315",
-    City: "Tampa",
-    State: "FL",
-    PostalCode: "33612",
-    Country: "USA"
+    address1: "Street",
+    address2: "315",
+    city: "Tampa",
+    state: "FL",
+    postalCode: "33612",
+    country: "USA"
   };
   let testRooms: Room[] = [
     {
-      RoomId: "guid1",
-      Location: "Tampa",
-      Address: testAddress1,
-      Vacancy: 4,
-      Occupancy: 4,
-      Gender: "m"
+      roomId: "guid1",
+      location: "Tampa",
+      vacancy: 4,
+      occupancy: 4,
+      gender: "m",
+      address: testAddress1,
+      users: null
     },
     {
-      RoomId: "guid2",
-      Location: "Tampa",
-      Address: testAddress2,
-      Vacancy: 1,
-      Occupancy: 4,
-      Gender: "f"
+      roomId: "guid2",
+      location: "Tampa",
+      vacancy: 1,
+      occupancy: 4,
+      gender: "f",
+      address: testAddress2,
+      users: null
     }
   ];
-  let testUsers: UserModel[] = [
+  let testUsers: User[] = [
     {
-      Id: '1',
-      Location: 'Here',
-      Address: {
-        Street: 'Angular Main Rd',
-        AptNum: '3',
-        City: 'Tampa',
-        State: 'Florida',
-        PostalCode: '98798',
-        Country: 'USA'
+      id: '1',
+      location: 'Here',
+      address: {
+        address1: 'Angular Main Rd',
+        address2: '3',
+        city: 'Tampa',
+        state: 'Florida',
+        postalCode: '98798',
+        country: 'USA'
       },
-      Email: 'email@gmail.com',
-      Name: {
-        First: 'You',
-        Middle: 'o',
-        Last: 'Kot'
+      email: 'email@gmail.com',
+      name: {
+        id: '1',
+        first: 'You',
+        middle: 'o',
+        last: 'Kot',
+        users: null
       },
-      Gender: 'F',
-      Type: 'Unknown'
+      gender: 'F',
+      type: 'Unknown',
+      batch: null,
+      room: null
     },
     {
-      Id: '2',
-      Location: 'There',
-      Address: {
-        Street: 'C# Main Rd',
-        AptNum: '31',
-        City: 'Tampa',
-        State: 'Florida',
-        PostalCode: '98798',
-        Country: 'USA'
+      id: '2',
+      location: 'There',
+      address: {
+        address1: 'C# Main Rd',
+        address2: '31',
+        city: 'Tampa',
+        state: 'Florida',
+        postalCode: '98798',
+        country: 'USA'
       },
-      Email: 'email@yahoo.com',
-      Name: {
-        First: 'Me',
-        Middle: 'o',
-        Last: 'Ko'
+      email: 'email@yahoo.com',
+      name: {
+        id: '2',
+        first: 'Me',
+        middle: 'o',
+        last: 'Ko',
+        users: null
       },
-      Gender: 'M',
-      Type: 'Known'
+      gender: 'M',
+      type: 'Known',
+      batch: null,
+      room: null
     },
     {
-      Id: '3',
-      Location: 'Nowhere',
-      Address: {
-        Street: 'Dotnet Main St',
-        AptNum: '314',
-        City: 'Tampa',
-        State: 'Florida',
-        PostalCode: '98790',
-        Country: 'USA'
+      id: '3',
+      location: 'Nowhere',
+      address: {
+        address1: 'Dotnet Main St',
+        address2: '314',
+        city: 'Tampa',
+        state: 'Florida',
+        postalCode: '98790',
+        country: 'USA'
       },
-      Email: 'email@revature.com',
-      Name: {
-        First: 'Who',
-        Middle: 'o',
-        Last: 'K'
+      email: 'email@revature.com',
+      name: {
+        id: '3',
+        first: 'Who',
+        middle: 'o',
+        last: 'K',
+        users: null
       },
-      Gender: 'F',
-      Type: 'Unknown'
+      gender: 'F',
+      type: 'Unknown',
+      batch: null,
+      room: null
     }
   ]
 ;
@@ -138,7 +152,7 @@ describe('SelectionService Tests', () => {
 
   it('should GET all users', () => {
     selectionService.getAllUsers()
-      .subscribe((data: UserModel[]) => {
+      .subscribe((data: User[]) => {
         expect(data.length).toBe(3);
       });
 
@@ -150,7 +164,7 @@ describe('SelectionService Tests', () => {
 
   it('should GET all users', () => {
     selectionService.getAllUnassignedUsers()
-      .subscribe((data: UserModel[]) => {
+      .subscribe((data: User[]) => {
         expect(data.length).toBe(3);
       });
 
