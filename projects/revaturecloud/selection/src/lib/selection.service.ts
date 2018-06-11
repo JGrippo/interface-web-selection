@@ -1,7 +1,7 @@
 ///  <summary>
 ///    HTTP service for intaracting with RESTful housing selection service.
 ///  </summary>
-///  <seealso cref='https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts'/>
+///  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
 ///  <remarks>
 ///    As the housing selection service is itself a work in progress, this file is subject to change as
 ///    the structure of the API this service consumes also changes.
@@ -129,10 +129,10 @@ export class SelectionService {
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
     return new HttpParams()
-      .set('Batch', searchParameters.batch)
-      .set('BatchMinimumPercentage', searchParameters.batchMinimumPercentage.toString())
-      .set('Gender', searchParameters.gender)
-      .set('IsCompletelyUnassigned', searchParameters.isCompletelyUnassigned.toString())
-      .set('Location', searchParameters.location);
+      .set("Batch", searchParameters.batch)
+      .set("BatchMinimumPercentage", searchParameters.batchMinimumPercentage.toString())
+      .set("Gender", searchParameters.gender)
+      .set("IsCompletelyUnassigned", searchParameters.isCompletelyUnassigned.toString())
+      .set("Location", searchParameters.location);
   }
 }
