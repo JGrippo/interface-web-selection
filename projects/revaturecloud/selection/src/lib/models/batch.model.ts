@@ -9,7 +9,7 @@
 * The service-hub-housing-wiki's page on this object:
 * "https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Batch-Model"
 */
-import { User } from "./user.model";
+//import { User } from "./user.model";
 import { Address } from "./address.model";
 
 export class Batch {
@@ -20,6 +20,6 @@ export class Batch {
   batchOccupancy: number;
   batchSkill: string;
 
-  users: User[];
+  //users: User[];
   address: Address;
 }
