@@ -11,21 +11,22 @@ import { User } from '../../models/user.model';
 })
 export class FilterPanelComponent implements OnInit {
 
-  private batches: Set<Batch>;
-  private cities: Set<String>;
-  private buildings: Set<String>;
+  batches: Set<string>;
+  cities: Set<string>;
+  buildings: Set<string>;
 
-  private batch: Batch;
-  private city: String;
-  private building: String;
+  batch: string;
+  city: string;
+  building: string;
+  //gender: Gender;
+  gender: string;
+  readonly genders: string[] = ["Male", "Female", "Other"];
 
-  private gender: Gender;
+  vacantRoomsOnly: boolean;
+  sortByMostVacancies: boolean;
+  unhousedUsersOnly: boolean;
 
-  private vacantRoomsOnly: boolean;
-  private sortByMostVacancies: boolean;
-  private unhousedUsersOnly: boolean;
-
-  public filter: SearchParameters;
+  filter: SearchParameters;
 
   constructor(private selectionService: SelectionService) {
 
@@ -45,9 +46,10 @@ export class FilterPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.batches = new Set(this.selectionService.getAllBatches());
-    this.cities = new Set(this.selectionService.getAllCities());
-    this.buildings = new Set(this.selectionService.getAllBuildings());
+    //this.batches = new Set(this.selectionService.getAllBatches());
+    this.batches = new Set<string>(["batch1", "batch2", "batch3"]);
+    //this.cities = new Set(this.selectionService.getAllCities());
+    //this.buildings = new Set(this.selectionService.getAllBuildings());this.filter = {
   }
 
 }

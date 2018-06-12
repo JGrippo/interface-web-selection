@@ -1,14 +1,45 @@
 <div class="filter-panel">
   <p>Filter Results</p>
-  <!--Batch select-->
-  <!--City select-->
-  <!--Building select-->
 
-  <p>Gender</p>
+  <!--Batch select-->
+  <select [(ngModel)]="filter.batch">
+    <option *ngFor="let batch of batches;"
+        [ngValue]="batch"></option>
+  </select>
+
+  <!--City select-->
+  <select [(ngModel)]="filter.city">
+    <option *ngFor="let city of cities;"
+        [ngValue="city"></option>
+  </select>
+
+  <!--Building select-->
+  <select [(ngModel)]="filter.building">
+    <option *ngFor="let building of buildings;"
+        [ngValue="building"></option>
+  </select>
+
   <!--Gender select-->
+  <p>Gender</p>
+   <ul>
+      <li *ngFor="let g of genders;" class="radio">
+        <input type="radio"
+            [value]="g"
+            name="gender" [(ngModel)]="gender"> {{data.value}}
+      </li>
+  </ul>
 
   <br>
   <!--VacantRoomsOnly checkbox-->
+  <input type="checkbox"
+      [checked]="vacantRoomsOnly"
+      (change)="vacantRoomsOnly = !vacantRoomsOnly" />
   <!--SortByMostVacancies checkbox-->
+  <input type="checkbox"
+  [checked]="sortByMostVacancies"
+  (change)="sortByMostVacancies = !sortByMostVacancies" />
   <!--UnhousedUsersOnly checkbox-->
+  <input type="checkbox"
+  [checked]="unhousedUsersOnly"
+  (change)="unhousedUsersOnly = !unhousedUsersOnly" />
 </div>
