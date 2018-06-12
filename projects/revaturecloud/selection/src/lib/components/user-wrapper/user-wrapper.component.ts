@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SelectionService } from 'projects/revaturecloud/selection/src/lib/selection.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'lib-user-wrapper',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserWrapperComponent implements OnInit {
 
-  constructor() { }
+  allUsers: [User];
+
+  constructor(private selectionService: SelectionService) { }
 
   ngOnInit() {
+    this.selectionService.getAllUsers().subscribe((data: any) => {
+      this.allUsers = data;
+    });
   }
 
   userName = '';

@@ -8,12 +8,16 @@ import { SelectionService } from '../../projects/revaturecloud/selection/src/lib
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { UserWrapperComponent } from '../../projects/revaturecloud/selection/src/lib/components/user-wrapper/user-wrapper.component';
+import { SearchPipe } from '../../projects/revaturecloud/selection/src/lib/shared/search.pipe';
 // test
 
 @NgModule({
   declarations: [
     AppComponent,
-    SelectionComponent
+    SelectionComponent,
+    UserWrapperComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
