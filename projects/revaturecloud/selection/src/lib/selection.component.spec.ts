@@ -67,7 +67,6 @@ describe('SelectionComponent', () => {
         occupancy: 4,
         gender: 'm',
         address: testAddress1,
-        users: null
       },
       {
         roomId: 'guid2',
@@ -76,7 +75,6 @@ describe('SelectionComponent', () => {
         occupancy: 4,
         gender: 'f',
         address: testAddress2,
-        users: null
       }
     ];
 
@@ -88,13 +86,12 @@ describe('SelectionComponent', () => {
         gender: 'm',
         type: 'test',
         batch: null,
-        room: null,
+        room: Rooms[0],
         name: {
           id: "1",
           first: "fname",
           middle: "mname",
           last: "lname",
-          users: null   //These ServiceHub models are a headache
         },
         address: testAddress1
       }

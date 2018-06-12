@@ -36,7 +36,6 @@ describe('SelectionService Tests', () => {
       occupancy: 4,
       gender: "m",
       address: testAddress1,
-      users: null
     },
     {
       roomId: "guid2",
@@ -45,7 +44,6 @@ describe('SelectionService Tests', () => {
       occupancy: 4,
       gender: "f",
       address: testAddress2,
-      users: null
     }
   ];
   let testUsers: User[] = [
@@ -66,12 +64,11 @@ describe('SelectionService Tests', () => {
         first: 'You',
         middle: 'o',
         last: 'Kot',
-        users: null
       },
       gender: 'F',
       type: 'Unknown',
       batch: null,
-      room: null
+      room: testRooms[0]
     },
     {
       id: '2',
@@ -90,12 +87,11 @@ describe('SelectionService Tests', () => {
         first: 'Me',
         middle: 'o',
         last: 'Ko',
-        users: null
       },
       gender: 'M',
       type: 'Known',
       batch: null,
-      room: null
+      room: testRooms[1]
     },
     {
       id: '3',
@@ -114,12 +110,11 @@ describe('SelectionService Tests', () => {
         first: 'Who',
         middle: 'o',
         last: 'K',
-        users: null
       },
       gender: 'F',
       type: 'Unknown',
       batch: null,
-      room: null
+      room: testRooms[0]
     }
   ]
 ;
