@@ -21,10 +21,6 @@ export class RoomWrapperComponent implements AfterViewInit {
     this.getRooms();
   }
 
-  /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
