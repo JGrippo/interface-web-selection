@@ -3,6 +3,7 @@ import { SelectionComponent } from './selection.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserWrapperComponent } from './components/user-wrapper/user-wrapper.component';
 import { SearchPipe } from './shared/search.pipe';
+import { FilterService } from "./services/filter.service";
 @NgModule({
   imports: [
     HttpClientModule,
@@ -12,6 +13,7 @@ import { SearchPipe } from './shared/search.pipe';
     UserWrapperComponent,
     SearchPipe
   ],
+  providers: [FilterService],
   exports: [SelectionComponent]
 })
 export class SelectionModule { }

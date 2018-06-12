@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SelectionComponent } from './selection.component';
 import { SelectionService } from './selection.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { User } from "./models/user.model";
+import { Name } from "./models/name.model";
 import { Room } from './models/room.model';
 import { Address } from './models/address.model';
 import { Observable, of } from 'rxjs';
@@ -24,67 +26,74 @@ describe('SelectionComponent', () => {
 
   beforeEach(() => {
 
-    roomAssociations = [
+    let roomAssociations: RoomAssociation[] = [
       {
-        UserId: '1',
-        RoomId: 'guid1'
+        userId: '1',
+        roomId: 'guid1'
       }
     ];
 
-    searchParameters = {
-      Location: 'test',
-      Batch: 'test',
-      BatchMinimumPercentage: 2,
-      Gender: 'm',
-      IsCompletelyUnassigned: true
+    let searchParameters: SearchParameters = {
+      location: 'test',
+      batch: 'test',
+      batchMinimumPercentage: 2,
+      gender: 'm',
+      isCompletelyUnassigned: true
     };
 
     const testAddress1: Address = {
-      Street: 'Street',
-      AptNum: '314',
-      City: 'Tampa',
-      State: 'FL',
-      PostalCode: '33612',
-      Country: 'USA'
+      address1: 'Street1',
+      address2: '314',
+      city: 'Tampa',
+      state: 'FL',
+      postalCode: '33612',
+      country: 'USA'
     };
 
     const testAddress2: Address = {
-      Street: 'Street',
-      AptNum: '315',
-      City: 'Tampa',
-      State: 'FL',
-      PostalCode: '33612',
-      Country: 'USA'
+      address1: 'Street',
+      address2: '315',
+      city: 'Tampa',
+      state: 'FL',
+      postalCode: '33612',
+      country: 'USA'
     };
 
-    Rooms = [
+    let Rooms: Room[] = [
       {
-        RoomId: 'guid1',
-        Location: 'Tampa',
-        Address: testAddress1,
-        Vacancy: 4,
-        Occupancy: 4,
-        Gender: 'm'
+        roomId: 'guid1',
+        location: 'Tampa',
+        vacancy: 4,
+        occupancy: 4,
+        gender: 'm',
+        address: testAddress1,
       },
       {
-        RoomId: 'guid2',
-        Location: 'Tampa',
-        Address: testAddress2,
-        Vacancy: 1,
-        Occupancy: 4,
-        Gender: 'f'
+        roomId: 'guid2',
+        location: 'Tampa',
+        vacancy: 1,
+        occupancy: 4,
+        gender: 'f',
+        address: testAddress2,
       }
     ];
 
-    users = [
+    let users: User[] = [
       {
-        Id: '1',
-        Location: 'test',
-        Address: testAddress1,
-        Email: 'test@test.com',
-        Name: 'name',
-        Gener: 'm',
-        Type: 'test'
+        id: '1',
+        location: 'test',
+        email: 'test@test.com',
+        gender: 'm',
+        type: 'test',
+        batch: null,
+        room: Rooms[0],
+        name: {
+          id: "1",
+          first: "fname",
+          middle: "mname",
+          last: "lname",
+        },
+        address: testAddress1
       }
     ];
 
