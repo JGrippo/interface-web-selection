@@ -1,31 +1,34 @@
 <div class="filter-panel">
   <p>Filter Results</p>
-
+{{batch}}{{city}}{{building}}
+<br>
   <!--Batch select-->
-  <select [(ngModel)]="filter.batch">
+  <select [(ngModel)]="batch" >
     <option *ngFor="let batch of batches;"
-        [ngValue]="batch"></option>
+        [value]="batch">{{batch}}</option>
   </select>
 
   <!--City select-->
-  <select [(ngModel)]="filter.city">
+  <select [(ngModel)]="city">
     <option *ngFor="let city of cities;"
-        [ngValue="city"></option>
+        [value]="city">{{city}}</option>
   </select>
 
   <!--Building select-->
-  <select [(ngModel)]="filter.building">
+  <select [(ngModel)]="building">
     <option *ngFor="let building of buildings;"
-        [ngValue="building"></option>
+        [value]="building">{{building}}</option>
   </select>
 
   <!--Gender select-->
   <p>Gender</p>
    <ul>
-      <li *ngFor="let g of genders;" class="radio">
+      <li *ngFor="let g of genders" class="radio">
         <input type="radio"
-            [value]="g"
-            name="gender" [(ngModel)]="gender"> {{data.value}}
+            [(ngModel)]="gender"
+            name="anything"
+            [value]="g">
+          {{g}}
       </li>
   </ul>
 
@@ -34,12 +37,18 @@
   <input type="checkbox"
       [checked]="vacantRoomsOnly"
       (change)="vacantRoomsOnly = !vacantRoomsOnly" />
+    Vacant Rooms Only
   <!--SortByMostVacancies checkbox-->
   <input type="checkbox"
-  [checked]="sortByMostVacancies"
-  (change)="sortByMostVacancies = !sortByMostVacancies" />
+      [checked]="sortByMostVacancies"
+      (change)="sortByMostVacancies = !sortByMostVacancies" />
+    Sort by Most Vacancies
   <!--UnhousedUsersOnly checkbox-->
   <input type="checkbox"
-  [checked]="unhousedUsersOnly"
-  (change)="unhousedUsersOnly = !unhousedUsersOnly" />
+      [checked]="unhousedUsersOnly"
+      (change)="unhousedUsersOnly = !unhousedUsersOnly" />
+    Unhoused Users Only
+
+  <input type="button" value="Filter" (click)="submit()">
+  <input type="button" value="Reset" (click)="reset()">
 </div>

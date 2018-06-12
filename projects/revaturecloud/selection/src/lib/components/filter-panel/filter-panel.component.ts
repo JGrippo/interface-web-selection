@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionService } from '../../selection.service';
+import { FilterService } from "../../services/filter.service";
 import { SearchParameters } from "../../models/searchParameters.model";
 import { Batch } from '../../models/batch.model';
 import { User } from '../../models/user.model';
@@ -11,30 +12,32 @@ import { User } from '../../models/user.model';
 })
 export class FilterPanelComponent implements OnInit {
 
-  batches: Set<string>;
-  cities: Set<string>;
-  buildings: Set<string>;
+  // Drop down select - options
+  batches: Array<string>;
+  cities: Array<string>;
+  buildings: Array<string>;
 
+  // Drop down select - currently selected
   batch: string;
   city: string;
   building: string;
-  //gender: Gender;
-  gender: string;
-  readonly genders: string[] = ["Male", "Female", "Other"];
 
+  // Gender radio
+  readonly genders: string[] = ["Male", "Female", "Other"];
+  gender: string;
+
+  // Check box booleans
   vacantRoomsOnly: boolean;
   sortByMostVacancies: boolean;
   unhousedUsersOnly: boolean;
 
+  // Output object
   filter: SearchParameters;
 
-  constructor(private selectionService: SelectionService) {
+  constructor(private selectionService: SelectionService,
+      private filterService: FilterService) {
 
-    this.gender = null;
-
-    this.vacantRoomsOnly = false;
-    this.sortByMostVacancies = false;
-    this.unhousedUsersOnly = false;
+    this.reset();
 
     this.filter = {
       location: null,
@@ -47,13 +50,35 @@ export class FilterPanelComponent implements OnInit {
 
   ngOnInit() {
     //this.batches = new Set(this.selectionService.getAllBatches());
-    this.batches = new Set<string>(["batch1", "batch2", "batch3"]);
     //this.cities = new Set(this.selectionService.getAllCities());
-    //this.buildings = new Set(this.selectionService.getAllBuildings());this.filter = {
+    //this.buildings = new Set(this.selectionService.getAllBuildings());
+    this.batches = ["batch1", "batch2", "batch3"];
+    this.cities = ["city1", "city2", "city17"];
+    this.buildings = ["b1", "b2", "b3"];
   }
 
-}
+  reset(): void {
+    this.batch = null;
+    this.city = null;
+    this.building = null;
 
-enum Gender {
-  Male, Female, Other
+    this.gender = null;
+
+    this.vacantRoomsOnly = false;
+    this.sortByMostVacancies = false;
+    this.unhousedUsersOnly = false;
+  }
+
+  submit(): void {
+    // this.batch;
+    // this.city;
+
+    // this.gender;
+
+    // this.vacantRoomsOnly;
+    // this.sortByMostVacancies;
+    // this.unhousedUsersOnly;
+
+    // this.filterService.setFilter(this.filter);
+  }
 }
