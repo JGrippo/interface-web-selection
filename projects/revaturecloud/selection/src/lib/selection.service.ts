@@ -129,11 +129,11 @@ export class SelectionService {
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
     return new HttpParams()
-      .set("Batch", searchParameters.Batch)
-      .set("BatchMinimumPercentage", searchParameters.BatchMinimumPercentage.toString())
-      .set("Gender", searchParameters.Gender)
-      .set("IsCompletelyUnassigned", searchParameters.IsCompletelyUnassigned.toString())
-      .set("Location", searchParameters.Location);
+      .set("Batch", searchParameters.batch)
+      .set("BatchMinimumPercentage", searchParameters.batchMinimumPercentage.toString())
+      .set("Gender", searchParameters.gender)
+      .set("IsCompletelyUnassigned", searchParameters.isCompletelyUnassigned.toString())
+      .set("Location", searchParameters.location);
   };
 
   methodTestEx() {

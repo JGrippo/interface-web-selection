@@ -12,4 +12,5 @@ export class UserWrapperComponent implements OnInit {
   ngOnInit() {
   }
 
+  userName = '';
 }
