@@ -11,13 +11,10 @@
 * "https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/User-Model"
 *   Name - Custom class First - string, Middle - string, Last - string
 */
-import { User } from "./user.model";
 
 export class Name {
   id: string;
   first: string;
   middle: string;
   last: string;
-
-  users: User[];
 }
