@@ -57,6 +57,9 @@ export class FilterPanelComponent implements OnInit {
     this.buildings = ["b1", "b2", "b3"];
   }
 
+  /**
+   * Resets the filter form to default values
+   */
   reset(): void {
     this.batch = null;
     this.city = null;
@@ -69,6 +72,10 @@ export class FilterPanelComponent implements OnInit {
     this.unhousedUsersOnly = false;
   }
 
+  /**
+   * Takes the current values in the filter form and updates the
+   * filterService given in the constructor.
+   */
   submit(): void {
     // this.batch;
     // this.city;
