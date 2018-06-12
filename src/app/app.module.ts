@@ -5,22 +5,25 @@ import { AppComponent } from './app.component';
 import { SelectionComponent } from '../../projects/revaturecloud/selection/src/lib/selection.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SelectionService } from '../../projects/revaturecloud/selection/src/lib/selection.service';
-import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-// test
+import { RoomWrapperComponent } from '../../projects/revaturecloud/selection/src/lib/components/room-wrapper/room-wrapper.component';
+import { MatPaginatorModule, MatTableDataSource, MatTableModule, MatInputModule, MatSortModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SelectionComponent
+    SelectionComponent,
+    RoomWrapperComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule,
-    HttpModule,
-    RouterModule
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   providers: [SelectionService],
   bootstrap: [AppComponent]

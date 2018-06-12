@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { SelectionComponent } from './selection.component';
 import { HttpClientModule } from '@angular/common/http';
-import { Batch } from './batch.wrapper.component/batch.wrapper.component.component';
+import { RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
 @NgModule({
   imports: [
-    HttpClientModule,
+    HttpClientModule
   ],
   declarations: [
     SelectionComponent,
-    Batch.Wrapper.ComponentComponent
+    RoomWrapperComponent
   ],
   exports: [SelectionComponent]
 })

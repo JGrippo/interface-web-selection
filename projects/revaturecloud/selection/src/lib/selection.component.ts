@@ -31,11 +31,12 @@ export class SelectionComponent implements OnInit {
   /**
   *     calls getAllRooms from service and sets component rooms to retrieved data
   */
-  getAllRoomsComp(): void {
+  getAllRoomsComp(): Room[] {
     this.service.getAllRooms().subscribe((data: Room[]) =>
       this.rooms = data,    // sets rooms to retrieved data
       (err: any) => console.log('Error Status ' + err.status + ', Error : ' + err),    // logs errors
       () => console.log('Retrieved Rooms'));    // logs success
+      return this.rooms;
   }
 
   /**
