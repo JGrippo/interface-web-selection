@@ -12,10 +12,10 @@ import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { RoomAssociation } from './models/roomAssociation.model';
-import { SearchParameters } from './models/searchParameters.model';
-import { Room } from './models/room.model';
-import { User } from './models/user.model';
+import { RoomAssociation } from '../models/roomAssociation.model';
+import { SearchParameters } from '../models/searchParameters.model';
+import { Room } from '../models/room.model';
+import { User } from '../models/user.model';
 @Injectable({
   providedIn: 'root'
 })

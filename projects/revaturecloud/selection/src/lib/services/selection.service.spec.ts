@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@angular/common/http/testing';
 
-import { SelectionService } from '../public_api';
-import { SearchParameters } from './models/searchParameters.model';
-import { User } from './models/user.model';
-import { RoomAssociation } from './models/roomAssociation.model';
-import { Room } from './models/room.model';
-import { Address } from './models/address.model';
+import { SelectionService } from '../../public_api';
+import { SearchParameters } from '../models/searchParameters.model';
+import { User } from '../models/user.model';
+import { RoomAssociation } from '../models/roomAssociation.model';
+import { Room } from '../models/room.model';
+import { Address } from '../models/address.model';
 
 describe('SelectionService Tests', () => {
 
