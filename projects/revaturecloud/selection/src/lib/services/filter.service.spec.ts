@@ -35,10 +35,10 @@ describe('FilterService', () => {
     expect(filterActual).toBe(filter);
   }));
 
-  it('should return null initially', inject([FilterService], (service: FilterService) => {
+  it('should return default filter initially', inject([FilterService], (service: FilterService) => {
     let filterActual: SearchParameters;
     service.getFilter().subscribe((f) => filterActual = f);
 
-    expect(filterActual).toBeFalsy();
+    expect(filterActual).toBe(service.defaultFilter);
   }));
 });
