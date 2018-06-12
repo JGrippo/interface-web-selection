@@ -15,7 +15,7 @@ import { retry, catchError } from 'rxjs/operators';
 import { RoomAssociation } from './models/roomAssociation.model';
 import { SearchParameters } from './models/searchParameters.model';
 import { Room } from './models/room.model';
-import { UserModel } from './models/user.model';
+import { User } from './models/user.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -77,8 +77,8 @@ export class SelectionService {
   ///  <summary>
   ///    Gets all unassigned users.
   ///  </summary>
-  getAllUnassignedUsers(): Observable<UserModel[]> {
-    return this.http.get<UserModel[]>(this.rootUrl + this.apiEpUnassignedUsers)
+  getAllUnassignedUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.rootUrl + this.apiEpUnassignedUsers)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -88,8 +88,8 @@ export class SelectionService {
   ///  <summary>
   ///    Gets all users.
   ///  </summary>
-  getAllUsers(): Observable<UserModel[]> {
-    return this.http.get<UserModel[]>(this.rootUrl + this.apiEpUsers)
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.rootUrl + this.apiEpUsers)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -134,5 +134,12 @@ export class SelectionService {
       .set("Gender", searchParameters.gender)
       .set("IsCompletelyUnassigned", searchParameters.isCompletelyUnassigned.toString())
       .set("Location", searchParameters.location);
+<<<<<<< HEAD
+=======
+  };
+
+  methodTestEx() {
+    console.log('has been called');
+>>>>>>> 158037410-selection-interface
   }
 }

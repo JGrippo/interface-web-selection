@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 
 import { SelectionService } from '../public_api';
 import { SearchParameters } from './models/searchParameters.model';
-import { UserModel } from './models/user.model';
+import { User } from './models/user.model';
 import { RoomAssociation } from './models/roomAssociation.model';
 import { Room } from './models/room.model';
 import { Address } from './models/address.model';
@@ -12,17 +12,17 @@ describe('SelectionService Tests', () => {
 
   let selectionService: SelectionService;
   let httpTestingController: HttpTestingController;
-  let testaddress1: Address = {
-    street: "street",
-    aptNum: "314",
+  let testAddress1: Address = {
+    address1: "Street",
+    address2: "314",
     city: "Tampa",
     state: "FL",
     postalCode: "33612",
     country: "USA"
   };
-  let testaddress2: Address = {
-    street: "street",
-    aptNum: "315",
+  let testAddress2: Address = {
+    address1: "Street",
+    address2: "315",
     city: "Tampa",
     state: "FL",
     postalCode: "33612",
@@ -32,27 +32,27 @@ describe('SelectionService Tests', () => {
     {
       roomId: "guid1",
       location: "Tampa",
-      address: testaddress1,
       vacancy: 4,
       occupancy: 4,
-      gender: "m"
+      gender: "m",
+      address: testAddress1,
     },
     {
       roomId: "guid2",
       location: "Tampa",
-      address: testaddress2,
       vacancy: 1,
       occupancy: 4,
-      gender: "f"
+      gender: "f",
+      address: testAddress2,
     }
   ];
-  let testUsers: UserModel[] = [
+  let testUsers: User[] = [
     {
       id: '1',
       location: 'Here',
       address: {
-        street: 'Angular Main Rd',
-        aptNum: '3',
+        address1: 'Angular Main Rd',
+        address2: '3',
         city: 'Tampa',
         state: 'Florida',
         postalCode: '98798',
@@ -60,19 +60,22 @@ describe('SelectionService Tests', () => {
       },
       email: 'email@gmail.com',
       name: {
+        id: '1',
         first: 'You',
         middle: 'o',
-        last: 'Kot'
+        last: 'Kot',
       },
       gender: 'F',
-      type: 'Unknown'
+      type: 'Unknown',
+      batch: null,
+      room: testRooms[0]
     },
     {
       id: '2',
       location: 'There',
       address: {
-        street: 'C# Main Rd',
-        aptNum: '31',
+        address1: 'C# Main Rd',
+        address2: '31',
         city: 'Tampa',
         state: 'Florida',
         postalCode: '98798',
@@ -80,19 +83,22 @@ describe('SelectionService Tests', () => {
       },
       email: 'email@yahoo.com',
       name: {
+        id: '2',
         first: 'Me',
         middle: 'o',
-        last: 'Ko'
+        last: 'Ko',
       },
       gender: 'M',
-      type: 'Known'
+      type: 'Known',
+      batch: null,
+      room: testRooms[1]
     },
     {
       id: '3',
       location: 'Nowhere',
       address: {
-        street: 'Dotnet Main St',
-        aptNum: '314',
+        address1: 'Dotnet Main St',
+        address2: '314',
         city: 'Tampa',
         state: 'Florida',
         postalCode: '98790',
@@ -100,12 +106,15 @@ describe('SelectionService Tests', () => {
       },
       email: 'email@revature.com',
       name: {
+        id: '3',
         first: 'Who',
         middle: 'o',
-        last: 'K'
+        last: 'K',
       },
       gender: 'F',
-      type: 'Unknown'
+      type: 'Unknown',
+      batch: null,
+      room: testRooms[0]
     }
   ]
 ;
@@ -138,7 +147,7 @@ describe('SelectionService Tests', () => {
 
   it('should GET all users', () => {
     selectionService.getAllUsers()
-      .subscribe((data: UserModel[]) => {
+      .subscribe((data: User[]) => {
         expect(data.length).toBe(3);
       });
 
@@ -150,7 +159,7 @@ describe('SelectionService Tests', () => {
 
   it('should GET all users', () => {
     selectionService.getAllUnassignedUsers()
-      .subscribe((data: UserModel[]) => {
+      .subscribe((data: User[]) => {
         expect(data.length).toBe(3);
       });
 

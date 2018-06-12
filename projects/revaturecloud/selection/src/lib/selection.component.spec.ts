@@ -3,6 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { SelectionComponent } from './selection.component';
 import { SelectionService } from './selection.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { User } from "./models/user.model";
+import { Name } from "./models/name.model";
 import { Room } from './models/room.model';
 import { Address } from './models/address.model';
 import { Observable, of } from 'rxjs';
@@ -40,8 +42,8 @@ describe('SelectionComponent', () => {
     };
 
     const testAddress1: Address = {
-      street: 'Street',
-      aptNum: '314',
+      address1: 'Street1',
+      address2: '314',
       city: 'Tampa',
       state: 'FL',
       postalCode: '33612',
@@ -49,8 +51,8 @@ describe('SelectionComponent', () => {
     };
 
     const testAddress2: Address = {
-      street: 'Street',
-      aptNum: '315',
+      address1: 'Street',
+      address2: '315',
       city: 'Tampa',
       state: 'FL',
       postalCode: '33612',
@@ -61,18 +63,18 @@ describe('SelectionComponent', () => {
       {
         roomId: 'guid1',
         location: 'Tampa',
-        address: testAddress1,
         vacancy: 4,
         occupancy: 4,
-        gender: 'm'
+        gender: 'm',
+        address: testAddress1,
       },
       {
         roomId: 'guid2',
         location: 'Tampa',
-        address: testAddress2,
         vacancy: 1,
         occupancy: 4,
-        gender: 'f'
+        gender: 'f',
+        address: testAddress2,
       }
     ];
 
@@ -80,11 +82,18 @@ describe('SelectionComponent', () => {
       {
         id: '1',
         location: 'test',
-        address: testAddress1,
         email: 'test@test.com',
-        name: 'name',
-        gener: 'm',
-        type: 'test'
+        gender: 'm',
+        type: 'test',
+        batch: null,
+        room: Rooms[0],
+        name: {
+          id: "1",
+          first: "fname",
+          middle: "mname",
+          last: "lname",
+        },
+        address: testAddress1
       }
     ];
 
