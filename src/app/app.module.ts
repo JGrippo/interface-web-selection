@@ -8,6 +8,9 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { SelectionModule } from "../../projects/revaturecloud/selection/src/lib/selection.module";
+
+import { FilterService } from "../../projects/revaturecloud/selection/src/lib/services/filter.service";
+import { FilterSortService } from 'projects/revaturecloud/selection/src/lib/services/filter-sort.service';
 // test
 
 @NgModule({
@@ -22,6 +25,10 @@ import { SelectionModule } from "../../projects/revaturecloud/selection/src/lib/
     RouterModule,
     SelectionModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    FilterService,
+    FilterSortService,
+  ]
 })
 export class AppModule { }
