@@ -1,22 +1,21 @@
-///  <summary>
-///    HTTP service for intaracting with RESTful housing selection service.
-///  </summary>
-///  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
-///  <remarks>
-///    As the housing selection service is itself a work in progress, this file is subject to change as
-///    the structure of the API this service consumes also changes.
-///  </remarks>
+/**
+*    HTTP service for intaracting with RESTful housing selection service.
+*
+*  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
+*
+*    As the housing selection service is itself a work in progress, this file is subject to change as
+*    the structure of the API this service consumes also changes.
+*/
 
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { RoomAssociation } from './models/roomAssociation.model';
-import { SearchParameters } from './models/searchParameters.model';
-import { Room } from './models/room.model';
-import { User } from './models/user.model';
-import { Name } from './models/name.model';
+import { RoomAssociation } from '../models/roomAssociation.model';
+import { SearchParameters } from '../models/searchParameters.model';
+import { Room } from '../models/room.model';
+import { User } from '../models/user.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -52,9 +51,9 @@ export class SelectionService {
       );
   }
 
-  ///  <summary>
-  ///    Gets collection of rooms that satisfy the specified search parameters.
-  ///  </summary>
+  /**
+  *    Gets collection of rooms that satisfy the specified search parameters.
+  */
   getComplexRequestOfRooms(searchParameters: SearchParameters): Observable<Room[]> {
     return this.http.get<Room[]>(this.rootUrl + this.apiEpRoomsComplexRequest,
       { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
@@ -64,11 +63,9 @@ export class SelectionService {
       );
   }
 
-
-
-  ///  <summary>
-  ///    Gets all rooms.
-  ///  </summary>
+  /**
+  *    Gets all rooms.
+  */
   getAllRooms(): Observable<Room[]> {
     return this.http.get<Room[]>(this.rootUrl + this.apiEpRooms)
       .pipe(
@@ -77,9 +74,9 @@ export class SelectionService {
       );
   }
 
-  ///  <summary>
-  ///    Gets all unassigned users.
-  ///  </summary>
+  /**
+  *    Gets all unassigned users.
+  */
   getAllUnassignedUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.rootUrl + this.apiEpUnassignedUsers)
       .pipe(
@@ -88,9 +85,9 @@ export class SelectionService {
       );
   }
 
-  ///  <summary>
-  ///    Gets all users.
-  ///  </summary>
+  /**
+  *    Gets all users.
+  */
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.rootUrl + this.apiEpUsers)
       .pipe(
@@ -119,6 +116,9 @@ export class SelectionService {
   ///  <summary>
   ///    Initial template for basic common error handling.
   ///  </summary>
+  /**
+  *    Initial template for basic common error handling.
+  */
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -135,26 +135,26 @@ export class SelectionService {
       'Something bad happened; please try again later.');
   } // TODO ensure method is fully applicable to use case.
 
-  ///  <summary>
-  ///    Method to convert Search SearchParameters to HttpParams.
-  ///  </summary>
-  ///  <seealso cref='https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts'/>
-  ///  <remarks>
-  ///    According to the documentation in the see also section, it seems as if the API endpoint
-  ///    “/Rooms/ComplexObject” almost expects a Json object to be passed in the body of a get
-  ///    request, which is something that is not supported.  This may change in the future, but to
-  ///    accommodate this behavior this method has been created to convert such an object to search
-  ///    parameters that will be passed along with the request.
-  ///  </remarks>
+  /**
+  *    Method to convert Search SearchParameters to HttpParams.
+  *
+  *    See also: https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts
+  *
+  *    According to the documentation in the see also section, it seems as if the API endpoint
+  *    “/Rooms/ComplexObject” almost expects a Json object to be passed in the body of a get
+  *    request, which is something that is not supported.  This may change in the future, but to
+  *    accommodate this behavior this method has been created to convert such an object to search
+  *    parameters that will be passed along with the request.
+  */
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
     return new HttpParams()
-      .set("Batch", searchParameters.batch)
-      .set("BatchMinimumPercentage", searchParameters.batchMinimumPercentage.toString())
-      .set("Gender", searchParameters.gender)
-      .set("IsCompletelyUnassigned", searchParameters.isCompletelyUnassigned.toString())
-      .set("Location", searchParameters.location);
-  };
+      .set('Batch', searchParameters.batch)
+      .set('BatchMinimumPercentage', searchParameters.batchMinimumPercentage.toString())
+      .set('Gender', searchParameters.gender)
+      .set('IsCompletelyUnassigned', searchParameters.isCompletelyUnassigned.toString())
+      .set('Location', searchParameters.location);
+  }
 
   methodTestEx() {
     console.log('has been called');
