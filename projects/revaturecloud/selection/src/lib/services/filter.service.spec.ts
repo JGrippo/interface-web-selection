@@ -1,7 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { FilterService } from './filter.service';
-import { SearchParameters } from "../models/searchParameters.model";
+import { SearchParameters } from '../models/searchParameters.model';
 
 describe('FilterService', () => {
   beforeEach(() => {
