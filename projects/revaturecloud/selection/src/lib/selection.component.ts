@@ -16,8 +16,7 @@ import { UserStore } from './stores/user.store';
 
 @Component({
   selector: 'lib-selection',
-  template: `<ul>
-            </ul>`,
+  templateUrl: 'selection.component.html',
   styles: []
 })
 export class SelectionComponent implements OnInit {

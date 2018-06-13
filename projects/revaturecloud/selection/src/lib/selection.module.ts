@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { SelectionComponent } from './selection.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomWrapperComponent, RoomSearchPipe } from './components/room-wrapper/room-wrapper.component';
-// import { FilterPanelComponent } from ".//filter-panel/filter-panel.component";
+import { FilterPanelComponent } from "./components/filter-panel/filter-panel.component";
 import { FilterService } from "./services/filter.service";
 import { RoomCardComponent } from './components/room-card/room-card.component';
 import { UserStore } from './stores/user.store';
@@ -12,10 +12,12 @@ import { RoomStore } from './stores/room.store';
 @NgModule({
   imports: [
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    CommonModule,
   ],
   declarations: [
     SelectionComponent,
+    FilterPanelComponent,
   ],
   providers: [
     FilterService,
