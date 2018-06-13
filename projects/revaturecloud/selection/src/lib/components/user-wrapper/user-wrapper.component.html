@@ -1,17 +1,17 @@
 <h1>Revature</h1>
 <div class="container">
   <div class="row">
-    <input type="text" [(ngModel)]="userName">
-    <mat-grid-list *ngFor="let user of allUsers | search:userName" style="background:rgb(250, 227, 183)" cols="3" rowHeight="220px">
-        <lib-user-card [userCard]="user"></lib-user-card>
-    </mat-grid-list>
+    <mat-card>
+      <mat-card-title>
+        <input type="text" [(ngModel)]="userName">
+      </mat-card-title>
+      <mat-card-content>
+        <mat-grid-list cols="4" rowHeight="200px">
+          <mat-grid-tile *ngFor="let user of allUsers | search:userName" style="background:rgb(250, 227, 183)">
+            <lib-user-card [userCard]="user"></lib-user-card>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>
-<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-</mat-paginator>
-
-
-
-
-
-
