@@ -35,6 +35,7 @@ describe('SelectionComponent', () => {
 
     let searchParameters: SearchParameters = {
       batch: 'test',
+      city: 'test city',
       batchMinimumPercentage: 2,
       gender: 'm',
       isCompletelyUnassigned: true
