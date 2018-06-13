@@ -1,3 +1,7 @@
+/**
+ * A service for communicating data necessary for filtering API calls.
+ */
+
 import { Injectable } from '@angular/core';
 import { SearchParameters } from '../models/searchParameters.model';
 import { Observable, BehaviorSubject } from 'rxjs';
@@ -8,10 +12,10 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class FilterService {
 
   readonly defaultFilter: SearchParameters = {
-    location: null,
     batch: null,
-    batchMinimumPercentage: 0,
+    city: null,
     gender: null,
+    batchMinimumPercentage: 0,
     isCompletelyUnassigned: false,
   };
 
@@ -21,10 +25,18 @@ export class FilterService {
     this.subject = new BehaviorSubject<SearchParameters>(this.defaultFilter);
   }
 
+  /**
+   * Updates the SearchParameters and pushes the update to all subscribers
+   *
+   * @param filter The updated set of parameters
+   */
   setFilter(filter: SearchParameters) {
     this.subject.next(filter);
   }
 
+  /**
+   * Returns an Observable of the SearchParameters.
+   */
   getFilter(): Observable<SearchParameters> {
     return this.subject.asObservable();
   }

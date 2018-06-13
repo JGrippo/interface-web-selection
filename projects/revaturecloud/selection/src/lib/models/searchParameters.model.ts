@@ -1,7 +1,7 @@
 /**
 * This is the complex object expected at the housing
 * selection API endpiont “/Rooms/ComplexObject”
-* 
+*
 * https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts
 * The above is the URL for the “Housing Selection API Endpionts” wiki,
 * which describes the model expectations for the ComplexObject in the
@@ -21,9 +21,9 @@
 */
 
 export class SearchParameters {
-  location: string;
   batch: string;
-  batchMinimumPercentage: number;
+  city: string;
   gender: string;
+  batchMinimumPercentage: number;
   isCompletelyUnassigned: boolean;
 }
