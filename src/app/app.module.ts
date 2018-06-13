@@ -24,7 +24,8 @@ import { SearchPipe } from '../../projects/revaturecloud/selection/src/lib/share
     HttpClientModule,
     FormsModule,
     HttpModule,
-    RouterModule
+    RouterModule,
+
   ],
   providers: [SelectionService],
   bootstrap: [AppComponent]

@@ -4,9 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { UserWrapperComponent } from './components/user-wrapper/user-wrapper.component';
 import { SearchPipe } from './shared/search.pipe';
 import { FilterService } from "./services/filter.service";
+
+
 @NgModule({
   imports: [
-    HttpClientModule,
+    HttpClientModule
   ],
   declarations: [
     SelectionComponent,
