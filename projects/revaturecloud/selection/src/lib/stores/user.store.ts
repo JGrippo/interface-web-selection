@@ -27,28 +27,26 @@ export class UserStore {
       )
       .subscribe(
         res => this._userSubject.next(res)
-      )
+      );
 
       this.filterService.getFilter()
       .subscribe(
         res => {
           this._filter = res;
         }
-      )
+      );
   }
 
-  get users(){
+  get users() {
     return this._userSubject.asObservable();
   }
 
-  updateUsers(uh: string) {
-
-    console.log(uh);
+  updateUsers() {
     console.log(this);
     this.backendService.getComplexRequestOfUsers(this._filter)
       .subscribe(
         (res) => { this._userSubject.next(res);
-                   console.log(res);},
+                   console.log(res); },
         (err: any) => { console.log(err); }
       );
   }
