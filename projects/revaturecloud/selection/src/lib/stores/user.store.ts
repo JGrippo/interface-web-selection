@@ -9,7 +9,7 @@ import { SelectionService } from "../services/selection.service";
 export class UserStore {
   readonly defaultStore: User[] = [];
 
-  userSubject: BehaviorSubject<User[]>;
+  private userSubject: BehaviorSubject<User[]>;
 
   constructor (private backendService: SelectionService) {
     this.loadInitData();
