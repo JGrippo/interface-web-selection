@@ -1,0 +1,18 @@
+<mat-card class="room-card layout horizontal">
+  <mat-card-header>
+    <div md-card-avatar></div>
+    <mat-card-title>Location: {{room.location}}</mat-card-title>
+    <mat-card-subtitle>Beds Available/Total: {{room.vacancy}}/{{room.occupancy + room.vacancy}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="address-block">
+      {{room.address.address1}} {{room.address.address2}}<br>
+      {{room.address.city}}, {{room.address.state}} {{room.address.postalCode}}<br>
+      {{room.address.country}}
+    </div>
+  </mat-card-content>
+  Gender: {{room.gender}}
+  <mat-card-actions>
+    <button md-button>Remove</button>
+  </mat-card-actions>
+</mat-card>
