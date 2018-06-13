@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { SelectionComponent } from './selection.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterService } from "./services/filter.service";
+import { UserStore } from './stores/user.store';
 @NgModule({
   imports: [
     HttpClientModule,
@@ -9,7 +10,10 @@ import { FilterService } from "./services/filter.service";
   declarations: [
     SelectionComponent
   ],
-  providers: [FilterService],
+  providers: [
+    FilterService,
+    UserStore
+             ],
   exports: [SelectionComponent]
 })
 export class SelectionModule { }
