@@ -13,7 +13,6 @@ export class UserWrapperComponent implements OnInit {
 
   allUsers:[User];
 
-  // constructor(private selectionService: SelectionService) { }
   constructor(private userStoreService: UserStore) { }
 
   ngOnInit() {

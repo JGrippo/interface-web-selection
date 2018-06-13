@@ -11,6 +11,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { UserCardComponent } from './components/user-card/user-card.component';
+
 
 @NgModule({
   imports: [
@@ -23,7 +25,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
   declarations: [
     SelectionComponent,
     UserWrapperComponent,
-    SearchPipe
+    SearchPipe,
+    UserCardComponent
   ],
   providers: [
     FilterService,
