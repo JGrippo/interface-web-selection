@@ -29,7 +29,6 @@ export class SelectionService {
   readonly apiEpRooms = '/Rooms';
   readonly apiEpUsers = '/Users';
   readonly apiEpUnassignedUsers = '/Users/Unassigned';
-  readonly apiEpRoomsComplexRequest = '/Rooms/ComplexObject';
 
   readonly sentAsUrlEnc = new HttpHeaders().set('Content-Type', 'x-www-form-urlencoded');
   readonly sentAsJson = new HttpHeaders().set('Content-Type', 'application/json');
@@ -55,7 +54,16 @@ export class SelectionService {
   *    Gets collection of rooms that satisfy the specified search parameters.
   */
   getComplexRequestOfRooms(searchParameters: SearchParameters): Observable<Room[]> {
-    return this.http.get<Room[]>(this.rootUrl + this.apiEpRoomsComplexRequest,
+    return this.http.get<Room[]>(this.rootUrl + this.apiEpRooms,
+      { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError) // then handle the error
+      );
+  }
+
+  getComplexRequestOfUsers(searchParameters: SearchParameters): Observable<User[]> {
+    return this.http.get<User[]>(this.rootUrl + this.apiEpUsers,
       { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
       .pipe(
         retry(3), // retry a failed request up to 3 times
