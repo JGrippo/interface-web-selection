@@ -3,6 +3,6 @@
  * given by the user via the filter panel
  */
 
-export class FilterParameters {
+export class SortParameters {
   sortByMostVacancies: boolean;
 }
