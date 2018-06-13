@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectionComponent } from './selection.component';
-import { SelectionService } from './selection.service';
+import { SelectionService } from './services/selection.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { User } from "./models/user.model";
 import { Name } from "./models/name.model";
