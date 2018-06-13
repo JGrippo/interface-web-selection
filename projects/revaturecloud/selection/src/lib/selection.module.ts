@@ -5,6 +5,7 @@ import { SelectionComponent } from './selection.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPanelComponent } from "./components/filter-panel/filter-panel.component";
 import { FilterService } from "./services/filter.service";
+import { FilterSortService } from "./services/filter-sort.service";
 import { UserStore } from './stores/user.store';
 import { RoomStore } from './stores/room.store';
 @NgModule({
@@ -19,9 +20,10 @@ import { RoomStore } from './stores/room.store';
   ],
   providers: [
     FilterService,
+    FilterSortService,
     UserStore,
     RoomStore
-             ],
+  ],
   exports: [SelectionComponent]
 })
 export class SelectionModule { }
