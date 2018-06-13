@@ -14,6 +14,8 @@ import { SearchPipe } from '../../projects/revaturecloud/selection/src/lib/share
 
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpModule,
     RouterModule,
     BrowserAnimationsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [SelectionService],
   bootstrap: [AppComponent]

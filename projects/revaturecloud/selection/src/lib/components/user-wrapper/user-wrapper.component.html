@@ -1,23 +1,35 @@
-<p>
-  User-Wrapper component
-</p>
+<h1>Revature</h1>
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
-      <input type="text" [(ngModel)]="userName">
-      <br>
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let user of allUsers | search:userName">
-          {{user.name.first}}
-          {{user.name.last}}
-        </li>
-      </ul>
-    </div>
+      <div>
+          <mat-card>
+            <mat-card-title>
+              <input type="text" [(ngModel)]="userName">
+            </mat-card-title>
+            <mat-card-content>
+              <mat-grid-list cols="4" rowHeight="200px">
+                <mat-grid-tile *ngFor="let user of allUsers | search:userName" style="background:rgb(250, 227, 183)">
+                  <mat-grid-tile-header style="background:rgb(248, 181, 93)">
+                    {{user.name.first}} {{user.name.last}}
+                  </mat-grid-tile-header>
+                  <br><br><br>
+                  Id: {{user.id}} <br>
+                  Location: {{user.location}} <br>
+                  Email: {{user.email}} <br>
+                  Gender: {{user.gender}} <br>
+                  Type: {{user.type}} <br>
+                  Batch: {{user.batch | json}} <br>
+                  Room: {{user.room | json}} <br>
+                  Address: {{user.address.address1}} {{user.address.address2}},
+                  {{user.address.city}},
+                  {{user.address.state}}
+                  {{user.address.postalCode}},
+                  {{user.address.country}}
+                </mat-grid-tile>
+              </mat-grid-list>
+            </mat-card-content>
+          </mat-card>
+        </div>
   </div>
-  <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
 </div>
-
-
-
-
 

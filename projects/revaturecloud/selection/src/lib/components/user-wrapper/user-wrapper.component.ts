@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { User } from '../../models/user.model';
 import { UserStore } from '../../stores/user.store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'lib-user-wrapper',
@@ -10,7 +11,7 @@ import { UserStore } from '../../stores/user.store';
 })
 export class UserWrapperComponent implements OnInit {
 
-  allUsers: [User];
+  allUsers:[User];
 
   // constructor(private selectionService: SelectionService) { }
   constructor(private userStoreService: UserStore) { }

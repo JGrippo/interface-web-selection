@@ -9,12 +9,16 @@ import { FilterService } from "./services/filter.service";
 import { UserStore } from './stores/user.store';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
     HttpClientModule,
     MatPaginatorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatGridListModule
   ],
   declarations: [
     SelectionComponent,
