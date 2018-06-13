@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { SelectionModule } from "../../projects/revaturecloud/selection/src/lib/selection.module";
+import { SelectionModule } from '../../projects/revaturecloud/selection/src/lib/selection.module';
 
 @NgModule({
   declarations: [

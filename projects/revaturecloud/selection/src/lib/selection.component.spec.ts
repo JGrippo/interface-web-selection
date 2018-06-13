@@ -2,14 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectionComponent } from './selection.component';
 import { SelectionService } from './services/selection.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { User } from "./models/user.model";
-import { Name } from "./models/name.model";
+import { User } from './models/user.model';
 import { Room } from './models/room.model';
 import { Address } from './models/address.model';
-import { Observable, of } from 'rxjs';
-import { Input } from '@angular/core';
-import { By } from 'protractor';
+import { of } from 'rxjs';
 import { RoomAssociation } from './models/roomAssociation.model';
 import { SearchParameters } from './models/searchParameters.model';
 
@@ -88,10 +84,10 @@ describe('SelectionComponent', () => {
         batch: null,
         room: Rooms[0],
         name: {
-          id: "1",
-          first: "fname",
-          middle: "mname",
-          last: "lname",
+          id: '1',
+          first: 'fname',
+          middle: 'mname',
+          last: 'lname',
         },
         address: testAddress1
       }
