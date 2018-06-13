@@ -17,7 +17,9 @@ export class FilterSortService {
 
   subject: BehaviorSubject<SortParameters>;
 
-  constructor() { }
+  constructor() {
+    this.subject = new BehaviorSubject<SortParameters>(this.defaultParams);
+  }
 
   /**
    * Updates the SortParameters and pushes the update to all subscribers.
