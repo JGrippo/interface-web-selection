@@ -4,7 +4,7 @@ import { Room } from '../../models/room.model';
 import { Address } from '../../models/address.model';
 
 @Component({
-  selector: 'card',
+  selector: 'lib-room-card',
   templateUrl: './room-card.component.html',
   styleUrls: ['./room-card.component.css']
 })
@@ -16,4 +16,11 @@ export class RoomCardComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngOnDestroy() {
+
+  }
 }
+
+
