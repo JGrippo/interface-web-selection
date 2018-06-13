@@ -6,7 +6,7 @@ import { SelectionComponent } from '../../projects/revaturecloud/selection/src/l
 import { HttpClientModule } from '@angular/common/http';
 import { SelectionService } from '../../projects/revaturecloud/selection/src/lib/selection.service';
 import { RoomWrapperComponent } from '../../projects/revaturecloud/selection/src/lib/components/room-wrapper/room-wrapper.component';
-import { MatPaginatorModule, MatTableDataSource, MatTableModule, MatInputModule, MatSortModule } from '@angular/material';
+import { MatPaginatorModule, MatTableDataSource, MatCardModule, MatTableModule, MatInputModule, MatSortModule, MatCard } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -23,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatPaginatorModule,
     MatSortModule,
     MatPaginatorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [SelectionService],
   bootstrap: [AppComponent]

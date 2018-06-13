@@ -134,12 +134,5 @@ export class SelectionService {
       .set("Gender", searchParameters.gender)
       .set("IsCompletelyUnassigned", searchParameters.isCompletelyUnassigned.toString())
       .set("Location", searchParameters.location);
-<<<<<<< HEAD
-=======
-  };
-
-  methodTestEx() {
-    console.log('has been called');
->>>>>>> 158037410-selection-interface
   }
 }

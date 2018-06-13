@@ -17,13 +17,18 @@ export class RoomWrapperComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+  rooms: Room[];
+
   constructor(private selecitonService: SelectionService) {
-    this.getRooms();
+    selecitonService.getAllRooms().subscribe((rooms: Room[]) => {
+      this.rooms = rooms;
+      console.log(rooms);
+    });
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    // this.dataSource.paginator = this.paginator;
+    // this.dataSource.sort = this.sort;
   }
 
   applyFilter(filterValue: string) {
@@ -31,11 +36,4 @@ export class RoomWrapperComponent implements AfterViewInit {
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
   }
-  getRooms() {
-    this.selecitonService.getAllRooms().subscribe(rooms => this.dataSource = new MatTableDataSource(rooms));
-  }
-
-  // getRooms() {
-  //   this.selectionService.getAllRooms().subscribe(rooms => this.rooms = rooms);
-  // }
 }
