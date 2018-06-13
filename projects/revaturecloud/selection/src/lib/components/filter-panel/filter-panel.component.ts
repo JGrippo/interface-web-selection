@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionService } from '../../selection.service';
-import { FilterService } from "../../services/filter.service";
-import { SearchParameters } from "../../models/searchParameters.model";
+import { FilterService } from '../../services/filter.service';
+import { SearchParameters } from '../../models/searchParameters.model';
 import { Batch } from '../../models/batch.model';
 import { User } from '../../models/user.model';
 
@@ -13,9 +13,9 @@ import { User } from '../../models/user.model';
 export class FilterPanelComponent implements OnInit {
 
   // Drop down select - options
-  batches: Array<string>;
-  cities: Array<string>;
-  buildings: Array<string>;
+  batches: string[];
+  cities: string[];
+  buildings: string[];
 
   // Drop down select - currently selected
   batch: string;
@@ -23,7 +23,7 @@ export class FilterPanelComponent implements OnInit {
   building: string;
 
   // Gender radio
-  readonly genders: string[] = ["Male", "Female", "Other"];
+  readonly genders: string[] = ['Male', 'Female', 'Other'];
   gender: string;
 
   // Check box booleans
@@ -52,9 +52,9 @@ export class FilterPanelComponent implements OnInit {
     //this.batches = new Set(this.selectionService.getAllBatches());
     //this.cities = new Set(this.selectionService.getAllCities());
     //this.buildings = new Set(this.selectionService.getAllBuildings());
-    this.batches = ["batch1", "batch2", "batch3"];
-    this.cities = ["city1", "city2", "city17"];
-    this.buildings = ["b1", "b2", "b3"];
+    this.batches = ['batch1', 'batch2', 'batch3'];
+    this.cities = ['city1', 'city2', 'city17'];
+    this.buildings = ['b1', 'b2', 'b3'];
   }
 
   /**
