@@ -34,7 +34,6 @@ describe('SelectionComponent', () => {
     ];
 
     let searchParameters: SearchParameters = {
-      location: 'test',
       batch: 'test',
       batchMinimumPercentage: 2,
       gender: 'm',
