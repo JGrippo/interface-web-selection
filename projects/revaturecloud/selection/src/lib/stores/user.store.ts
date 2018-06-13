@@ -41,8 +41,10 @@ export class UserStore {
     return this._userSubject.asObservable();
   }
 
+  updateUsers(uh: string) {
 
-  updateUsers() {
+    console.log(uh);
+    console.log(this);
     this.backendService.getComplexRequestOfUsers(this._filter)
       .subscribe(
         (res) => { this._userSubject.next(res);

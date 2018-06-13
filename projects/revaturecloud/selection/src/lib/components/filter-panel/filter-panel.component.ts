@@ -14,6 +14,7 @@ import { SortParameters } from '../../models/sortParameters.model';
 import { Batch } from '../../models/batch.model';
 import { User } from '../../models/user.model';
 import { UserStore } from '../../stores/user.store';
+import { RoomStore } from '../../stores/room.store';
 
 @Component({
   selector: 'app-filter-panel',
@@ -47,6 +48,7 @@ export class FilterPanelComponent implements OnInit {
 
   constructor(
       private userStore: UserStore,
+      private roomStore: RoomStore,
       private filterService: FilterService,
       private filterSortService: FilterSortService) {
 
@@ -117,6 +119,7 @@ export class FilterPanelComponent implements OnInit {
 
     this.filterService.setFilter(this.filter);
     this.filterSortService.setFilter(this.sort);
-    this.userStore.updateUsers();
+    this.userStore.updateUsers('this');
+    this.roomStore.updateRooms();
   }
 }
