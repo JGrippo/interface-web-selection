@@ -13,11 +13,11 @@ import { RoomStore } from './stores/room.store';
   imports: [
     HttpClientModule,
     FormsModule,
-    CommonModule,
+    CommonModule
   ],
   declarations: [
     SelectionComponent,
-    FilterPanelComponent,
+    FilterPanelComponent
   ],
   providers: [
     FilterService,
