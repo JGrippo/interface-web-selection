@@ -1,6 +1,14 @@
+/**
+ * The filter panel of the housing selection front-end.
+ *
+ * Provides a UI that allows the user to filter and sort
+ * the data shown in other components.
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { SelectionService } from '../../selection.service';
 import { FilterService } from '../../services/filter.service';
+import { FilterSortService } from '../../services/filter-sort.service';
 import { SearchParameters } from '../../models/searchParameters.model';
 import { Batch } from '../../models/batch.model';
 import { User } from '../../models/user.model';
@@ -33,18 +41,25 @@ export class FilterPanelComponent implements OnInit {
 
   // Output object
   filter: SearchParameters;
+  sort: SortParameters;
 
-  constructor(private selectionService: SelectionService,
-      private filterService: FilterService) {
+  constructor(
+      private selectionService: SelectionService,
+      private filterService: FilterService,
+      private filterSortService: FilterSortService) {
 
     this.reset();
 
     this.filter = {
-      location: null,
       batch: null,
-      batchMinimumPercentage: null,
+      city: null,
       gender: null,
-      isCompletelyUnassigned: null
+      batchMinimumPercentage: null,
+      isCompletelyUnassigned: null,
+    };
+
+    this.sort = {
+      sortByMostVacancies: false,
     };
   }
 
@@ -77,15 +92,28 @@ export class FilterPanelComponent implements OnInit {
    * filterService given in the constructor.
    */
   submit(): void {
-    // this.batch;
-    // this.city;
+    this.batch;
+    this.city;
 
-    // this.gender;
+    this.gender;
 
-    // this.vacantRoomsOnly;
-    // this.sortByMostVacancies;
-    // this.unhousedUsersOnly;
+    this.vacantRoomsOnly;
+    this.sortByMostVacancies;
+    this.unhousedUsersOnly;
 
-    // this.filterService.setFilter(this.filter);
+    this.filter = {
+      batch: this.batch,
+      city: this.city,
+      gender: this.gender,
+      batchMinimumPercentage: null,
+      isCompletelyUnassigned: this.vacantRoomsOnly,
+    }
+
+    this.sort = {
+      sortByMostVacancies: this.sortByMostVacancies,
+    }
+
+    this.filterService.setFilter(this.filter);
+    this.filterSortService.setFilter(this.sort);
   }
 }
