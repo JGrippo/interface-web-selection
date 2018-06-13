@@ -13,6 +13,7 @@ import { Response, ResponseOptions } from '@angular/http';
 import { SearchParameters } from './models/searchParameters.model';
 import { User } from './models/user.model';
 import { UserStore } from './stores/user.store';
+import { RoomStore } from './stores/room.store';
 
 @Component({
   selector: 'lib-selection',
@@ -28,22 +29,29 @@ export class SelectionComponent implements OnInit {
   users: User[];
 
   constructor(
-    private userStore: UserStore
-  ) {}
+    private userStore: UserStore,
+    private roomStore: RoomStore
+  ) { }
 
   ngOnInit() {
     this.getAllUsersComp();
+    this.getAllRoomsComp();
   }
 
 
   /**
   *     calls getAllRooms from service and sets component rooms to retrieved data
   */
+
   getAllRoomsComp(): void {
-    // this.service.getAllRooms().subscribe((data: Room[]) =>
-    //   this.rooms = data,    // sets rooms to retrieved data
-    //   (err: any) => console.log('Error Status ' + err.status + ', Error : ' + err),    // logs errors
-    //   () => console.log('Retrieved Rooms'));    // logs success
+    this.roomStore.rooms.subscribe(
+      res => {
+        this.rooms = res;
+      },
+      (err: any) => {
+        console.log('Error Status ' + err.status + ', Error : ' + err);
+      }
+    );
   }
 
   /**
@@ -87,7 +95,7 @@ export class SelectionComponent implements OnInit {
   */
   getAllUsersComp(): void {
     this.userStore.users.subscribe(
-      res=> {
+      res => {
         this.users = res;
       },
       (err: any) => {
