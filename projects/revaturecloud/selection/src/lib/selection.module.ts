@@ -3,13 +3,15 @@ import { SelectionComponent } from './selection.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
 import { FilterService } from "./services/filter.service";
+import { RoomCardComponent } from './components/room-card/room-card.component';
 @NgModule({
   imports: [
     HttpClientModule
   ],
   declarations: [
     SelectionComponent,
-    RoomWrapperComponent
+    RoomWrapperComponent,
+    RoomCardComponent,
   ],
   providers: [FilterService],
   exports: [SelectionComponent]

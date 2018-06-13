@@ -1,0 +1,18 @@
+<mat-card>
+  <mat-card-header>
+    <div md-card-avatar></div>
+    <mat-card-title>Room Location: {{room.location}}</mat-card-title>
+    <mat-card-subtitle>Room Occupancy/Vacancy: {{room.occupancy}}/{{room.vacancy}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      Room Address: Address1: {{room.address.address1}}, Address2: {{room.address.state}}, City: {{room.address.city}}, State:
+      {{room.address.state}}, Postal Code: {{room.address.postalCode}}, Country: {{room.address.country}}
+    </p>
+  </mat-card-content>
+  Gender: {{room.gender}}
+  <mat-card-actions>
+    <button md-button>LIKE</button>
+    <button md-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>

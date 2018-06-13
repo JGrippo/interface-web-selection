@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { SelectionService, SelectionComponent } from '../../../public_api';
 import { MatPaginator, MatTableDataSource, MatSort } from '@angular/material';
 import { Address } from '../../models/address.model';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -10,7 +11,7 @@ import { Address } from '../../models/address.model';
   templateUrl: './room-wrapper.component.html',
   styleUrls: ['./room-wrapper.component.css']
 })
-export class RoomWrapperComponent implements AfterViewInit {
+export class RoomWrapperComponent implements OnInit {
   displayedColumns = ['roomId', 'location', 'address', 'vacancy', 'occupancy', 'gender'];
   dataSource: MatTableDataSource<Room>;
 
@@ -20,20 +21,22 @@ export class RoomWrapperComponent implements AfterViewInit {
   rooms: Room[];
 
   constructor(private selecitonService: SelectionService) {
-    selecitonService.getAllRooms().subscribe((rooms: Room[]) => {
-      this.rooms = rooms;
-      console.log(rooms);
-    });
   }
 
-  ngAfterViewInit() {
-    // this.dataSource.paginator = this.paginator;
-    // this.dataSource.sort = this.sort;
+  ngOnInit() {
+    this.selecitonService.getAllRooms()
+    .subscribe((rooms: Room[]) => {
+      console.log(rooms);
+      this.rooms = rooms;
+    });
   }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.dataSource.filter = filterValue;
+  }
+
+  ngOnDestroy() {
   }
 }
