@@ -6,7 +6,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { SelectionService } from '../../services/selection.service';
+//import { SelectionService } from '../../services/selection.service';
 import { FilterService } from '../../services/filter.service';
 import { FilterSortService } from '../../services/filter-sort.service';
 import { SearchParameters } from '../../models/searchParameters.model';
@@ -43,7 +43,7 @@ export class FilterPanelComponent implements OnInit {
   sort: SortParameters;
 
   constructor(
-      private selectionService: SelectionService,
+      //private selectionService: SelectionService,
       private filterService: FilterService,
       private filterSortService: FilterSortService) {
 

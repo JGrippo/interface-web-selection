@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { FilterPanelComponent } from './filter-panel.component';
 import { FilterService } from '../../services/filter.service';
@@ -16,6 +17,9 @@ describe('FilterPanelComponent', () => {
     MockFilterSort = jasmine.createSpyObj(['getFilter', 'setFilter']);
 
     TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+      ],
       declarations: [ FilterPanelComponent ],
       providers: [
         {provide: FilterService, useValue: MockFilter},
@@ -27,7 +31,7 @@ describe('FilterPanelComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FilterPanelComponent);
-    componentwith = new FilterPanelComponent(null, MockFilter, MockFilter);
+    componentwith = new FilterPanelComponent(MockFilter, MockFilterSort);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -49,22 +53,18 @@ describe('FilterPanelComponent', () => {
   });
 
   it('should publish to filter service', () => {
-    let setSpy = spyOn(MockFilter, 'setFilter');
-
     componentwith.batch = 'batch1';
 
     componentwith.submit();
 
-    expect(setSpy).toHaveBeenCalledWith(componentwith.filter);
+    expect(MockFilter.setFilter).toHaveBeenCalledWith(componentwith.filter);
   });
 
   it('should publish to filter sort service', () => {
-    let setSpy = spyOn(MockFilterSort, 'setFilter');
-
     componentwith.sortByMostVacancies = true;
 
     componentwith.submit();
 
-    expect(setSpy).toHaveBeenCalledWith(componentwith.sort);
+    expect(MockFilterSort.setFilter).toHaveBeenCalledWith(componentwith.sort);
   });
 });
