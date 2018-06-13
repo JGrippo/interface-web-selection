@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterPanelComponent } from "./components/filter-panel/filter-panel.component";
 import { FilterService } from "./services/filter.service";
 import { UserStore } from './stores/user.store';
+import { RoomStore } from './stores/room.store';
 @NgModule({
   imports: [
     HttpClientModule,
@@ -18,7 +19,8 @@ import { UserStore } from './stores/user.store';
   ],
   providers: [
     FilterService,
-    UserStore
+    UserStore,
+    RoomStore
              ],
   exports: [SelectionComponent]
 })

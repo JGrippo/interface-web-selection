@@ -12,10 +12,10 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class FilterService {
 
   readonly defaultFilter: SearchParameters = {
-    location: null,
     batch: null,
-    batchMinimumPercentage: 0,
+    city: null,
     gender: null,
+    batchMinimumPercentage: 0,
     isCompletelyUnassigned: false,
   };
 
