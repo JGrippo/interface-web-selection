@@ -21,9 +21,8 @@
 */
 
 export class SearchParameters {
-  location: string;
   batch: string;
-  batchMinimumPercentage: number;
+  city: string;
   gender: string;
   isCompletelyUnassigned: boolean;
 }
