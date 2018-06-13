@@ -13,6 +13,7 @@ import { SearchParameters } from '../../models/searchParameters.model';
 import { SortParameters } from '../../models/sortParameters.model';
 import { Batch } from '../../models/batch.model';
 import { User } from '../../models/user.model';
+import { UserStore } from '../../stores/user.store';
 
 @Component({
   selector: 'app-filter-panel',
@@ -32,7 +33,7 @@ export class FilterPanelComponent implements OnInit {
   building: string;
 
   // Gender radio
-  readonly genders: string[] = ['Male', 'Female', 'Other'];
+  readonly genders: string[] = ['male', 'female', 'Other'];
   gender: string;
 
   // Check box booleans
@@ -45,7 +46,7 @@ export class FilterPanelComponent implements OnInit {
   sort: SortParameters;
 
   constructor(
-      private selectionService: SelectionService,
+      private userStore: UserStore,
       private filterService: FilterService,
       private filterSortService: FilterSortService) {
 
@@ -69,7 +70,7 @@ export class FilterPanelComponent implements OnInit {
     //this.cities = new Set(this.selectionService.getAllCities());
     //this.buildings = new Set(this.selectionService.getAllBuildings());
     this.batches = ['batch1', 'batch2', 'batch3'];
-    this.cities = ['city1', 'city2', 'city17'];
+    this.cities = ['Chicago','Reston','Tampa','New York'];
     this.buildings = ['b1', 'b2', 'b3'];
   }
 
@@ -116,5 +117,6 @@ export class FilterPanelComponent implements OnInit {
 
     this.filterService.setFilter(this.filter);
     this.filterSortService.setFilter(this.sort);
+    this.userStore.updateUsers();
   }
 }

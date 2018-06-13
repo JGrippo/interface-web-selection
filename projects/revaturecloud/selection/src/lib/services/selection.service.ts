@@ -63,7 +63,7 @@ export class SelectionService {
   }
 
   getComplexRequestOfUsers(searchParameters: SearchParameters): Observable<User[]> {
-    return this.http.get<User[]>(this.rootUrl + this.apiEpUsers,
+    return this.http.get<User[]>(this.rootUrl + '/Users?',
       { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -136,12 +136,30 @@ export class SelectionService {
   */
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
-    return new HttpParams()
-      .set('Batch', searchParameters.batch)
-      .set('BatchMinimumPercentage', searchParameters.batchMinimumPercentage.toString())
-      .set('Gender', searchParameters.gender)
-      .set('IsCompletelyUnassigned', searchParameters.isCompletelyUnassigned.toString())
-      .set('City', searchParameters.city);
+
+    var httpParams: HttpParams = new HttpParams();
+    if (searchParameters.batch) {
+      httpParams = httpParams.append('batch', searchParameters.batch);
+    }
+    if (searchParameters.batchMinimumPercentage) {
+      httpParams = httpParams.append('BatchMinimumPercentage', searchParameters.batchMinimumPercentage.toString());
+    }
+    if (searchParameters.gender) {
+      httpParams = httpParams.append('gender', searchParameters.gender);
+    }
+    if (searchParameters.isCompletelyUnassigned) {
+      httpParams = httpParams.append('IsCompletelyUnassigned', searchParameters.isCompletelyUnassigned.toString())
+    }
+    if (searchParameters.city) {
+      httpParams = httpParams.append('location', searchParameters.city);
+    }
+
+    return httpParams;
+  }
+
+  private paramsToString(searchParameters: SearchParameters) {
+    let queryString: string;
+
   }
 
   methodTestEx() {

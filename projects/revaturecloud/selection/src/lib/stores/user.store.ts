@@ -45,7 +45,9 @@ export class UserStore {
   updateUsers() {
     this.backendService.getComplexRequestOfUsers(this._filter)
       .subscribe(
-        res=> this._userSubject.next(res)
+        (res) => { this._userSubject.next(res);
+                   console.log(res);},
+        (err: any) => { console.log(err); }
       );
   }
 }
