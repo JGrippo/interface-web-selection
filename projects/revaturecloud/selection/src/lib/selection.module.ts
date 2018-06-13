@@ -6,6 +6,7 @@ import { SearchPipe } from './shared/search.pipe';
 import { FilterService } from "./services/filter.service";
 
 
+import { UserStore } from './stores/user.store';
 @NgModule({
   imports: [
     HttpClientModule
@@ -15,7 +16,10 @@ import { FilterService } from "./services/filter.service";
     UserWrapperComponent,
     SearchPipe
   ],
-  providers: [FilterService],
+  providers: [
+    FilterService,
+    UserStore
+             ],
   exports: [SelectionComponent]
 })
 export class SelectionModule { }
