@@ -11,8 +11,6 @@ import { FilterService } from '../../services/filter.service';
 import { FilterSortService } from '../../services/filter-sort.service';
 import { SearchParameters } from '../../models/searchParameters.model';
 import { SortParameters } from '../../models/sortParameters.model';
-import { Batch } from '../../models/batch.model';
-import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-filter-panel',
@@ -69,7 +67,7 @@ export class FilterPanelComponent implements OnInit {
     //this.cities = new Set(this.selectionService.getAllCities());
     //this.buildings = new Set(this.selectionService.getAllBuildings());
     this.batches = ['batch1', 'batch2', 'batch3'];
-    this.cities = ['city1', 'city2', 'city17'];
+    this.cities = ['New York', 'Reston', 'Tampa'];
     this.buildings = ['b1', 'b2', 'b3'];
   }
 
