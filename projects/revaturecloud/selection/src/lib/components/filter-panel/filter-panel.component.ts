@@ -17,6 +17,7 @@ import { UserStore } from '../../stores/user.store';
 import { RoomStore } from '../../stores/room.store';
 
 @Component({
+  // tslint:disable-next-line:component-selector
   selector: 'app-filter-panel',
   templateUrl: './filter-panel.component.html',
   styleUrls: ['./filter-panel.component.css']
@@ -68,11 +69,11 @@ export class FilterPanelComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.batches = new Set(this.selectionService.getAllBatches());
-    //this.cities = new Set(this.selectionService.getAllCities());
-    //this.buildings = new Set(this.selectionService.getAllBuildings());
+    // this.batches = new Set(this.selectionService.getAllBatches());
+    // this.cities = new Set(this.selectionService.getAllCities());
+    // this.buildings = new Set(this.selectionService.getAllBuildings());
     this.batches = ['batch1', 'batch2', 'batch3'];
-    this.cities = ['Chicago','Reston','Tampa','New York'];
+    this.cities = ['Chicago', 'Reston', 'Tampa', 'New York'];
     this.buildings = ['b1', 'b2', 'b3'];
   }
 
@@ -96,14 +97,6 @@ export class FilterPanelComponent implements OnInit {
    * filterService given in the constructor.
    */
   submit(): void {
-    this.batch;
-    this.city;
-
-    this.gender;
-
-    this.vacantRoomsOnly;
-    this.sortByMostVacancies;
-    this.unhousedUsersOnly;
 
     this.filter = {
       batch: this.batch,
@@ -111,15 +104,15 @@ export class FilterPanelComponent implements OnInit {
       gender: this.gender,
       batchMinimumPercentage: null,
       isCompletelyUnassigned: this.vacantRoomsOnly,
-    }
+    };
 
     this.sort = {
       sortByMostVacancies: this.sortByMostVacancies,
-    }
+    };
 
     this.filterService.setFilter(this.filter);
     this.filterSortService.setFilter(this.sort);
-    this.userStore.updateUsers('this');
+    this.userStore.updateUsers();
     this.roomStore.updateRooms();
   }
 }

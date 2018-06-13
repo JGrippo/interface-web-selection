@@ -35,7 +35,7 @@ export class RoomStore {
         res => {
           this._filter = res;
         }
-      )
+      );
   }
 
   get rooms() {
@@ -47,7 +47,7 @@ export class RoomStore {
     this.backendService.getComplexRequestOfRooms(this._filter)
       .subscribe(
         (res) => { this._roomSubject.next(res);
-                   console.log(res);},
+                   console.log(res); },
         (err: any) => { console.log(err); }
       );
   }

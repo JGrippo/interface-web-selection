@@ -137,7 +137,7 @@ export class SelectionService {
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
 
-    var httpParams: HttpParams = new HttpParams();
+    let httpParams: HttpParams = new HttpParams();
     if (searchParameters.batch) {
       httpParams = httpParams.append('batch', searchParameters.batch);
     }
@@ -157,10 +157,10 @@ export class SelectionService {
     return httpParams;
   }
 
-  private paramsToString(searchParameters: SearchParameters) {
-    let queryString: string;
+  // private paramsToString(searchParameters: SearchParameters) {
+  //   let queryString: string;
 
-  }
+  // }
 
   methodTestEx() {
     console.log('has been called');
