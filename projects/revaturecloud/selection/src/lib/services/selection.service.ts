@@ -133,7 +133,7 @@ export class SelectionService {
       .set('BatchMinimumPercentage', searchParameters.batchMinimumPercentage.toString())
       .set('Gender', searchParameters.gender)
       .set('IsCompletelyUnassigned', searchParameters.isCompletelyUnassigned.toString())
-      .set('Location', searchParameters.location);
+      .set('City', searchParameters.city);
   }
 
   methodTestEx() {
