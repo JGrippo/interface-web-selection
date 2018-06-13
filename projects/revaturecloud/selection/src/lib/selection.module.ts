@@ -7,9 +7,14 @@ import { FilterService } from "./services/filter.service";
 
 
 import { UserStore } from './stores/user.store';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   imports: [
-    HttpClientModule
+    HttpClientModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     SelectionComponent,

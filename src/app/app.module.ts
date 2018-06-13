@@ -12,6 +12,9 @@ import { UserWrapperComponent } from '../../projects/revaturecloud/selection/src
 import { SearchPipe } from '../../projects/revaturecloud/selection/src/lib/shared/search.pipe';
 // test
 
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +28,8 @@ import { SearchPipe } from '../../projects/revaturecloud/selection/src/lib/share
     FormsModule,
     HttpModule,
     RouterModule,
-
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [SelectionService],
   bootstrap: [AppComponent]
