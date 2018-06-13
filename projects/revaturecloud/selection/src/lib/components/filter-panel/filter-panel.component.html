@@ -1,0 +1,54 @@
+<div class="filter-panel">
+  <p>Filter Results</p>
+{{batch}}{{city}}{{building}}
+<br>
+  <!--Batch select-->
+  <select [(ngModel)]="batch" >
+    <option *ngFor="let batch of batches;"
+        [value]="batch">{{batch}}</option>
+  </select>
+
+  <!--City select-->
+  <select [(ngModel)]="city">
+    <option *ngFor="let city of cities;"
+        [value]="city">{{city}}</option>
+  </select>
+
+  <!--Building select-->
+  <select [(ngModel)]="building">
+    <option *ngFor="let building of buildings;"
+        [value]="building">{{building}}</option>
+  </select>
+
+  <!--Gender select-->
+  <p>Gender</p>
+   <ul>
+      <li *ngFor="let g of genders" class="radio">
+        <input type="radio"
+            [(ngModel)]="gender"
+            name="anything"
+            [value]="g">
+          {{g}}
+      </li>
+  </ul>
+
+  <br>
+  <!--VacantRoomsOnly checkbox-->
+  <input type="checkbox"
+      [checked]="vacantRoomsOnly"
+      (change)="vacantRoomsOnly = !vacantRoomsOnly" />
+    Vacant Rooms Only
+  <!--SortByMostVacancies checkbox-->
+  <input type="checkbox"
+      [checked]="sortByMostVacancies"
+      (change)="sortByMostVacancies = !sortByMostVacancies" />
+    Sort by Most Vacancies
+  <!--UnhousedUsersOnly checkbox-->
+  <input type="checkbox"
+      [checked]="unhousedUsersOnly"
+      (change)="unhousedUsersOnly = !unhousedUsersOnly" />
+    Unhoused Users Only
+
+  <input type="button" value="Filter" (click)="submit()">
+  <input type="button" value="Reset" (click)="reset()">
+</div>
