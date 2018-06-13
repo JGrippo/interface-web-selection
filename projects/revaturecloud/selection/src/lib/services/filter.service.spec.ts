@@ -16,9 +16,9 @@ describe('FilterService', () => {
   it('should update on setFilter', inject([FilterService], (service: FilterService) => {
     //Arrange
     let filter: SearchParameters = {
-      batch: "2",
-      city: "1",
-      gender: "3",
+      batch: '2',
+      city: '1',
+      gender: '3',
       batchMinimumPercentage: 10,
       isCompletelyUnassigned: false,
     }
