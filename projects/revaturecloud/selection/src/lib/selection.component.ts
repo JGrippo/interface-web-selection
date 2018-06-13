@@ -16,7 +16,11 @@ import { UserStore } from './stores/user.store';
 
 @Component({
   selector: 'lib-selection',
-  template: '<p></p>',
+  template: `<ul>
+              <li *ngFor="let user of users">
+                {{ user.gender }}
+              </li>
+            </ul>`,
   styles: []
 })
 export class SelectionComponent implements OnInit {

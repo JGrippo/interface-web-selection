@@ -7,9 +7,9 @@ import { SelectionService } from "../services/selection.service";
   providedIn: 'root'
 })
 export class UserStore {
-  readonly defaultStore: User[] = [];
 
-  private userSubject: BehaviorSubject<User[]>;
+  private _userSubject: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
+
 
   constructor (private backendService: SelectionService) {
     this.loadInitData();
@@ -21,11 +21,11 @@ export class UserStore {
 
       )
       .subscribe(
-        res => this.userSubject.next(res)
+        res => this._userSubject.next(res)
       )
   }
 
   get users(){
-    return this.userSubject.asObservable();
+    return this._userSubject.asObservable();
   }
 }
