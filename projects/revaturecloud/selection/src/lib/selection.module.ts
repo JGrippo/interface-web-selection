@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
 import { FilterService } from "./services/filter.service";
 import { RoomCardComponent } from './components/room-card/room-card.component';
+import { UserStore } from './stores/user.store';
+import { RoomStore } from './stores/room.store';
 @NgModule({
   imports: [
     HttpClientModule
@@ -13,7 +15,11 @@ import { RoomCardComponent } from './components/room-card/room-card.component';
     RoomWrapperComponent,
     RoomCardComponent,
   ],
-  providers: [FilterService],
+  providers: [
+    FilterService,
+    UserStore,
+    RoomStore
+             ],
   exports: [SelectionComponent]
 })
 export class SelectionModule { }

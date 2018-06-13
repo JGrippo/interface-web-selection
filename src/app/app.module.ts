@@ -9,6 +9,10 @@ import { RoomWrapperComponent } from '../../projects/revaturecloud/selection/src
 import { MatPaginatorModule, MatTableDataSource, MatCardModule, MatTableModule, MatInputModule, MatSortModule, MatCard } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RoomCardComponent } from '../../projects/revaturecloud/selection/src/lib/components/room-card/room-card.component';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+// test
 
 @NgModule({
   declarations: [
