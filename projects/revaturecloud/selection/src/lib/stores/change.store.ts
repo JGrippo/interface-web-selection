@@ -34,7 +34,7 @@ export class ChangeStore {
     this._changeArray = [];
     this._changeTracker.next(this._changeArray);
   }
-  get rooms() {
+  get changes() {
     return this._changeTracker.asObservable();
   }
 }
