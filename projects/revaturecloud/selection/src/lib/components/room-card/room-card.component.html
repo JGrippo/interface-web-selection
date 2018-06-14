@@ -4,23 +4,27 @@
 <mat-divider></mat-divider>
 
 <mat-grid-list cols='2'>
-  <mat-grid-tile>
-    <div *ngIf="room.gender == 'Male'">
-      <img src="../../../../src/assets/img/male.png" style="width:50px; border-radius: 50%">
-      <div>
-        <font size='2'>ID:1234</font>
-      </div>
-      <div class="boxed-room"> {{room.roomId}}</div>
-    </div>
+  <div *ngIf="users">
+    <div *ngFor="let user of users">
+      <mat-grid-tile>
+        <div *ngIf="user.gender == 'male'">
+          <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/male.png" style="width:50px; border-radius: 50%">
+          <div>
+            <font size='2'>ID:1234</font>
+          </div>
+          <div class="boxed-room"> {{user.name.first}}</div>
+        </div>
 
-    <div *ngIf="room.gender == 'Female'">
-      <img src="../../../../src/assets/img/female.png" style="width:50px; border-radius: 50%">
-      <div>
-        <font size='2'>ID:4321</font>
-      </div>
-      <div class="boxed-room">{{room.roomId}}</div>
+        <div *ngIf="user.gender == 'female'">
+          <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/female.png" style="width:50px; border-radius: 50%">
+          <div>
+            <font size='2'>ID:4321</font>
+          </div>
+          <div class="boxed-room">{{user.name.first}}</div>
+        </div>
+      </mat-grid-tile>
     </div>
-  </mat-grid-tile>
+  </div>
 </mat-grid-list>
 
 <mat-grid-list cols="8">

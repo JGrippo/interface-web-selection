@@ -9,7 +9,7 @@
   <mat-grid-tile colspan="3">
   </mat-grid-tile>
 </mat-grid-list>
-<mat-grid-list cols="3" rowHeight="350px">
+<mat-grid-list cols="3" rowHeight="500px">
   <mat-grid-tile class="my-grid-tile" *ngFor="let room of rooms | roomSearch:searchRooms | paginate: { itemsPerPage: 3, currentPage: p, id: 'room-pagination' }">
     <mat-card>
       <lib-room-card [room]="room"></lib-room-card>
