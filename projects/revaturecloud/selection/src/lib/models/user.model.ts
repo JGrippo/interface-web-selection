@@ -9,12 +9,14 @@
 *
 * The service-hub-housing-wiki's page on this object:
 * "https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/User-Model"
+ * @export
+ * @class User
 */
 
-import { Address } from "./address.model";
-import { Name } from "./name.model";
-import { Batch } from "./batch.model";
-import { Room } from "./room.model";
+import { Address } from './address.model';
+import { Name } from './name.model';
+import { Batch } from './batch.model';
+import { Room } from './room.model';
 
 export class User {
   id: string;
