@@ -18,10 +18,10 @@ mat-card {
     background-color: #F06932;
     opacity: 0.9;
     color: white;
-    margin-left: 20px;
-    margin-bottom: 30px;
-    width: 27px;
-    height: 27px;
+    /* margin-left: 20px;
+    margin-bottom: 30px; */
+    /* width: 27px;
+    height: 27px; */
   }
 
   div>div {
