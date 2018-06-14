@@ -1,5 +1,5 @@
 /**
- * A service to handle making put resquests to the API.
+ * A service to handle making put requests to the API.
  * Also listens for successful requests and
  * informs the changes store on success.
  */
