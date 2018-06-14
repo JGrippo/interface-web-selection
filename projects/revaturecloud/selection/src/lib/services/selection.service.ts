@@ -103,9 +103,6 @@ export class SelectionService {
       );
   }
 
-  ///  <summary>
-  ///    Initial template for basic common error handling.
-  ///  </summary>
   /**
   *    Initial template for basic common error handling.
   */
