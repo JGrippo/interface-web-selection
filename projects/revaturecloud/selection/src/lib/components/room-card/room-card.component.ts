@@ -28,7 +28,14 @@ export class RoomCardComponent implements OnInit {
   }
 
   getUsers(id: string) {
-    this.users.filter((usr:User)=>usr.room.roomId===id.toString());
+    this.users.filter( (usr:User) => {
+        if(usr && usr.room) {
+          return usr.room.roomId === id;
+        }
+        else {
+          return false;
+        }
+      });
   }
 
 

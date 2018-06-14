@@ -45,10 +45,10 @@ export class FilterPanelComponent implements OnInit {
   sort: SortParameters;
 
   constructor(
-      private userStore: UserStore,
-      private roomStore: RoomStore,
-      private filterService: FilterService,
-      private filterSortService: FilterSortService) {
+    private userStore: UserStore,
+    private roomStore: RoomStore,
+    private filterService: FilterService,
+    private filterSortService: FilterSortService) {
 
     this.reset();
 
@@ -94,8 +94,6 @@ export class FilterPanelComponent implements OnInit {
    * filterService given in the constructor.
    */
   submit(): void {
-    console.log("submit called");
-
     this.filter = {
       batch: this.batch,
       city: this.city,
