@@ -103,23 +103,6 @@ export class SelectionService {
       );
   }
 
-
-  ///
-  // private convertSearchParsObjToParamsName(name: Name) {
-  //   return new HttpParams()
-  //     .set("first", name.first)
-  //     .set("middle", name.middle)
-  //     .set("last", name.last)
-  // };
-
-  // getUserByName(name: string): Observable<User[]> {
-  //   return this.http.get<User[]>(this.rootUrl + this.apiEpUsers + '/' +  name)
-  //     .pipe(
-  //       retry(3), // retry a failed request up to 3 times
-  //       catchError(this.handleError) // then handle the error
-  //     );
-  // }
-
   ///  <summary>
   ///    Initial template for basic common error handling.
   ///  </summary>
