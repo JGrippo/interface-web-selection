@@ -32,7 +32,12 @@ export class FilterPanelComponent implements OnInit {
   building: string;
 
   // Gender radio
-  readonly genders: string[] = ['Male', 'Female', 'Other'];
+  readonly genders: object[] = [
+    {name: 'All', value: null},
+    {name: 'Male', value: 'male'},
+    {name: 'Female', value: 'female'},
+    {name: 'Other', value: 'other'}
+  ];
   gender: string;
 
   // Check box booleans
@@ -76,6 +81,8 @@ export class FilterPanelComponent implements OnInit {
 
   /**
    * Resets the filter form to default values
+   *
+   * DEPRECATED
    */
   reset(): void {
     this.batch = null;
@@ -93,12 +100,19 @@ export class FilterPanelComponent implements OnInit {
    * Takes the current values in the filter form and updates the
    * filterService given in the constructor.
    */
-  submit(): void {
+  update(): void {
+    let tempGender: string;
+    if (this.gender) {
+      tempGender = this.gender.toLowerCase();
+    } else {
+      tempGender = this.gender;
+    }
+
     this.filter = {
       batch: this.batch,
       city: this.city,
-      gender: this.gender.toLowerCase(),
-      batchMinimumPercentage: null,
+      gender: tempGender,
+      batchMinimumPercentage: null, // Not implemented
       isCompletelyUnassigned: this.vacantRoomsOnly,
     };
 
