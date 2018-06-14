@@ -163,8 +163,4 @@ export class SelectionService {
     let queryString: string;
 
   }
-
-  methodTestEx() {
-    console.log('has been called');
-  }
 }
