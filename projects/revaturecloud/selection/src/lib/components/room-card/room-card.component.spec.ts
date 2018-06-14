@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { RoomCardComponent } from './room-card.component';
 
 describe('RoomCardComponent', () => {
