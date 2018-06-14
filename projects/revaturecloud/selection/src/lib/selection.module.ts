@@ -23,6 +23,7 @@ import {
   MatIconModule,
   MatExpansionModule,
   MatTableModule,
+  MatRadioModule,
   MatSortModule
   } from '@angular/material';
 
@@ -74,6 +75,7 @@ import { RoomStore } from './stores/room.store';
     MatIconModule,
     MatExpansionModule,
     BrowserAnimationsModule,
+    MatRadioModule,
     RouterModule
   ],
   providers: [

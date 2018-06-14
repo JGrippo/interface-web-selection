@@ -30,7 +30,7 @@
     <mat-form-field>
       <mat-select placeholder="User">
         <mat-option *ngFor="let user of users">
-          {{ user }}
+          {{ user.name.first }} {{ user.name.last }}
         </mat-option>
       </mat-select>
     </mat-form-field>

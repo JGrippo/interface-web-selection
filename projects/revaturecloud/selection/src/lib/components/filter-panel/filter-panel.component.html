@@ -36,15 +36,15 @@
 
     <div>
       <p align="center"> Gender </p>
-      <ul style="list-style-type:none">
-        <li *ngFor="let g of genders">
-          <mat-checkbox
-              [(ngModel)]="gender"
-              [value]="g">
-            {{g}}
-          </mat-checkbox>
-        </li>
-      </ul>
+      <mat-radio-group>
+        <mat-radio-button
+            *ngFor="let g of genders"
+            [(ngModel)]="gender"
+            [value]="g">
+          {{g}}
+        </mat-radio-button>
+      </mat-radio-group>
+      {{gender}}
     </div>
 
     <div>

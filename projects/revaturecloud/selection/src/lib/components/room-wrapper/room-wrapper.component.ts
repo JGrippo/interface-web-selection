@@ -45,6 +45,7 @@ export class RoomSearchPipe implements PipeTransform {
     }
     const foundRooms = [];
     for (const room of value) {
+      searchString = searchString.toLowerCase();
       if (room.location.toLowerCase().includes(searchString)
         || room.gender.toLowerCase().includes(searchString)
         || room.address.address1.toLowerCase().includes(searchString)

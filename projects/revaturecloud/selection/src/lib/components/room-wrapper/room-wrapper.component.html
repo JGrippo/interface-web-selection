@@ -2,7 +2,7 @@
   <mat-grid-tile colspan="1">
     <form class="user-search">
       <mat-form-field>
-        <input matInput placeholder="Search">
+        <input matInput placeholder="Search" [(ngModel)] = "searchRooms" name="searchRooms">
       </mat-form-field>
     </form>
   </mat-grid-tile>
@@ -10,7 +10,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 <mat-grid-list cols="3" rowHeight="350px">
-  <mat-grid-tile class="my-grid-tile" *ngFor="let room of rooms | paginate: { itemsPerPage: 3, currentPage: p, id: 'room-pagination' }">
+  <mat-grid-tile class="my-grid-tile" *ngFor="let room of rooms | roomSearch:searchRooms | paginate: { itemsPerPage: 3, currentPage: p, id: 'room-pagination' }">
     <mat-card>
       <lib-room-card [room]="room"></lib-room-card>
     </mat-card>
