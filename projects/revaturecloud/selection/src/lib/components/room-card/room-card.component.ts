@@ -18,13 +18,14 @@ export class RoomCardComponent implements OnInit {
   @Input() room: Room;
   users: User[];
 
-  constructor(private userStore: UserStore) { }
+  constructor(private userStore: UserStore) {  }
 
   ngOnInit() {
     this.userStore.users.subscribe((data: any) => {
       this.users = data;
     });
     this.getUsers(this.room.roomId);
+    this.users = this.users.slice(0,6);
   }
 
   getUsers(id: string) {
@@ -38,8 +39,6 @@ export class RoomCardComponent implements OnInit {
       });
   }
 
-
-  // tslint:disable-next-line:use-life-cycle-interface
   ngOnDestroy() {
 
   }
