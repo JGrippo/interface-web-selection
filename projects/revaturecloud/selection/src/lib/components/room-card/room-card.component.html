@@ -1,17 +1,41 @@
-<mat-card class="room-card layout horizontal">
-  <mat-card-header>
-    <mat-card-title>Location: {{room.location}}</mat-card-title>
-    <mat-card-subtitle>Beds Available/Total: {{room.vacancy}}/{{room.occupancy + room.vacancy}}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-card-content>
-    <div class="address-block">
-      {{room.address.address1}} {{room.address.address2}}<br>
-      {{room.address.city}}, {{room.address.state}} {{room.address.postalCode}}<br>
-      {{room.address.country}}
+<mat-card-header>
+  Room {{room.location}} | {{room.vacancy + room.occupancy}} Beds | {{room.vacancy}} Remaining
+</mat-card-header>
+<mat-divider></mat-divider>
+
+<mat-grid-list cols='2'>
+  <mat-grid-tile>
+    <div *ngIf="room.gender == 'Male'">
+      <img src="../../../../src/assets/img/male.png" style="width:50px; border-radius: 50%">
+      <div>
+        <font size='2'>ID:1234</font>
+      </div>
+      <div class="boxed-room"> {{room.roomId}}</div>
     </div>
-  </mat-card-content>
-  Gender: {{room.gender}}
-  <mat-card-actions>
-    <button md-button>Remove</button>
-  </mat-card-actions>
-</mat-card>
+
+    <div *ngIf="room.gender == 'Female'">
+      <img src="../../../../src/assets/img/female.png" style="width:50px; border-radius: 50%">
+      <div>
+        <font size='2'>ID:4321</font>
+      </div>
+      <div class="boxed-room">{{room.roomId}}</div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="8">
+  <mat-grid-tile>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="6">
+    <mat-form-field>
+      <mat-select placeholder="User">
+        <mat-option *ngFor="let user of users">
+          {{ user.name.first }} {{ user.name.last }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+  </mat-grid-tile>
+</mat-grid-list>

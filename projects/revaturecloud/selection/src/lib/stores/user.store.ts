@@ -66,7 +66,6 @@ export class UserStore {
       .subscribe(
         (res) => {
           this._userSubject.next(res);
-          console.log(res);
         },
         (err: any) => {
           console.log(err);
