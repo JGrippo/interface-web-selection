@@ -94,6 +94,7 @@ export class FilterPanelComponent implements OnInit {
    * filterService given in the constructor.
    */
   submit(): void {
+    console.log("submit called");
 
     this.filter = {
       batch: this.batch,
