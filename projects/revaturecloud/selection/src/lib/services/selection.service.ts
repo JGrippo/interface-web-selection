@@ -8,7 +8,6 @@
 */
 
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
@@ -160,9 +159,4 @@ export class SelectionService {
   // private paramsToString(searchParameters: SearchParameters) {
   //   let queryString: string;
 
-  // }
-
-  methodTestEx() {
-    console.log('has been called');
   }
-}

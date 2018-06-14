@@ -1,5 +1,4 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { FilterSortService } from './filter-sort.service';
 import { SortParameters } from '../models/sortParameters.model';
 

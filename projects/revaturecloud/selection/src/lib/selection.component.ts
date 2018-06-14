@@ -5,11 +5,8 @@
 */
 
 import { Component, OnInit } from '@angular/core';
-import { SelectionService } from './services/selection.service';
 import { Room } from './models/room.model';
-import { Observable } from 'rxjs';
 import { RoomAssociation } from './models/roomAssociation.model';
-import { Response, ResponseOptions } from '@angular/http';
 import { SearchParameters } from './models/searchParameters.model';
 import { User } from './models/user.model';
 import { UserStore } from './stores/user.store';

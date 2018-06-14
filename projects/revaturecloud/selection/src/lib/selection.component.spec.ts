@@ -2,14 +2,10 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SelectionComponent } from './selection.component';
 import { SelectionService } from './services/selection.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { User } from "./models/user.model";
-import { Name } from "./models/name.model";
+import { User } from './models/user.model';
 import { Room } from './models/room.model';
 import { Address } from './models/address.model';
-import { Observable, of } from 'rxjs';
-import { Input } from '@angular/core';
-import { By } from 'protractor';
+import { of } from 'rxjs';
 import { RoomAssociation } from './models/roomAssociation.model';
 import { SearchParameters } from './models/searchParameters.model';
 
@@ -26,17 +22,19 @@ describe('SelectionComponent', () => {
 
   beforeEach(() => {
 
-    let roomAssociations: RoomAssociation[] = [
+    roomAssociations = [
       {
         userId: '1',
         roomId: 'guid1'
       }
     ];
 
-    let searchParameters: SearchParameters = {
+    searchParameters = {
+      location: 'test',
       batch: 'test',
-      batchMinimumPercentage: 2,
+      city: 'city',
       gender: 'm',
+      batchMinimumPercentage: 2,
       isCompletelyUnassigned: true
     };
 
@@ -58,7 +56,7 @@ describe('SelectionComponent', () => {
       country: 'USA'
     };
 
-    let Rooms: Room[] = [
+    Rooms = [
       {
         roomId: 'guid1',
         location: 'Tampa',
@@ -77,7 +75,7 @@ describe('SelectionComponent', () => {
       }
     ];
 
-    let users: User[] = [
+    users = [
       {
         id: '1',
         location: 'test',
@@ -87,10 +85,10 @@ describe('SelectionComponent', () => {
         batch: null,
         room: Rooms[0],
         name: {
-          id: "1",
-          first: "fname",
-          middle: "mname",
-          last: "lname",
+          id: '1',
+          first: 'fname',
+          middle: 'mname',
+          last: 'lname',
         },
         address: testAddress1
       }

@@ -1,0 +1,16 @@
+<mat-form-field class="example-full-width">
+  <input matInput type="text" placeholder="Search" [(ngModel)]="searchRooms">
+</mat-form-field>
+
+<div>
+    <mat-grid-list cols="4" rowHeight="250px">
+      <mat-grid-tile *ngFor="let room of rooms | roomSearch:searchRooms">
+        <lib-room-card [ngStyle]="{'width':'275' + 'px'}" [room]="room"></lib-room-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+  <div class="paginator mat-elevation-z4" *ngIf="rooms.length !== 0">
+    <mat-paginator [length]="rooms.length" [pageSize]="4" [pageSizeOptions]="pageOptions" [hidePageSize]=true (page)="pageEvent = $event">
+    </mat-paginator>
+  </div>
+</div>
