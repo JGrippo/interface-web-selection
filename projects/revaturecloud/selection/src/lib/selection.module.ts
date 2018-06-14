@@ -1,30 +1,50 @@
 import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { FormsModule } from '@angular/forms';
-import { SelectionComponent } from './selection.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RoomWrapperComponent, RoomSearchPipe } from './components/room-wrapper/room-wrapper.component';
-import { FilterPanelComponent } from "./components/filter-panel/filter-panel.component";
-import { FilterService } from "./services/filter.service";
+import { FilterPanelComponent } from './components/filter-panel/filter-panel.component';
+import { FilterService } from './services/filter.service';
+import { PutService } from './services/put.service';
 import { RoomCardComponent } from './components/room-card/room-card.component';
 import { UserStore } from './stores/user.store';
 import { RoomStore } from './stores/room.store';
 import { BrowserModule } from '@angular/platform-browser';
-import { MatPaginatorModule, MatCardModule, MatTableModule, MatInputModule, MatSortModule} from '@angular/material';
-import { MatGridListModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { RouterModule} from '@angular/router';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {
+  MatButtonModule,
+  MatInputModule,
+  MatSidenavModule,
+  MatPaginatorModule,
+  MatGridListModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatFormFieldModule,
+  MatOptionModule,
+  MatSelectModule,
+  MatDividerModule,
+  MatIconModule,
+  MatExpansionModule,
+  MatTableModule,
+  MatRadioModule,
+  MatSortModule
+  } from '@angular/material';
+import { ContentWrapperComponent } from './components/content-wrapper/content-wrapper.component';
 import { UserWrapperComponent } from './components/user-wrapper/user-wrapper.component';
-import { SearchPipe } from './shared/search.pipe';
 import { UserCardComponent } from './components/user-card/user-card.component';
+import { ChangeStore } from './stores/change.store';
+import { RoomSearchPipe, RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
+import { SelectionComponent } from './selection.component';
+import { SearchPipe } from './shared/search.pipe';
 
 @NgModule({
   declarations: [
     SelectionComponent,
     FilterPanelComponent,
     UserWrapperComponent,
+    ContentWrapperComponent,
     SearchPipe,
     UserCardComponent,
     RoomWrapperComponent,
@@ -35,22 +55,35 @@ import { UserCardComponent } from './components/user-card/user-card.component';
   imports: [
     HttpClientModule,
     HttpModule,
-    FormsModule,
     CommonModule,
+    FormsModule,
     BrowserModule,
-    MatInputModule,
     MatTableModule,
-    MatPaginatorModule,
     MatSortModule,
-    BrowserAnimationsModule,
+    MatSidenavModule,
     MatCardModule,
     MatGridListModule,
+    MatPaginatorModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatOptionModule,
+    MatSelectModule,
+    MatDividerModule,
+    MatButtonModule,
+    NgxPaginationModule,
+    MatIconModule,
+    MatExpansionModule,
+    BrowserAnimationsModule,
+    MatRadioModule,
     RouterModule
   ],
   providers: [
     FilterService,
     UserStore,
-    RoomStore
+    RoomStore,
+    PutService,
+    ChangeStore
   ],
   exports: [SelectionComponent]
 })

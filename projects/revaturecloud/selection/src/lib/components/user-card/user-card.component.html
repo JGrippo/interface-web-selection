@@ -1,17 +1,51 @@
 
-<h3>{{userCard.name.first}} {{userCard.name.last}}</h3>
-Id: {{userCard.id}}
-<br> Location: {{userCard.location}}
-<br> Email: {{userCard.email}}
-<br> Gender: {{userCard.gender}}
-<br> Type: {{userCard.type}}
-<br> Batch: {{userCard.batch | json}}
-<br> Room: {{userCard.room | json}}
-<br> Address: {{userCard.address.address1}} {{userCard.address.address2}}, {{userCard.address.city}},
-{{userCard.address.state}}
-{{userCard.address.postalCode}}, {{userCard.address.country}}
-<br>
-
+<mat-card-header>
+  <div class="flex-vert-center">
+    <mat-card-title class="user-name">{{user.name.first}} {{user.name.last}}</mat-card-title>
+    <button class="dat-mini-fab" type="button" mat-mini-fab (click)="sidenav.toggle()">
+      <i class="material-icons">add</i>
+    </button>
+  </div>
+</mat-card-header>
+<mat-divider></mat-divider>
+<mat-card-content>
+  <mat-grid-list cols="2">
+    <mat-grid-tile>
+      <div id="text">
+        <!-- <div id="id-field">
+          ID: {{user.id}}
+        </div> -->
+        <div>
+          {{user.location}}
+        </div>
+        <!-- <div>
+          {{user.building}}
+        </div> -->
+        <div>
+          {{user.room}}
+        </div>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div *ngIf="user.gender == 'm'">
+        <img src="../../../../src/assets/img/male.png" style="width:50px; border-radius: 50%">
+      </div>
+      <div *ngIf="user.gender == 'f'">
+        <img src="../../../../src/assets/img/female.png" style="width:50px; border-radius: 50%">
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <mat-grid-list cols="10">
+    <mat-grid-tile colspan="10">
+      <mat-form-field>
+        <mat-select placeholder="Room">
+          <mat-option>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-card-content>
 
 
 

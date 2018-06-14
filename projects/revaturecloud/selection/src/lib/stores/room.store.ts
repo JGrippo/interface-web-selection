@@ -40,7 +40,7 @@ export class RoomStore {
         res => this._roomSubject.next(res)
       );
 
-      this.filterService.getFilter()
+    this.filterService.getFilter()
       .subscribe(
         res => {
           this._filter = res;
@@ -55,11 +55,17 @@ export class RoomStore {
     return this._roomSubject.asObservable();
   }
 
+  /**
+   * Uses filter to get complex request of Rooms from back end service, the result set of which
+   * is subscribed to and parsed into the private feild for this store that
+   * then updates the data to the respective subscribers.
+   *
+   * @memberof RoomStore
+   */
   updateRooms() {
     this.backendService.getComplexRequestOfRooms(this._filter)
       .subscribe(
-        (res) => { this._roomSubject.next(res);
-                   console.log(res); },
+        (res) => this._roomSubject.next(res),
         (err: any) => { console.log(err); }
       );
   }
