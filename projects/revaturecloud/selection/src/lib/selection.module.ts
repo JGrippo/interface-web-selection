@@ -9,15 +9,39 @@ import { FilterService } from "./services/filter.service";
 import { RoomCardComponent } from './components/room-card/room-card.component';
 import { UserStore } from './stores/user.store';
 import { RoomStore } from './stores/room.store';
+import { BrowserModule } from '@angular/platform-browser';
+import { SelectionService } from './services/selection.service';
+import { MatPaginatorModule, MatTableDataSource, MatCardModule, MatTableModule, MatInputModule, MatSortModule, MatCard } from '@angular/material';
+import { MatGridListModule } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 @NgModule({
   imports: [
     HttpClientModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    BrowserModule,
+    HttpClientModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatPaginatorModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    FormsModule,
+    MatGridListModule,
+    HttpModule,
+    RouterModule,
+    FormsModule
   ],
   declarations: [
     SelectionComponent,
-    FilterPanelComponent
+    FilterPanelComponent,
+    RoomWrapperComponent,
+    RoomCardComponent,
+    RoomSearchPipe
   ],
   providers: [
     FilterService,
