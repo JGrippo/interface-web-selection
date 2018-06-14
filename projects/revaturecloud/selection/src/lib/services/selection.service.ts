@@ -53,7 +53,7 @@ export class SelectionService {
   *    Gets collection of rooms that satisfy the specified search parameters.
   */
   getComplexRequestOfRooms(searchParameters: SearchParameters): Observable<Room[]> {
-    return this.http.get<Room[]>(this.rootUrl + this.apiEpRooms,
+    return this.http.get<Room[]>(this.rootUrl + '/Rooms?',
       { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -136,7 +136,7 @@ export class SelectionService {
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
 
-    var httpParams: HttpParams = new HttpParams();
+    let httpParams: HttpParams = new HttpParams();
     if (searchParameters.batch) {
       httpParams = httpParams.append('batch', searchParameters.batch);
     }
@@ -156,8 +156,7 @@ export class SelectionService {
     return httpParams;
   }
 
-  private paramsToString(searchParameters: SearchParameters) {
-    let queryString: string;
+  // private paramsToString(searchParameters: SearchParameters) {
+  //   let queryString: string;
 
   }
-}

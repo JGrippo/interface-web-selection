@@ -1,7 +1,10 @@
 <app-filter-panel></app-filter-panel>
 <ul>
   <li *ngFor="let user of users">
-    {{ user.gender }}{{ user.location }}
+    User: {{ user.gender }} | {{ user.location }}
+  </li>
+  <li *ngFor="let room of rooms">
+    Room: {{ room.gender }} | {{ room.location }}
   </li>
 </ul>
 <lib-room-wrapper></lib-room-wrapper>
