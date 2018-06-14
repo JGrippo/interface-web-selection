@@ -36,10 +36,8 @@ export class UserStore {
 
       )
       .subscribe(
-        (res) => {
-          this._userSubject.next(res);
-        }
-      )
+        res => this._userSubject.next(res)
+      );
 
     // Subscribes to the FilterService
     this.filterService.getFilter()
@@ -47,7 +45,7 @@ export class UserStore {
         (res) => {
           this._filter = res;
         }
-      )
+      );
   }
 
   /**

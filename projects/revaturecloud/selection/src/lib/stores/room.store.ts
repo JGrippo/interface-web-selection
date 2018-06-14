@@ -8,6 +8,8 @@ import { Injectable } from '@angular/core';
 import { Room } from '../models/room.model';
 import { BehaviorSubject } from 'rxjs';
 import { SelectionService } from '../services/selection.service';
+import { SearchParameters } from '../models/searchParameters.model';
+import { FilterService } from '../services/filter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,13 @@ import { SelectionService } from '../services/selection.service';
 export class RoomStore {
 
   private _roomSubject: BehaviorSubject<Room[]> = new BehaviorSubject<Room[]>([]);
+  private _filter: SearchParameters;
 
 
-  constructor(private selectionService: SelectionService) {
+  constructor(
+    private backendService: SelectionService,
+    private filterService: FilterService
+  ) {
     this.loadInitData();
   }
 
@@ -26,12 +32,19 @@ export class RoomStore {
    */
   private loadInitData() {
     // Subscribes to the SelectionService
-    this.selectionService.getAllRooms()
+    this.backendService.getAllRooms()
       .pipe(
 
       )
       .subscribe(
         res => this._roomSubject.next(res)
+      );
+
+      this.filterService.getFilter()
+      .subscribe(
+        res => {
+          this._filter = res;
+        }
       );
   }
 
@@ -41,4 +54,14 @@ export class RoomStore {
   get rooms() {
     return this._roomSubject.asObservable();
   }
+
+  updateRooms() {
+    this.backendService.getComplexRequestOfRooms(this._filter)
+      .subscribe(
+        (res) => { this._roomSubject.next(res);
+                   console.log(res); },
+        (err: any) => { console.log(err); }
+      );
+  }
+
 }

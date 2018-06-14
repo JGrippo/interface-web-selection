@@ -22,14 +22,15 @@ describe('SelectionComponent', () => {
 
   beforeEach(() => {
 
-    let roomAssociations: RoomAssociation[] = [
+    roomAssociations = [
       {
         userId: '1',
         roomId: 'guid1'
       }
     ];
 
-    let searchParameters: SearchParameters = {
+    searchParameters = {
+      location: 'test',
       batch: 'test',
       city: 'city',
       gender: 'm',
@@ -55,7 +56,7 @@ describe('SelectionComponent', () => {
       country: 'USA'
     };
 
-    let Rooms: Room[] = [
+    Rooms = [
       {
         roomId: 'guid1',
         location: 'Tampa',
@@ -74,7 +75,7 @@ describe('SelectionComponent', () => {
       }
     ];
 
-    let users: User[] = [
+    users = [
       {
         id: '1',
         location: 'test',
