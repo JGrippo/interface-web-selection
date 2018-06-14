@@ -4,9 +4,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { SelectionComponent } from './selection.component';
 import { HttpClientModule } from '@angular/common/http';
-import { RoomWrapperComponent, RoomSearchPipe } from './components/room-wrapper/room-wrapper.component';
-import { FilterPanelComponent } from "./components/filter-panel/filter-panel.component";
-import { FilterService } from "./services/filter.service";
+import { FilterPanelComponent } from './components/filter-panel/filter-panel.component';
+import { FilterService } from './services/filter.service';
+import { PutService } from "./services/put.service";
 import { RoomCardComponent } from './components/room-card/room-card.component';
 import { UserStore } from './stores/user.store';
 import { RoomStore } from './stores/room.store';
@@ -50,7 +50,8 @@ import { UserCardComponent } from './components/user-card/user-card.component';
   providers: [
     FilterService,
     UserStore,
-    RoomStore
+    RoomStore,
+    PutService
   ],
   exports: [SelectionComponent]
 })
