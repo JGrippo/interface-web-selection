@@ -7,7 +7,7 @@ import { RoomStore } from '../../stores/room.store';
 
 
 @Component({
-  selector: 'lib-room-wrapper',
+  selector: 'lib-room-card-wrapper',
   templateUrl: './room-wrapper.component.html',
   styleUrls: ['./room-wrapper.component.css']
 })
@@ -27,6 +27,8 @@ export class RoomWrapperComponent implements OnInit, OnDestroy {
         this.rooms = rooms;
       });
   }
+
+  p: number = 1;
 
   ngOnDestroy() {
   }

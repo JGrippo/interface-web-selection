@@ -15,7 +15,7 @@ import { RoomStore } from '../../stores/room.store';
 
 @Component({
   // tslint:disable-next-line:component-selector
-  selector: 'app-filter-panel',
+  selector: 'lib-side-bar',
   templateUrl: './filter-panel.component.html',
   styleUrls: ['./filter-panel.component.css']
 })
@@ -32,7 +32,7 @@ export class FilterPanelComponent implements OnInit {
   building: string;
 
   // Gender radio
-  readonly genders: string[] = ['male', 'female', 'Other'];
+  readonly genders: string[] = ['Male', 'Female', 'Other'];
   gender: string;
 
   // Check box booleans
@@ -98,7 +98,7 @@ export class FilterPanelComponent implements OnInit {
     this.filter = {
       batch: this.batch,
       city: this.city,
-      gender: this.gender,
+      gender: this.gender.toLowerCase(),
       batchMinimumPercentage: null,
       isCompletelyUnassigned: this.vacantRoomsOnly,
     };

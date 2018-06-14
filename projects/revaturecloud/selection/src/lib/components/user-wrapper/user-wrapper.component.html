@@ -1,17 +1,27 @@
-<h1>Revature</h1>
-<div class="container">
-  <div class="row">
-    <mat-card>
-      <mat-card-title>
+<mat-grid-list cols="4" rowHeight="65px">
+  <mat-grid-tile colspan="1">
+    <form class="user-search">
+      <mat-form-field>
+        <!-- <input matInput placeholder="Search"> -->
+        <!-- <input matInput placeholder="Search" [(ngModel)]="userName"> -->
         <input type="text" [(ngModel)]="userName">
-      </mat-card-title>
-      <mat-card-content>
-        <mat-grid-list cols="4" rowHeight="200px">
-          <mat-grid-tile *ngFor="let user of allUsers | search:userName" style="background:rgb(250, 227, 183)">
-            <lib-user-card [userCard]="user"></lib-user-card>
-          </mat-grid-tile>
-        </mat-grid-list>
-      </mat-card-content>
-    </mat-card>
-  </div>
-</div>
+      </mat-form-field>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3">
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="4" rowHeight="250px">
+  <mat-grid-tile colspan="1" *ngFor="let user of allUsers | search:userName | paginate: { itemsPerPage: 4, currentPage: p, id: 'user-pagination' }">
+   <mat-card>
+    <lib-user-card [user]="user"></lib-user-card>
+  </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<mat-grid-list cols="4" rowHeight="65px">
+    <mat-grid-tile colspan="4">
+        <pagination-controls class="my-pagination" id="user-pagination" (pageChange)="p = $event"></pagination-controls>
+      </mat-grid-tile>
+</mat-grid-list>

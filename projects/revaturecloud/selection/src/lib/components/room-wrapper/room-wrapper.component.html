@@ -1,16 +1,21 @@
-<mat-form-field class="example-full-width">
-  <input matInput type="text" placeholder="Search" [(ngModel)]="searchRooms">
-</mat-form-field>
-
-<div>
-    <mat-grid-list cols="4" rowHeight="250px">
-      <mat-grid-tile *ngFor="let room of rooms | roomSearch:searchRooms">
-        <lib-room-card [ngStyle]="{'width':'275' + 'px'}" [room]="room"></lib-room-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-  <div class="paginator mat-elevation-z4" *ngIf="rooms.length !== 0">
-    <mat-paginator [length]="rooms.length" [pageSize]="4" [pageSizeOptions]="pageOptions" [hidePageSize]=true (page)="pageEvent = $event">
-    </mat-paginator>
-  </div>
-</div>
+<mat-grid-list cols="4" rowHeight="65px">
+  <mat-grid-tile colspan="1">
+    <form class="user-search">
+      <mat-form-field>
+        <input matInput placeholder="Search">
+      </mat-form-field>
+    </form>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3">
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="3" rowHeight="350px">
+  <mat-grid-tile class="my-grid-tile" *ngFor="let room of rooms | paginate: { itemsPerPage: 3, currentPage: p, id: 'room-pagination' }">
+    <mat-card>
+      <lib-room-card [room]="room"></lib-room-card>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3" rowHeight="100px">
+      <pagination-controls class="my-pagination" (pageChange)="p = $event" id="room-pagination"></pagination-controls>
+    </mat-grid-tile>
+</mat-grid-list>

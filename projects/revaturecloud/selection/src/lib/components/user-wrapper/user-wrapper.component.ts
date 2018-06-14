@@ -5,7 +5,7 @@ import { UserStore } from '../../stores/user.store';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'lib-user-wrapper',
+  selector: 'lib-user-card-wrapper',
   templateUrl: './user-wrapper.component.html',
   styleUrls: ['./user-wrapper.component.css']
 })
