@@ -6,13 +6,10 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { SelectionService } from '../../services/selection.service';
 import { FilterService } from '../../services/filter.service';
 import { FilterSortService } from '../../services/filter-sort.service';
 import { SearchParameters } from '../../models/searchParameters.model';
 import { SortParameters } from '../../models/sortParameters.model';
-import { Batch } from '../../models/batch.model';
-import { User } from '../../models/user.model';
 import { UserStore } from '../../stores/user.store';
 
 @Component({
