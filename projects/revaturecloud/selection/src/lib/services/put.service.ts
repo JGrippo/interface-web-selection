@@ -1,3 +1,9 @@
+/**
+ * A service to handle making put resquests to the API.
+ * Also listens for successful requests and
+ * informs the changes store on success.
+ */
+
 import { Injectable } from '@angular/core';
 import { SelectionService } from './selection.service';
 
@@ -18,6 +24,16 @@ export class PutService {
     private uStore: UserStore,
     private rStore: RoomStore) { }
 
+  /**
+   * Assigns the given user to the given room by
+   * making a call to the SelectionService.
+   *
+   * On successful response, updates the changes,
+   * user, and room stores.
+   *
+   * @param user The user to be assigned
+   * @param room The room the user is being assigned to
+   */
   assign(user: User, room: Room): void {
 
     this.service.addUserToRoom(
@@ -29,6 +45,16 @@ export class PutService {
     });
   }
 
+  /**
+   * Unassigns the given user from the given room by
+   * making a call to the SelectionService.
+   *
+   * On successful response, updates the changes,
+   * user, and rooms stores.
+   *
+   * @param user the user to be unassigned
+   * @param room the room the user is being unassigned from
+   */
   unassign(user: User, room: Room): void {
     this.service.removeUserFromRoom(
       {userId: user.id, roomId: room.roomId}
