@@ -12,7 +12,7 @@ import { UserStore } from './stores/user.store';
 import { RoomStore } from './stores/room.store';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatPaginatorModule, MatCardModule, MatTableModule, MatInputModule, MatSortModule} from '@angular/material';
-import { MatGridListModule } from '@angular/material'
+import { MatGridListModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { RouterModule} from '@angular/router';
