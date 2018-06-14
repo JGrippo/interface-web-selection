@@ -12,7 +12,7 @@ export class SearchPipe implements PipeTransform {
     }
     const foundUsers = [];
     for (const user of value) {
-      if (user.name.first.toLowerCase().includes(searchString) || user.name.last.toLowerCase().includes(searchString)) {
+      if (user.name.first.includes(searchString) || user.name.last.includes(searchString)) {
         foundUsers.push(user);
       }
     }
