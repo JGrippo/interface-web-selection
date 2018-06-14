@@ -6,12 +6,13 @@
       <div>
         <mat-form-field>
           <mat-select placeholder="Batch"
+              [(ngModel)]="batch"
               (selectionChange)="update()">
             <mat-option>All batches</mat-option>
             <mat-option
-                *ngFor="let batch of batches"
-                [value]="batch">
-              {{ batch }}
+                *ngFor="let b of batches"
+                [value]="b">
+              {{ b }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -20,12 +21,13 @@
       <div>
         <mat-form-field>
           <mat-select placeholder="City"
+              [(ngModel)]="city"
               (selectionChange)="update()">
             <mat-option>All cities</mat-option>
             <mat-option
-                *ngFor="let city of cities"
-                [value]="city">
-              {{ city }}
+                *ngFor="let c of cities"
+                [value]="c">
+              {{ c }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -34,12 +36,13 @@
       <div>
         <mat-form-field>
           <mat-select placeholder="Building"
+              [(ngModel)]="building"
               (selectionChange)="update()">
             <mat-option>All buildings</mat-option>
             <mat-option
-                *ngFor="let building of buildings"
-                [value]="building">
-              {{ building }}
+                *ngFor="let b of buildings"
+                [value]="b">
+              {{ b }}
             </mat-option>
           </mat-select>
         </mat-form-field>
