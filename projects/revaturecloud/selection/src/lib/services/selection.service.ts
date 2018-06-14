@@ -1,11 +1,11 @@
 /**
-*    HTTP service for intaracting with RESTful housing selection service.
-*
-*  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
-*
-*    As the housing selection service is itself a work in progress, this file is subject to change as
-*    the structure of the API this service consumes also changes.
-*/
+ *    HTTP service for intaracting with RESTful housing selection service.
+ *
+ *  <seealso cref="https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts"/>
+ *
+ *    As the housing selection service is itself a work in progress, this file is subject to change as
+ *    the structure of the API this service consumes also changes.
+ */
 
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -15,6 +15,7 @@ import { RoomAssociation } from '../models/roomAssociation.model';
 import { SearchParameters } from '../models/searchParameters.model';
 import { Room } from '../models/room.model';
 import { User } from '../models/user.model';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -34,15 +35,27 @@ export class SelectionService {
 
   constructor(private http: HttpClient) { }
 
+  /**
+  *    Makes put request to API endpoint to add user from room per current
+  *    API documentation.
+  */
   addUserToRoom(roomAssociation: RoomAssociation) {
-    return this.http.put(this.rootUrl + this.apiEpAddToRoom, roomAssociation, {headers: this.sentAsJson})
+    return this.http.put(this.rootUrl + this.apiEpAddToRoom, roomAssociation, {
+      headers: this.sentAsJson
+    })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
   }
+  /**
+  *    Makes put request to API endpoint to remove user from room per current
+  *    API documentation.
+  */
   removeUserFromRoom(roomAssociation: RoomAssociation) {
-    return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, roomAssociation, {headers: this.sentAsJson})
+    return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, roomAssociation, {
+      headers: this.sentAsJson
+    })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -50,11 +63,13 @@ export class SelectionService {
   }
 
   /**
-  *    Gets collection of rooms that satisfy the specified search parameters.
-  */
+   *    Gets collection of rooms that satisfy the specified search parameters.
+   */
   getComplexRequestOfRooms(searchParameters: SearchParameters): Observable<Room[]> {
-    return this.http.get<Room[]>(this.rootUrl + '/Rooms?',
-      { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
+    return this.http.get<Room[]>(this.rootUrl + '/Rooms?', {
+      params: this.convertSearchParsObjToParams(searchParameters),
+      headers: this.sentAsUrlEnc
+    })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -62,8 +77,10 @@ export class SelectionService {
   }
 
   getComplexRequestOfUsers(searchParameters: SearchParameters): Observable<User[]> {
-    return this.http.get<User[]>(this.rootUrl + '/Users?',
-      { params: this.convertSearchParsObjToParams(searchParameters), headers: this.sentAsUrlEnc })
+    return this.http.get<User[]>(this.rootUrl + '/Users?', {
+      params: this.convertSearchParsObjToParams(searchParameters),
+      headers: this.sentAsUrlEnc
+    })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -71,8 +88,8 @@ export class SelectionService {
   }
 
   /**
-  *    Gets all rooms.
-  */
+   *    Gets all rooms.
+   */
   getAllRooms(): Observable<Room[]> {
     return this.http.get<Room[]>(this.rootUrl + this.apiEpRooms)
       .pipe(
@@ -82,8 +99,8 @@ export class SelectionService {
   }
 
   /**
-  *    Gets all unassigned users.
-  */
+   *    Gets all unassigned users.
+   */
   getAllUnassignedUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.rootUrl + this.apiEpUnassignedUsers)
       .pipe(
@@ -93,8 +110,8 @@ export class SelectionService {
   }
 
   /**
-  *    Gets all users.
-  */
+   *    Gets all users.
+   */
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.rootUrl + this.apiEpUsers)
       .pipe(
@@ -104,8 +121,8 @@ export class SelectionService {
   }
 
   /**
-  *    Initial template for basic common error handling.
-  */
+   *    Initial template for basic common error handling.
+   */
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
@@ -123,16 +140,16 @@ export class SelectionService {
   } // TODO ensure method is fully applicable to use case.
 
   /**
-  *    Method to convert Search SearchParameters to HttpParams.
-  *
-  *    See also: https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts
-  *
-  *    According to the documentation in the see also section, it seems as if the API endpoint
-  *    “/Rooms/ComplexObject” almost expects a Json object to be passed in the body of a get
-  *    request, which is something that is not supported.  This may change in the future, but to
-  *    accommodate this behavior this method has been created to convert such an object to search
-  *    parameters that will be passed along with the request.
-  */
+   *    Method to convert Search SearchParameters to HttpParams.
+   *
+   *    See also: https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Housing-Selection-API-Endpionts
+   *
+   *    According to the documentation in the see also section, it seems as if the API endpoint
+   *    “/Rooms/ComplexObject” almost expects a Json object to be passed in the body of a get
+   *    request, which is something that is not supported.  This may change in the future, but to
+   *    accommodate this behavior this method has been created to convert such an object to search
+   *    parameters that will be passed along with the request.
+   */
 
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
 
@@ -156,7 +173,4 @@ export class SelectionService {
     return httpParams;
   }
 
-  // private paramsToString(searchParameters: SearchParameters) {
-  //   let queryString: string;
-
-  }
+}
