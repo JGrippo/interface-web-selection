@@ -5,8 +5,12 @@
     <div align="center">
       <div>
         <mat-form-field>
-          <mat-select placeholder="Batch">
-            <mat-option *ngFor="let batch of batches" [value]="batch">
+          <mat-select placeholder="Batch"
+              (selectionChange)="update()">
+            <mat-option>All batches</mat-option>
+            <mat-option
+                *ngFor="let batch of batches"
+                [value]="batch">
               {{ batch }}
             </mat-option>
           </mat-select>
@@ -15,8 +19,12 @@
 
       <div>
         <mat-form-field>
-          <mat-select placeholder="City">
-            <mat-option *ngFor="let city of cities" [value]="city">
+          <mat-select placeholder="City"
+              (selectionChange)="update()">
+            <mat-option>All cities</mat-option>
+            <mat-option
+                *ngFor="let city of cities"
+                [value]="city">
               {{ city }}
             </mat-option>
           </mat-select>
@@ -25,8 +33,12 @@
 
       <div>
         <mat-form-field>
-          <mat-select placeholder="Building">
-            <mat-option *ngFor="let building of buildings" [value]="building">
+          <mat-select placeholder="Building"
+              (selectionChange)="update()">
+            <mat-option>All buildings</mat-option>
+            <mat-option
+                *ngFor="let building of buildings"
+                [value]="building">
               {{ building }}
             </mat-option>
           </mat-select>
@@ -36,12 +48,15 @@
 
     <div>
       <p align="center"> Gender </p>
-      <mat-radio-group class="example-radio-group" [(ngModel)]="gender">
+      <mat-radio-group
+          class="example-radio-group"
+          [(ngModel)]="gender"
+          (change)="update()">
         <mat-radio-button
             class="example-radio-button"
             *ngFor="let g of genders"
-            [value]="g">
-          {{g}}
+            [value]="g.value">
+          {{ g.name }}
         </mat-radio-button>
       </mat-radio-group>
     </div>
@@ -50,20 +65,27 @@
       <p align="center"> Occupancy</p>
       <ul style="list-style-type:none">
         <li>
-          <mat-checkbox [(ngModel)]="vacantRoomsOnly">Vacant Rooms Only</mat-checkbox>
+          <mat-checkbox
+              [(ngModel)]="vacantRoomsOnly"
+              (change)="update()">
+            Vacant Rooms Only
+          </mat-checkbox>
         </li>
         <li>
-          <mat-checkbox [(ngModel)]="sortByMostVacancies">Sort By Most Vacanies</mat-checkbox>
+          <mat-checkbox
+              [(ngModel)]="sortByMostVacancies"
+              (change)="update()">
+            Sort By Most Vacanies
+          </mat-checkbox>
         </li>
         <li>
-          <mat-checkbox [(ngModel)]="unhousedUsersOnly">Unhoused Users Only</mat-checkbox>
+          <mat-checkbox
+            [(ngModel)]="unhousedUsersOnly"
+            (change)="update()">
+          Unhoused Users Only
+        </mat-checkbox>
         </li>
       </ul>
-    </div>
-
-    <div>
-      <input type="button" value="Filter" (click)="submit()">
-      <input type="button" value="Reset" (click)="reset()">
     </div>
 
   </mat-sidenav>
