@@ -1,16 +1,7 @@
 mat-card {
   width: 380%;
   height: 200%;
-    /* height: calc(100% - 70px); */
   }
-
-  /* .img-tile {
-    float: right;
-  } */
-
-  /* .info-tile {
-    float:left;
-  } */
 
  mat-card-content {
   /* width: 100%;
@@ -20,7 +11,7 @@ mat-card {
 
   .user-name {
     text-align: left;
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .dat-mini-fab {
@@ -29,6 +20,8 @@ mat-card {
     color: white;
     margin-left: 20px;
     margin-bottom: 30px;
+    width: 27px;
+    height: 27px;
   }
 
   div>div {
