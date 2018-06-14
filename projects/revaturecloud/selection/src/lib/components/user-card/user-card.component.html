@@ -27,11 +27,11 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
-      <div *ngIf="user.gender == 'm'">
-        <img src="../../../../src/assets/img/male.png" style="width:50px; border-radius: 50%">
+      <div *ngIf="user.gender === 'male'">
+        <img src="../../../assets/img/male.png" style="width:50px; border-radius: 50%">
       </div>
-      <div *ngIf="user.gender == 'f'">
-        <img src="../../../../src/assets/img/female.png" style="width:50px; border-radius: 50%">
+      <div *ngIf="user.gender == 'female'">
+        <img src="../../../assets/img/female.png" style="width:50px; border-radius: 50%">
       </div>
     </mat-grid-tile>
   </mat-grid-list>
@@ -46,6 +46,11 @@
     </mat-grid-tile>
   </mat-grid-list>
 </mat-card-content>
+
+
+
+
+
 
 
 
