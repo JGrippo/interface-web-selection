@@ -55,6 +55,13 @@ export class RoomStore {
     return this._roomSubject.asObservable();
   }
 
+  /**
+   * Uses filter to get complex request of Rooms from back end service, the result set of which
+   * is subscribed to and parsed into the private feild for this store that
+   * then updates the data to the respective subscribers.
+   *
+   * @memberof RoomStore
+   */
   updateRooms() {
     this.backendService.getComplexRequestOfRooms(this._filter)
       .subscribe(
