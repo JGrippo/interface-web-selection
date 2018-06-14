@@ -22,19 +22,15 @@ import { RouterModule, Routes } from '@angular/router';
     FormsModule,
     CommonModule,
     BrowserModule,
-    HttpClientModule,
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatPaginatorModule,
     BrowserAnimationsModule,
     MatCardModule,
-    FormsModule,
     MatGridListModule,
     HttpModule,
-    RouterModule,
-    FormsModule
+    RouterModule
   ],
   declarations: [
     SelectionComponent,
