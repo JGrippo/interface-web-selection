@@ -1,7 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
-
 import { FilterService } from './filter.service';
-import { SearchParameters } from "../models/searchParameters.model";
+import { SearchParameters } from '../models/searchParameters.model';
 
 describe('FilterService', () => {
   beforeEach(() => {
@@ -17,9 +16,9 @@ describe('FilterService', () => {
   it('should update on setFilter', inject([FilterService], (service: FilterService) => {
     //Arrange
     let filter: SearchParameters = {
-      batch: "2",
-      city: "1",
-      gender: "3",
+      batch: '2',
+      city: '1',
+      gender: '3',
       batchMinimumPercentage: 10,
       isCompletelyUnassigned: false,
     }
