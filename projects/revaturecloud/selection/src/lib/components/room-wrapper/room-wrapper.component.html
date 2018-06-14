@@ -3,14 +3,11 @@
 </mat-form-field>
 
 <div>
-  <div *ngIf="pageEvent">
-    {{updateArray()}}
     <mat-grid-list cols="4" rowHeight="250px">
-      <mat-grid-tile *ngFor="let room of roomsPage | roomSearch:searchRooms">
+      <mat-grid-tile *ngFor="let room of rooms | roomSearch:searchRooms">
         <lib-room-card [ngStyle]="{'width':'275' + 'px'}" [room]="room"></lib-room-card>
       </mat-grid-tile>
     </mat-grid-list>
-  </div>
 
   <div class="paginator mat-elevation-z4" *ngIf="rooms.length !== 0">
     <mat-paginator [length]="rooms.length" [pageSize]="4" [pageSizeOptions]="pageOptions" [hidePageSize]=true (page)="pageEvent = $event">
