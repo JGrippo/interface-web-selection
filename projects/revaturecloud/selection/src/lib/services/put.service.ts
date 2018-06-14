@@ -1,5 +1,5 @@
 /**
- * A service to handle making put resquests to the API.
+ * A service to handle making put requests to the API.
  * Also listens for successful requests and
  * informs the changes store on success.
  */
@@ -7,10 +7,10 @@
 import { Injectable } from '@angular/core';
 import { SelectionService } from './selection.service';
 
-import { User } from "../models/user.model";
-import { Room } from "../models/room.model";
+import { User } from '../models/user.model';
+import { Room } from '../models/room.model';
 import { ChangeStore } from '../stores/change.store';
-import { UserStore } from "../stores/user.store";
+import { UserStore } from '../stores/user.store';
 import { RoomStore } from '../stores/room.store';
 
 @Injectable({
