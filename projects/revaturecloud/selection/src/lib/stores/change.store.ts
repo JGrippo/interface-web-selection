@@ -41,7 +41,7 @@ export class ChangeStore {
    * @param {Room} room
    * @memberof ChangeStore
    */
-  removeUserFromRoomComp(user: User, room: Room) {
+  removeUserFromRoom(user: User, room: Room) {
     let tracker: Tracker;
     tracker.User = user;
     tracker.Room = room;

@@ -19,7 +19,7 @@ export class UserStore {
   private _userSubject: BehaviorSubject<User[]> = new BehaviorSubject<User[]>([]);
   private _filter: SearchParameters;
 
-  constructor (
+  constructor(
     private backendService: SelectionService,
     private filterService: FilterService
   ) {
@@ -32,7 +32,7 @@ export class UserStore {
   loadInitData(): void {
     // Subscribes to the SelectionService
     this.backendService.getAllUsers()
-      .pipe (
+      .pipe(
 
       )
       .subscribe(
@@ -54,10 +54,13 @@ export class UserStore {
   get users(): Observable<User[]> {
     return this._userSubject.asObservable();
   }
-
-  /**
-   * Resubscribe to the backend service call with the updated filter.
-   */
+   /**
+    * Uses filter to get complex request of Users from back end service, the result set of which
+    * is subscribed to and parsed into the private feild for this store and
+    * then updates the data to the respective subscribers.
+    *
+    * @memberof UserStore
+    */
   updateUsers(): void {
     this.backendService.getComplexRequestOfUsers(this._filter)
       .subscribe(
