@@ -24,9 +24,10 @@
 
 export class SearchParameters {
   batch: string;
-  city: string;
+  location: string;
   gender: string;
   batchMinimumPercentage: number;
   isCompletelyUnassigned: boolean;
   hasBedAvailable: boolean;
+  unassigned: boolean;
 }
