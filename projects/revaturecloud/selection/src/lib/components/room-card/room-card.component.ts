@@ -7,7 +7,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { User } from '../../models/user.model';
-import { UserStore } from '../../stores/user.store';
+import { PutService } from '../../services/put.service';
 @Component({
   selector: 'lib-room-card',
   templateUrl: './room-card.component.html',
@@ -16,27 +16,32 @@ import { UserStore } from '../../stores/user.store';
 export class RoomCardComponent implements OnInit {
 
   @Input() room: Room;
-  users: User[];
+  roomPlus: Room;
 
-  constructor(private userStore: UserStore) {  }
-
-  ngOnInit() {
-    this.userStore.users.subscribe((data: any) => {
-      this.users = data;
-    });
-    this.getUsers(this.room.roomId);
-    this.users = this.users.slice(0,4);
+  constructor(private putService: PutService) {
   }
 
-  getUsers(id: string) {
-    // this.users = this.users.filter( (usr:User) => {
-    //     if(usr && usr.room) {
-    //       return usr.room.roomId === id;
-    //     }
-    //     else {
-    //       return false;
-    //     }
-    //   });
+  ngOnInit() {
+    this.roomPlus = JSON.parse(JSON.stringify(this.room));
+    if (!this.roomPlus.users) {
+      this.roomPlus.users = [];
+    }
+      for (let i = 0; i < this.room.vacancy; i++) {
+        this.roomPlus.users.push(
+          {
+          id: null,
+          location: null,
+          email: null,
+          gender: 'fill',
+          type: null,
+          name: null,
+          address: null
+        });
+    }
+  }
+
+  unassign(user: User, room: Room): void {
+    this.putService.unassign(user, room);
   }
 
   ngOnDestroy() {
