@@ -16,10 +16,8 @@
  * @class Room
  */
 
-import {
-  Address
-} from './address.model';
-
+import { Address } from './address.model';
+import { User } from './user.model';
 
 export class Room {
   roomId: string;
@@ -29,5 +27,5 @@ export class Room {
   gender: string;
 
   address: Address;
-
+  users: User[];
 }

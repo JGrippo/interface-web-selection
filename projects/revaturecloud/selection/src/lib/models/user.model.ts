@@ -15,8 +15,6 @@
 
 import { Address } from './address.model';
 import { Name } from './name.model';
-import { Batch } from './batch.model';
-import { Room } from './room.model';
 
 export class User {
   id: string;
@@ -25,8 +23,6 @@ export class User {
   gender: string;
   type: string;
 
-  batch: Batch;
-  room: Room;
   name: Name;
   address: Address;
 }
