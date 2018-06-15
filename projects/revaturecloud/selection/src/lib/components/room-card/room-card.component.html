@@ -4,27 +4,31 @@
 <mat-divider></mat-divider>
 
 <mat-grid-list cols='2'>
-  <!-- change users to room.users -->
-  <div *ngIf="users">
-    <div *ngFor="let user of users">
-      <mat-grid-tile>
-        <div *ngIf="user.gender == 'male'">
-          <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/male.png" style="width:50px; border-radius: 50%">
-          <div>
-            <font size='2'>ID:1234</font>
-          </div>
-          <div class="boxed-room"> {{user.name.first}}</div>
+  <div *ngFor="let user of roomPlus.users">
+    <mat-grid-tile>
+      <div *ngIf="user.gender === 'male'">
+        <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/male.png" style="width:50px; border-radius: 50%">
+        <div>
+          <font size='2'>ID:1234</font>
         </div>
+        <div class="boxed-room"> {{user.name.first}}</div>
+      </div>
 
-        <div *ngIf="user.gender == 'female'">
-          <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/female.png" style="width:50px; border-radius: 50%">
-          <div>
-            <font size='2'>ID:4321</font>
-          </div>
-          <div class="boxed-room">{{user.name.first}}</div>
+      <div *ngIf="user.gender === 'female'">
+        <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/female.png" style="width:50px; border-radius: 50%">
+        <div>
+          <font size='2'>ID:4321</font>
         </div>
-      </mat-grid-tile>
-    </div>
+        <div class="boxed-room">{{user.name.first}}</div>
+      </div>
+      <div *ngIf="user.gender === 'fill'">
+        <img src="https://254-online.com/wp-content/uploads/one-grey-circle.jpg" style="width:50px; border-radius: 50%">
+        <div>
+          <font size='2'>ID:unassigned</font>
+        </div>
+        <div class="boxed-room">Unassigned</div>
+      </div>
+    </mat-grid-tile>
   </div>
 </mat-grid-list>
 
@@ -34,8 +38,7 @@
   <mat-grid-tile colspan="6">
     <mat-form-field>
       <mat-select placeholder="User">
-        <!-- change users to room.users -->
-        <mat-option *ngFor="let user of users">
+        <mat-option *ngFor="let user of room.users">
           {{ user.name.first }} {{ user.name.last }}
         </mat-option>
       </mat-select>

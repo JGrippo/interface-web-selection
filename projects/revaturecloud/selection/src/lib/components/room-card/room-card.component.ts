@@ -7,7 +7,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { User } from '../../models/user.model';
-import { UserStore } from '../../stores/user.store';
 @Component({
   selector: 'lib-room-card',
   templateUrl: './room-card.component.html',
@@ -16,10 +15,28 @@ import { UserStore } from '../../stores/user.store';
 export class RoomCardComponent implements OnInit {
 
   @Input() room: Room;
+  roomPlus: Room;
 
-  constructor() {  }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.roomPlus = JSON.parse(JSON.stringify(this.room));
+    if (!this.roomPlus.users) {
+      this.roomPlus.users = [];
+    }
+      for (let i = 0; i < this.room.vacancy; i++) {
+        this.roomPlus.users.push(
+          {
+          id: null,
+          location: null,
+          email: null,
+          gender: 'fill',
+          type: null,
+          name: null,
+          address: null
+        });
+    }
   }
 
   ngOnDestroy() {
