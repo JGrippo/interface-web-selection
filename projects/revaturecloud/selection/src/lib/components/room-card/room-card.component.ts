@@ -25,18 +25,18 @@ export class RoomCardComponent implements OnInit {
       this.users = data;
     });
     this.getUsers(this.room.roomId);
-    this.users = this.users.slice(0,6);
+    this.users = this.users.slice(0,4);
   }
 
   getUsers(id: string) {
-    this.users.filter( (usr:User) => {
-        if(usr && usr.room) {
-          return usr.room.roomId === id;
-        }
-        else {
-          return false;
-        }
-      });
+    // this.users = this.users.filter( (usr:User) => {
+    //     if(usr && usr.room) {
+    //       return usr.room.roomId === id;
+    //     }
+    //     else {
+    //       return false;
+    //     }
+    //   });
   }
 
   ngOnDestroy() {

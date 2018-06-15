@@ -8,3 +8,8 @@
   margin-right: 25%;
   margin-left: 25%;
 }
+
+mat-card {
+  width: 380%;
+  height: 200%;
+  }

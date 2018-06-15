@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, OnDestroy, PipeTransform, Pipe } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, PipeTransform, Pipe } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { Address } from '../../models/address.model';
 import { MatPaginator, PageEvent } from '@angular/material';
@@ -43,6 +43,7 @@ export class RoomSearchPipe implements PipeTransform {
     if (value.length === 0 || searchString === '') {
       return value;
     }
+    searchString = searchString.toLowerCase();
     const foundRooms = [];
     for (const room of value) {
       searchString = searchString.toLowerCase();
