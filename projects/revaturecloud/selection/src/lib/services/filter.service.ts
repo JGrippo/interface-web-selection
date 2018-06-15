@@ -13,11 +13,12 @@ export class FilterService {
 
   readonly defaultFilter: SearchParameters = {
     batch: null,
-    city: null,
+    location: null,
     gender: null,
     batchMinimumPercentage: 0,
     isCompletelyUnassigned: false,
     hasBedAvailable: false,
+    unassigned: false,
   };
 
   subject: BehaviorSubject<SearchParameters>;

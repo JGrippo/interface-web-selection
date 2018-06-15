@@ -20,14 +20,14 @@
 
       <div>
         <mat-form-field>
-          <mat-select placeholder="City"
-              [(ngModel)]="city"
+          <mat-select placeholder="Location"
+              [(ngModel)]="location"
               (selectionChange)="update()">
             <mat-option>All cities</mat-option>
             <mat-option
-                *ngFor="let c of cities"
-                [value]="c">
-              {{ c }}
+                *ngFor="let l of locations"
+                [value]="l">
+              {{ l }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -83,7 +83,7 @@
         </li>
         <li>
           <mat-checkbox
-            [(ngModel)]="unhousedUsersOnly"
+            [(ngModel)]="unassignedUsers"
             (change)="update()">
           Unhoused Users Only
         </mat-checkbox>
