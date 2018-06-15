@@ -38,6 +38,7 @@ import { ChangeStore } from './stores/change.store';
 import { RoomSearchPipe, RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
 import { SelectionComponent } from './selection.component';
 import { SearchPipe } from './shared/search.pipe';
+import { appRoutes } from './routes';
 import { TableViewComponent } from './components/table-view/table-view.component';
 
 @NgModule({
@@ -78,7 +79,8 @@ import { TableViewComponent } from './components/table-view/table-view.component
     MatExpansionModule,
     BrowserAnimationsModule,
     MatRadioModule,
-    RouterModule
+    RouterModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     FilterService,
