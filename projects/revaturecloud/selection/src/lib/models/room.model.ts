@@ -25,7 +25,6 @@ export class Room {
   vacancy: number;
   occupancy: number;
   gender: string;
-
   address: Address;
   users: User[];
 }

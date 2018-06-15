@@ -150,7 +150,6 @@ export class SelectionService {
    *    accommodate this behavior this method has been created to convert such an object to search
    *    parameters that will be passed along with the request.
    */
-
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
 
     let httpParams: HttpParams = new HttpParams();

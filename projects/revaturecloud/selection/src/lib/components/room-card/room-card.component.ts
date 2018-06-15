@@ -1,13 +1,16 @@
-/**
- * A component for displaying individual room information.
- *
- * Provides functionality for assigning users to this room.
- */
-
 import { Component, OnInit, Input } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { User } from '../../models/user.model';
 import { PutService } from '../../services/put.service';
+
+/**
+ * A component for displaying individual room information.
+ *
+ * Provides functionality for assigning users to this room.
+ *
+ * Retrieves data from room wrapper via Input
+ */
+
 @Component({
   selector: 'lib-room-card',
   templateUrl: './room-card.component.html',
@@ -28,7 +31,7 @@ export class RoomCardComponent implements OnInit {
     }
       for (let i = 0; i < this.room.vacancy; i++) {
         this.roomPlus.users.push(
-          {
+        {
           id: null,
           location: null,
           email: null,
@@ -40,12 +43,14 @@ export class RoomCardComponent implements OnInit {
     }
   }
 
-  unassign(user: User, room: Room): void {
-    this.putService.unassign(user, room);
-  }
-
-  ngOnDestroy() {
-
+  /**
+   * Called upon clicking the minus button next to a user portrait in the room card.
+   * Unassigns that user from this room.
+   *
+   * @param user the user to be unassigned.
+   */
+  unassign(user: User): void {
+    this.putService.unassign(user, this.room);
   }
 }
 

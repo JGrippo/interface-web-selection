@@ -1,15 +1,15 @@
-/**
- * A service for interfacing with the user data.
- *
- * Encapsulates the SelectionService for component use.
- */
-
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SelectionService } from '../services/selection.service';
 import { FilterService } from '../services/filter.service';
 import { SearchParameters } from '../models/searchParameters.model';
+
+/**
+ * A service for interfacing with the user data.
+ *
+ * Encapsulates the SelectionService for component use.
+ */
 
 @Injectable({
   providedIn: 'root'
