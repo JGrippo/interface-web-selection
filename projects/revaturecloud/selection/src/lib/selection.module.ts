@@ -38,6 +38,7 @@ import { ChangeStore } from './stores/change.store';
 import { RoomSearchPipe, RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
 import { SelectionComponent } from './selection.component';
 import { SearchPipe } from './shared/search.pipe';
+import { appRoutes } from './routes';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { SearchPipe } from './shared/search.pipe';
     MatExpansionModule,
     BrowserAnimationsModule,
     MatRadioModule,
-    RouterModule
+    RouterModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     FilterService,
