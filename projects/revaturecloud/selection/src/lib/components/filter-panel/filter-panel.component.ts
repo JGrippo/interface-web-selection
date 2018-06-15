@@ -63,6 +63,7 @@ export class FilterPanelComponent implements OnInit {
       gender: null,
       batchMinimumPercentage: null,
       isCompletelyUnassigned: null,
+      hasBedAvailable: null,
     };
 
     this.sort = {
@@ -114,6 +115,7 @@ export class FilterPanelComponent implements OnInit {
       gender: tempGender,
       batchMinimumPercentage: null, // Not implemented
       isCompletelyUnassigned: this.vacantRoomsOnly,
+      hasBedAvailable: null, // Not implemented
     };
 
     this.sort = {

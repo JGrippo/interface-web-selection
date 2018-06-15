@@ -17,6 +17,7 @@ export class FilterService {
     gender: null,
     batchMinimumPercentage: 0,
     isCompletelyUnassigned: false,
+    hasBedAvailable: false,
   };
 
   subject: BehaviorSubject<SearchParameters>;

@@ -28,5 +28,5 @@ export class SearchParameters {
   gender: string;
   batchMinimumPercentage: number;
   isCompletelyUnassigned: boolean;
-  HasBedAvailable: boolean;
+  hasBedAvailable: boolean;
 }
