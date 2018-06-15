@@ -45,6 +45,7 @@ export class FilterPanelComponent implements OnInit {
   vacantRoomsOnly: boolean;
   sortByMostVacancies: boolean;
   unhousedUsersOnly: boolean;
+  unassignedUsers: boolean;
 
   // Output object
   filter: SearchParameters;
@@ -121,7 +122,7 @@ export class FilterPanelComponent implements OnInit {
       batchMinimumPercentage: null, // Not implemented
       isCompletelyUnassigned: this.vacantRoomsOnly,
       hasBedAvailable: null, // Not implemented
-      unassigned: null, // Not implemented
+      unassigned: this.unassignedUsers,
     };
 
     this.sort = {
