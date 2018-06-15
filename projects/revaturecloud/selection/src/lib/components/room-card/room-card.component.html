@@ -4,6 +4,7 @@
 <mat-divider></mat-divider>
 
 <mat-grid-list cols='2'>
+  <!-- change users to room.users -->
   <div *ngIf="users">
     <div *ngFor="let user of users">
       <mat-grid-tile>
@@ -33,6 +34,7 @@
   <mat-grid-tile colspan="6">
     <mat-form-field>
       <mat-select placeholder="User">
+        <!-- change users to room.users -->
         <mat-option *ngFor="let user of users">
           {{ user.name.first }} {{ user.name.last }}
         </mat-option>
