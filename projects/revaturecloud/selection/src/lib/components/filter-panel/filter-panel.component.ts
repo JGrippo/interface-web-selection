@@ -12,6 +12,7 @@ import { SearchParameters } from '../../models/searchParameters.model';
 import { SortParameters } from '../../models/sortParameters.model';
 import { UserStore } from '../../stores/user.store';
 import { RoomStore } from '../../stores/room.store';
+import { Router } from '@angular/router';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -53,7 +54,8 @@ export class FilterPanelComponent implements OnInit {
     private userStore: UserStore,
     private roomStore: RoomStore,
     private filterService: FilterService,
-    private filterSortService: FilterSortService) {
+    private filterSortService: FilterSortService,
+    private _router: Router) {
 
     this.reset();
 
@@ -68,6 +70,8 @@ export class FilterPanelComponent implements OnInit {
     this.sort = {
       sortByMostVacancies: false,
     };
+
+    this._router = _router;
   }
 
   ngOnInit() {

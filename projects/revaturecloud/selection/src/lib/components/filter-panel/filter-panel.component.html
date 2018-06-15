@@ -90,8 +90,12 @@
         </li>
       </ul>
     </div>
-    <button  mat-raised-button color="primary" routerLink='/table' routerLinkActive='active'>Confirm</button>
-    <button  mat-raised-button color="primary" routerLink='/content-wrapper' routerLinkActive='active'>Content</button>
+    <div *ngIf="this._router.url === '/content-wrapper' || this._router.url === '/'">
+      <button mat-raised-button color="orange" routerLink='/table' routerLinkActive='active'>Table</button>
+    </div>
+    <div *ngIf="this._router.url === '/table'">
+      <button mat-raised-button color="orange" routerLink='/content-wrapper' routerLinkActive='active'>Content</button>
+    </div>
 
   </mat-sidenav>
 
