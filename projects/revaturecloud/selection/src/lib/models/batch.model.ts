@@ -22,7 +22,6 @@ export class Batch {
   batchName: string;
   batchOccupancy: number;
   batchSkill: string;
-
   address: Address;
   users: User[];
 }

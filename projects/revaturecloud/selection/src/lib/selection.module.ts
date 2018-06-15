@@ -35,9 +35,10 @@ import { ContentWrapperComponent } from './components/content-wrapper/content-wr
 import { UserWrapperComponent } from './components/user-wrapper/user-wrapper.component';
 import { UserCardComponent } from './components/user-card/user-card.component';
 import { ChangeStore } from './stores/change.store';
-import { RoomSearchPipe, RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
+import { RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
 import { SelectionComponent } from './selection.component';
 import { SearchPipe } from './shared/search.pipe';
+import { RoomSearchPipe } from './shared/roomsearch.pipe';
 import { appRoutes } from './routes';
 import { TableViewComponent } from './components/table-view/table-view.component';
 

@@ -22,7 +22,6 @@ export class User {
   email: string;
   gender: string;
   type: string;
-
   name: Name;
   address: Address;
 }

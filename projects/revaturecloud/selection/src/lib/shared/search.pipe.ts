@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { User } from '../models/user.model';
 
 @Pipe({
   name: 'search',
@@ -6,12 +7,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(value: any, searchString: string): any {
+  /**
+   * A pipe which filters a user array based on the given search string.
+   *
+   * @param value The list of users being filtered.
+   * @param searchString the terms to search the user list for.
+   */
+  transform(value: User[], searchString: string): User[] {
     if (value.length === 0 || searchString === '') {
       return value;
     }
-    const foundUsers = [];
-    for (const user of value) {
+    let foundUsers: User[];
+    for (let user of value) {
       if (user.name.first.toLowerCase().includes(searchString.toLowerCase()) ||
         user.name.last.toLowerCase().includes(searchString.toLowerCase())) {
         foundUsers.push(user);
@@ -20,7 +27,3 @@ export class SearchPipe implements PipeTransform {
     return foundUsers;
   }
 }
-
-
-
-
