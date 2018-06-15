@@ -13,3 +13,8 @@ mat-card {
   width: 380%;
   height: 200%;
   }
+
+mat-mini-fab{
+  width: 2px;
+  height: 2px
+}
