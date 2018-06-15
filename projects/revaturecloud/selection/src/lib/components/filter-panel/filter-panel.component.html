@@ -90,11 +90,13 @@
         </li>
       </ul>
     </div>
-    <div *ngIf="this._router.url === '/content-wrapper' || this._router.url === '/'">
-      <button mat-raised-button style="background-color: orange" routerLink='/table' routerLinkActive='active'>Table</button>
-    </div>
-    <div *ngIf="this._router.url === '/table'">
-      <button mat-raised-button style="background-color: orange" routerLink='/content-wrapper' routerLinkActive='active'>Content</button>
+    <div align="center">
+      <div *ngIf="this._router.url === '/content-wrapper' || this._router.url === '/'">
+        <button mat-raised-button routerLink='/table' routerLinkActive='active'>Table</button>
+      </div>
+      <div *ngIf="this._router.url === '/table'">
+        <button mat-raised-button routerLink='/content-wrapper' routerLinkActive='active'>Content</button>
+      </div>
     </div>
 
   </mat-sidenav>
@@ -108,4 +110,3 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
