@@ -8,5 +8,8 @@ export const appRoutes: Routes = [
   },
   {
     path: 'content-wrapper', component: ContentWrapperComponent
+  },
+  {
+    path: '', component: ContentWrapperComponent
   }
 ];
