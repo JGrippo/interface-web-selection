@@ -39,6 +39,7 @@ import { RoomSearchPipe, RoomWrapperComponent } from './components/room-wrapper/
 import { SelectionComponent } from './selection.component';
 import { SearchPipe } from './shared/search.pipe';
 import { appRoutes } from './routes';
+import { TableViewComponent } from './components/table-view/table-view.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { appRoutes } from './routes';
     UserCardComponent,
     RoomWrapperComponent,
     RoomCardComponent,
-    RoomSearchPipe
+    RoomSearchPipe,
+    TableViewComponent
   ],
 
   imports: [
