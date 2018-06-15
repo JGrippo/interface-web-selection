@@ -7,6 +7,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Room } from '../../models/room.model';
 import { User } from '../../models/user.model';
+import { PutService } from '../../services/put.service';
 @Component({
   selector: 'lib-room-card',
   templateUrl: './room-card.component.html',
@@ -17,7 +18,7 @@ export class RoomCardComponent implements OnInit {
   @Input() room: Room;
   roomPlus: Room;
 
-  constructor() {
+  constructor(private putService: PutService) {
   }
 
   ngOnInit() {
@@ -37,6 +38,10 @@ export class RoomCardComponent implements OnInit {
           address: null
         });
     }
+  }
+
+  unassign(user: User, room: Room): void {
+    this.putService.unassign(user, room);
   }
 
   ngOnDestroy() {
