@@ -8,6 +8,7 @@ import { Address } from './models/address.model';
 import { of } from 'rxjs';
 import { RoomAssociation } from './models/roomAssociation.model';
 import { SearchParameters } from './models/searchParameters.model';
+import { RoomStore } from './stores/room.store';
 
 describe('SelectionComponent', () => {
   let component: SelectionComponent;
@@ -30,12 +31,12 @@ describe('SelectionComponent', () => {
     ];
 
     searchParameters = {
-      location: 'test',
       batch: 'test',
       city: 'city',
       gender: 'm',
       batchMinimumPercentage: 2,
-      isCompletelyUnassigned: true
+      isCompletelyUnassigned: true,
+      hasBedAvailable: false
     };
 
     const testAddress1: Address = {
@@ -112,7 +113,7 @@ describe('SelectionComponent', () => {
     });
 
     fixture = TestBed.createComponent(SelectionComponent);
-    componentwith = new SelectionComponent(mockService);
+    componentwith = new SelectionComponent(mockService, null);
     component = fixture.componentInstance;
   });
 
