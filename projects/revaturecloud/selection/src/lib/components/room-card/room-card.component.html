@@ -45,19 +45,3 @@
   </div>
 </mat-grid-list>
 
-<mat-grid-list cols="8">
-  <mat-grid-tile>
-  </mat-grid-tile>
-  <mat-grid-tile colspan="6">
-    <mat-form-field>
-      <mat-select placeholder="User">
-        <mat-option *ngFor="let user of room.users">
-          {{ user.name.first }} {{ user.name.last }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-grid-tile>
-
-  <mat-grid-tile>
-  </mat-grid-tile>
-</mat-grid-list>
