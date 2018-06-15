@@ -23,12 +23,12 @@ export class FilterPanelComponent implements OnInit {
 
   // Drop down select - options
   batches: string[];
-  cities: string[];
+  locations: string[];
   buildings: string[];
 
   // Drop down select - currently selected
   batch: string;
-  city: string;
+  location: string;
   building: string;
 
   // Gender radio
@@ -59,11 +59,12 @@ export class FilterPanelComponent implements OnInit {
 
     this.filter = {
       batch: null,
-      city: null,
+      location: null,
       gender: null,
       batchMinimumPercentage: null,
       isCompletelyUnassigned: null,
       hasBedAvailable: null,
+      unassigned: null,
     };
 
     this.sort = {
@@ -76,7 +77,7 @@ export class FilterPanelComponent implements OnInit {
     // this.cities = new Set(this.selectionService.getAllCities());
     // this.buildings = new Set(this.selectionService.getAllBuildings());
     this.batches = ['batch1', 'batch2', 'batch3'];
-    this.cities = ['Chicago', 'Reston', 'Tampa', 'New York'];
+    this.locations = ['Chicago', 'Reston', 'Tampa', 'New York'];
     this.buildings = ['b1', 'b2', 'b3'];
   }
 
@@ -87,7 +88,7 @@ export class FilterPanelComponent implements OnInit {
    */
   reset(): void {
     this.batch = null;
-    this.city = null;
+    this.location = null;
     this.building = null;
 
     this.gender = null;
@@ -111,11 +112,12 @@ export class FilterPanelComponent implements OnInit {
 
     this.filter = {
       batch: this.batch,
-      city: this.city,
+      location: this.location,
       gender: tempGender,
       batchMinimumPercentage: null, // Not implemented
       isCompletelyUnassigned: this.vacantRoomsOnly,
       hasBedAvailable: null, // Not implemented
+      unassigned: null, // Not implemented
     };
 
     this.sort = {
