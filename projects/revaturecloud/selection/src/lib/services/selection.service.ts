@@ -169,6 +169,9 @@ export class SelectionService {
     if (searchParameters.city) {
       httpParams = httpParams.append('location', searchParameters.city);
     }
+    if (searchParameters.hasBedAvailable) {
+      httpParams = httpParams.append('hasBedAvailable', searchParameters.hasBedAvailable.toString());
+    }
 
     return httpParams;
   }

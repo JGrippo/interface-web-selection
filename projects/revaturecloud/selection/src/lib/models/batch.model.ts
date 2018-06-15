@@ -11,12 +11,12 @@
  * @export
  * @class Batch
  */
-import {
-  Address
-} from './address.model';
+import { Address } from './address.model';
+import { User } from './user.model';
 
 export class Batch {
   id: string;
+  location: string;
   startDate: string;
   endDate: string;
   batchName: string;
@@ -24,4 +24,5 @@ export class Batch {
   batchSkill: string;
 
   address: Address;
+  users: User[];
 }
