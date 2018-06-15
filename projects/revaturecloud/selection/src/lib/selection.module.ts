@@ -38,6 +38,7 @@ import { ChangeStore } from './stores/change.store';
 import { RoomSearchPipe, RoomWrapperComponent } from './components/room-wrapper/room-wrapper.component';
 import { SelectionComponent } from './selection.component';
 import { SearchPipe } from './shared/search.pipe';
+import { TableViewComponent } from './components/table-view/table-view.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SearchPipe } from './shared/search.pipe';
     UserCardComponent,
     RoomWrapperComponent,
     RoomCardComponent,
-    RoomSearchPipe
+    RoomSearchPipe,
+    TableViewComponent
   ],
 
   imports: [
