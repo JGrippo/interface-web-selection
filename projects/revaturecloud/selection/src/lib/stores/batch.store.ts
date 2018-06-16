@@ -51,7 +51,7 @@ export class BatchStore {
   /**
    * Returns the subscription.
    */
-  get users(): Observable<Batch[]> {
+  get batches(): Observable<Batch[]> {
     return this._batchSubject.asObservable();
   }
 
@@ -62,7 +62,7 @@ export class BatchStore {
    *
    * @memberof BatchStore
    */
-  updateUsers(): void {
+  updateBatches(): void {
     this.backendService.getComplexRequestOfBatches(this._filter)
       .subscribe(
         (res) => {
