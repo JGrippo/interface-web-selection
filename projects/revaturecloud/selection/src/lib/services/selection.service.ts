@@ -15,6 +15,7 @@ import { RoomAssociation } from '../models/roomAssociation.model';
 import { SearchParameters } from '../models/searchParameters.model';
 import { Room } from '../models/room.model';
 import { User } from '../models/user.model';
+import { Batch } from '../models/batch.model';
 
 @Injectable({
   providedIn: 'root'
@@ -88,6 +89,20 @@ export class SelectionService {
   }
 
   /**
+   * Gets collection of batches that satisfy the specified search parameters.
+   */
+  getComplexRequestOfBatches(searchParameters: SearchParameters): Observable<Batch[]> {
+    return this.http.get<Batch[]>(this.rootUrl + this.apiEpBatches + '?', {
+      params: this.convertSearchParsObjToParams(searchParameters),
+      headers: this.sentAsUrlEnc
+    })
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError)  // then handle the error
+      );
+  }
+
+  /**
    *    Gets all rooms.
    */
   getAllRooms(): Observable<Room[]> {
@@ -117,6 +132,17 @@ export class SelectionService {
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
+      );
+  }
+
+  /**
+   * Gets all batches.
+   */
+  getAllBatches(): Observable<Batch[]> {
+    return this.http.get<Batch[]>(this.rootUrl + this.apiEpBatches)
+      .pipe(
+        retry(3), // retry a failed request up to 3 times
+        catchError(this.handleError)  // then handle the error
       );
   }
 
