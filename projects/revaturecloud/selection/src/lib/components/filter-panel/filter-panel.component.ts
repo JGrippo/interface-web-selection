@@ -8,6 +8,7 @@ import { RoomStore } from '../../stores/room.store';
 import { Router } from '@angular/router';
 import { BatchStore } from '../../stores/batch.store';
 import { Batch } from '../../models/batch.model';
+import { LocationStore } from '../../stores/location.store';
 
 /**
  * The filter panel of the housing selection front-end.
@@ -37,17 +38,18 @@ export class FilterPanelComponent implements OnInit {
   // Gender radio
   readonly genders: object[] = [
     {name: 'All', value: null},
-    {name: 'Male', value: 'male'},
-    {name: 'Female', value: 'female'},
-    {name: 'Other', value: 'other'}
+    {name: 'Male', value: 'M'},
+    {name: 'Female', value: 'F'},
+    {name: 'Other', value: 'U'}
   ];
   gender: string;
+  tempGender: string;
 
   // Check box booleans
   vacantRoomsOnly: boolean;
   sortByMostVacancies: boolean;
   unhousedUsersOnly: boolean;
-  unassignedUsers: boolean;
+  assignedUsers: boolean;
   hasBedAvailable: boolean;
 
   // Output object
@@ -58,6 +60,7 @@ export class FilterPanelComponent implements OnInit {
     private userStore: UserStore,
     private roomStore: RoomStore,
     private batchStore: BatchStore,
+    private locationStore: LocationStore,
     private filterService: FilterService,
     private filterSortService: FilterSortService,
     private _router: Router) {
@@ -69,7 +72,7 @@ export class FilterPanelComponent implements OnInit {
       batchMinimumPercentage: null,
       isCompletelyUnassigned: null,
       hasBedAvailable: null,
-      unassigned: null,
+      assigned: false,
     };
 
     this.sort = {
@@ -81,7 +84,7 @@ export class FilterPanelComponent implements OnInit {
     this.batchStore.batches.subscribe((res) => {
       this.batches = res;
     });
-    this.roomStore.rooms.subscribe((res) => {
+    this.locationStore.locations.subscribe((res) => {
       this.locations = new Set<string>(res.map((el) => {return el.location}));
     });
     //this.buildings = ['Not', 'Implemented', 'Yet'];
@@ -92,22 +95,24 @@ export class FilterPanelComponent implements OnInit {
    * filterService given in the constructor.
    */
   update(): void {
-    let tempGender: string;
+
     if (this.gender) {
-      tempGender = this.gender.toLowerCase();
+      this.tempGender = this.gender;
     } else {
-      tempGender = this.gender;
+      this.tempGender = this.gender;
     }
 
-    this.filter = {
-      batch: this.batchId,
-      location: this.location,
-      gender: tempGender,
-      batchMinimumPercentage: null, // Not implemented
-      isCompletelyUnassigned: this.vacantRoomsOnly,
-      hasBedAvailable: this.hasBedAvailable,
-      unassigned: this.unassignedUsers,
-    };
+    // this.filter = {
+    //   batch: this.batchId,
+    //   location: this.location,
+    //   gender: this.tempGender,
+    //   batchMinimumPercentage: null, // Not implemented
+    //   isCompletelyUnassigned: this.vacantRoomsOnly,
+    //   hasBedAvailable: this.hasBedAvailable,
+    //   unassigned: this.unassignedUsers,
+    // };
+
+    this.AssignValuesToFilter();
 
     this.sort = {
       sortByMostVacancies: this.sortByMostVacancies,
@@ -118,5 +123,26 @@ export class FilterPanelComponent implements OnInit {
     this.userStore.updateUsers();
     this.roomStore.updateRooms();
     this.batchStore.updateBatches();
+  }
+
+  AssignValuesToFilter() {
+    if(this.batchId) {
+      this.filter.batch = this.batchId;
+    }
+    if(this.location) {
+      this.filter.location = this.location;
+    }
+    if(this.gender) {
+      this.filter.gender = this.tempGender;
+    }
+    if(this.vacantRoomsOnly) {
+      this.filter.isCompletelyUnassigned = this.vacantRoomsOnly;
+    }
+    if(this.hasBedAvailable) {
+      this.filter.hasBedAvailable = this.hasBedAvailable;
+    }
+    if(this.assignedUsers) {
+      this.filter.assigned = this.assignedUsers;
+    }
   }
 }

@@ -29,5 +29,5 @@ export class SearchParameters {
   batchMinimumPercentage: number;
   isCompletelyUnassigned: boolean;
   hasBedAvailable: boolean;
-  unassigned: boolean;
+  assigned: boolean;
 }
