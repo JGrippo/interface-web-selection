@@ -6,13 +6,13 @@
       <div>
         <mat-form-field>
           <mat-select placeholder="Batch"
-              [(ngModel)]="batch"
+              [(ngModel)]="batchId"
               (selectionChange)="update()">
             <mat-option>All batches</mat-option>
             <mat-option
                 *ngFor="let b of batches"
-                [value]="b">
-              {{ b }}
+                [value]="b.Id">
+              {{ b.batchName }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -33,6 +33,8 @@
         </mat-form-field>
       </div>
 
+      <!-- Not implemnted -->
+      <!--
       <div>
         <mat-form-field>
           <mat-select placeholder="Building"
@@ -47,6 +49,7 @@
           </mat-select>
         </mat-form-field>
       </div>
+      -->
     </div>
 
     <div>
@@ -86,6 +89,13 @@
             [(ngModel)]="unassignedUsers"
             (change)="update()">
           Unhoused Users Only
+        </mat-checkbox>
+        </li>
+        <li>
+          <mat-checkbox
+            [(ngModel)]="hasBedAvailable"
+            (change)="update()">
+          Hide Full Rooms
         </mat-checkbox>
         </li>
       </ul>

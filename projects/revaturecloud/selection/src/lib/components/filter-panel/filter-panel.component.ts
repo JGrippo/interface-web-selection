@@ -6,6 +6,8 @@ import { SortParameters } from '../../models/sortParameters.model';
 import { UserStore } from '../../stores/user.store';
 import { RoomStore } from '../../stores/room.store';
 import { Router } from '@angular/router';
+import { BatchStore } from '../../stores/batch.store';
+import { Batch } from '../../models/batch.model';
 
 /**
  * The filter panel of the housing selection front-end.
@@ -23,14 +25,14 @@ import { Router } from '@angular/router';
 export class FilterPanelComponent implements OnInit {
 
   // Drop down select - options
-  batches: string[];
-  locations: string[];
-  buildings: string[];
+  batches: Batch[];
+  locations: Set<string>;
+  //buildings: string[]; Not implemented
 
   // Drop down select - currently selected
-  batch: string;
+  batchId: string;
   location: string;
-  building: string;
+  //building: string; Not implemented
 
   // Gender radio
   readonly genders: object[] = [
@@ -46,6 +48,7 @@ export class FilterPanelComponent implements OnInit {
   sortByMostVacancies: boolean;
   unhousedUsersOnly: boolean;
   unassignedUsers: boolean;
+  hasBedAvailable: boolean;
 
   // Output object
   filter: SearchParameters;
@@ -54,6 +57,7 @@ export class FilterPanelComponent implements OnInit {
   constructor(
     private userStore: UserStore,
     private roomStore: RoomStore,
+    private batchStore: BatchStore,
     private filterService: FilterService,
     private filterSortService: FilterSortService,
     private _router: Router) {
@@ -71,17 +75,16 @@ export class FilterPanelComponent implements OnInit {
     this.sort = {
       sortByMostVacancies: false,
     };
-
-    this._router = _router;
   }
 
   ngOnInit() {
-    // this.batches = new Set(this.selectionService.getAllBatches());
-    // this.cities = new Set(this.selectionService.getAllCities());
-    // this.buildings = new Set(this.selectionService.getAllBuildings());
-    this.batches = ['batch1', 'batch2', 'batch3'];
-    this.locations = ['Chicago', 'Reston', 'Tampa', 'New York'];
-    this.buildings = ['b1', 'b2', 'b3'];
+    this.batchStore.batches.subscribe((res) => {
+      this.batches = res;
+    });
+    this.roomStore.rooms.subscribe((res) => {
+      this.locations = new Set<string>(res.map((el) => {return el.location}));
+    });
+    //this.buildings = ['Not', 'Implemented', 'Yet'];
   }
 
   /**
@@ -97,12 +100,12 @@ export class FilterPanelComponent implements OnInit {
     }
 
     this.filter = {
-      batch: this.batch,
+      batch: this.batchId,
       location: this.location,
       gender: tempGender,
       batchMinimumPercentage: null, // Not implemented
       isCompletelyUnassigned: this.vacantRoomsOnly,
-      hasBedAvailable: null, // Not implemented
+      hasBedAvailable: this.hasBedAvailable,
       unassigned: this.unassignedUsers,
     };
 
@@ -114,5 +117,6 @@ export class FilterPanelComponent implements OnInit {
     this.filterSortService.setFilter(this.sort);
     this.userStore.updateUsers();
     this.roomStore.updateRooms();
+    this.batchStore.updateBatches();
   }
 }
