@@ -6,7 +6,6 @@
 
 <mat-grid-list cols='2'>
   <div *ngFor="let user of roomPlus.users">
-    {{user.gender}}
 
     <mat-grid-tile>
       <div *ngIf="isMale(user)">
@@ -45,4 +44,3 @@
     </mat-grid-tile>
   </div>
 </mat-grid-list>
-
