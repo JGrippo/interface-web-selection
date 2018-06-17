@@ -22,14 +22,14 @@ import { Batch } from '../models/batch.model';
 })
 export class SelectionService {
 
-  readonly rootUrl = 'https://my-json-server.typicode.com/JGrippo/selectiondb';
+  readonly rootUrl = 'http://18.218.238.212/api/Selection';
 
   readonly apiEpAddToRoom = '/Room/Add';
   readonly apiEpRemoveFromRoom = '/Room/Remove';
   readonly apiEpBatches = '/Batches';
   readonly apiEpRooms = '/Rooms';
   readonly apiEpUsers = '/Users';
-  readonly apiEpUnassignedUsers = '/Users/Unassigned';
+  // readonly apiEpUnassignedUsers = '/Users/Unassigned';
 
   readonly sentAsUrlEnc = new HttpHeaders().set('Content-Type', 'x-www-form-urlencoded');
   readonly sentAsJson = new HttpHeaders().set('Content-Type', 'application/json');
@@ -66,26 +66,46 @@ export class SelectionService {
   /**
    *    Gets collection of rooms that satisfy the specified search parameters.
    */
-  getComplexRequestOfRooms(searchParameters: SearchParameters): Observable<Room[]> {
-    return this.http.get<Room[]>(this.rootUrl + '/Rooms?', {
-      params: this.convertSearchParsObjToParams(searchParameters),
-      headers: this.sentAsUrlEnc
+  getComplexRequestOfRooms(searchParameters: SearchParameters): Observable<any> {
+
+    return this.http.put(this.rootUrl + this.apiEpRooms, searchParameters, {
+      headers: this.sentAsJson
     })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
+
+
+    // return this.http.get<Room[]>(this.rootUrl + '/Rooms?', {
+    //   params: this.convertSearchParsObjToParams(searchParameters),
+    //   headers: this.sentAsUrlEnc
+    // })
+    //   .pipe(
+    //     retry(3), // retry a failed request up to 3 times
+    //     catchError(this.handleError) // then handle the error
+    //   );
   }
 
-  getComplexRequestOfUsers(searchParameters: SearchParameters): Observable<User[]> {
-    return this.http.get<User[]>(this.rootUrl + '/Users?', {
-      params: this.convertSearchParsObjToParams(searchParameters),
-      headers: this.sentAsUrlEnc
+  getComplexRequestOfUsers(searchParameters: SearchParameters): Observable<any> {
+
+    return this.http.put(this.rootUrl + this.apiEpUsers, searchParameters, {
+      headers: this.sentAsJson
     })
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
       );
+
+
+    // return this.http.get<User[]>(this.rootUrl + '/Users?', {
+    //   params: this.convertSearchParsObjToParams(searchParameters),
+    //   headers: this.sentAsUrlEnc
+    // })
+    //   .pipe(
+    //     retry(3), // retry a failed request up to 3 times
+    //     catchError(this.handleError) // then handle the error
+    //   );
   }
 
   /**
@@ -107,17 +127,6 @@ export class SelectionService {
    */
   getAllRooms(): Observable<Room[]> {
     return this.http.get<Room[]>(this.rootUrl + this.apiEpRooms)
-      .pipe(
-        retry(3), // retry a failed request up to 3 times
-        catchError(this.handleError) // then handle the error
-      );
-  }
-
-  /**
-   *    Gets all unassigned users.
-   */
-  getAllUnassignedUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.rootUrl + this.apiEpUnassignedUsers)
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError) // then handle the error
@@ -197,8 +206,8 @@ export class SelectionService {
     if (searchParameters.hasBedAvailable) {
       httpParams = httpParams.append('hasBedAvailable', searchParameters.hasBedAvailable.toString());
     }
-    if (searchParameters.unassigned) {
-      httpParams = httpParams.append('unassigned', searchParameters.unassigned.toString());
+    if (searchParameters.assigned) {
+      httpParams = httpParams.append('assigned', searchParameters.assigned.toString());
     }
 
     return httpParams;
