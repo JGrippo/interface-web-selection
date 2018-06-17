@@ -125,24 +125,40 @@ export class FilterPanelComponent implements OnInit {
     this.batchStore.updateBatches();
   }
 
-  AssignValuesToFilter() {
+  /**
+   * Updates the filter with the two-way-bound member.
+   * If a value is falsy it assigns it as null.
+   */
+  private AssignValuesToFilter() {
     if(this.batchId) {
       this.filter.batch = this.batchId;
+    } else {
+      this.filter.batch = null;
     }
     if(this.location) {
       this.filter.location = this.location;
+    } else {
+      this.filter.location = null;
     }
     if(this.gender) {
       this.filter.gender = this.tempGender;
+    } else {
+      this.filter.gender = null;
     }
     if(this.vacantRoomsOnly) {
       this.filter.isCompletelyUnassigned = this.vacantRoomsOnly;
+    } else {
+      this.filter.isCompletelyUnassigned = null;
     }
     if(this.hasBedAvailable) {
       this.filter.hasBedAvailable = this.hasBedAvailable;
+    } else {
+      this.filter.hasBedAvailable = null;
     }
     if(this.assignedUsers) {
       this.filter.assigned = this.assignedUsers;
+    } else {
+      this.filter.assigned = null;
     }
   }
 }
