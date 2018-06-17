@@ -150,7 +150,6 @@ export class SelectionService {
    *    accommodate this behavior this method has been created to convert such an object to search
    *    parameters that will be passed along with the request.
    */
-
   private convertSearchParsObjToParams(searchParameters: SearchParameters) {
 
     let httpParams: HttpParams = new HttpParams();
@@ -166,11 +165,14 @@ export class SelectionService {
     if (searchParameters.isCompletelyUnassigned) {
       httpParams = httpParams.append('IsCompletelyUnassigned', searchParameters.isCompletelyUnassigned.toString())
     }
-    if (searchParameters.city) {
-      httpParams = httpParams.append('location', searchParameters.city);
+    if (searchParameters.location) {
+      httpParams = httpParams.append('location', searchParameters.location);
     }
     if (searchParameters.hasBedAvailable) {
       httpParams = httpParams.append('hasBedAvailable', searchParameters.hasBedAvailable.toString());
+    }
+    if (searchParameters.unassigned) {
+      httpParams = httpParams.append('unassigned', searchParameters.unassigned.toString());
     }
 
     return httpParams;

@@ -1,10 +1,3 @@
-/**
- * The filter panel of the housing selection front-end.
- *
- * Provides a UI that allows the user to filter and sort
- * the data shown in other components.
- */
-
 import { Component, OnInit } from '@angular/core';
 import { FilterService } from '../../services/filter.service';
 import { FilterSortService } from '../../services/filter-sort.service';
@@ -13,6 +6,13 @@ import { SortParameters } from '../../models/sortParameters.model';
 import { UserStore } from '../../stores/user.store';
 import { RoomStore } from '../../stores/room.store';
 import { Router } from '@angular/router';
+
+/**
+ * The filter panel of the housing selection front-end.
+ *
+ * Provides a UI that allows the user to filter and sort
+ * the data shown in other components.
+ */
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -24,12 +24,12 @@ export class FilterPanelComponent implements OnInit {
 
   // Drop down select - options
   batches: string[];
-  cities: string[];
+  locations: string[];
   buildings: string[];
 
   // Drop down select - currently selected
   batch: string;
-  city: string;
+  location: string;
   building: string;
 
   // Gender radio
@@ -45,6 +45,7 @@ export class FilterPanelComponent implements OnInit {
   vacantRoomsOnly: boolean;
   sortByMostVacancies: boolean;
   unhousedUsersOnly: boolean;
+  unassignedUsers: boolean;
 
   // Output object
   filter: SearchParameters;
@@ -57,15 +58,14 @@ export class FilterPanelComponent implements OnInit {
     private filterSortService: FilterSortService,
     private _router: Router) {
 
-    this.reset();
-
     this.filter = {
       batch: null,
-      city: null,
+      location: null,
       gender: null,
       batchMinimumPercentage: null,
       isCompletelyUnassigned: null,
       hasBedAvailable: null,
+      unassigned: null,
     };
 
     this.sort = {
@@ -80,25 +80,8 @@ export class FilterPanelComponent implements OnInit {
     // this.cities = new Set(this.selectionService.getAllCities());
     // this.buildings = new Set(this.selectionService.getAllBuildings());
     this.batches = ['batch1', 'batch2', 'batch3'];
-    this.cities = ['Chicago', 'Reston', 'Tampa', 'New York'];
+    this.locations = ['Chicago', 'Reston', 'Tampa', 'New York'];
     this.buildings = ['b1', 'b2', 'b3'];
-  }
-
-  /**
-   * Resets the filter form to default values
-   *
-   * DEPRECATED
-   */
-  reset(): void {
-    this.batch = null;
-    this.city = null;
-    this.building = null;
-
-    this.gender = null;
-
-    this.vacantRoomsOnly = false;
-    this.sortByMostVacancies = false;
-    this.unhousedUsersOnly = false;
   }
 
   /**
@@ -115,11 +98,12 @@ export class FilterPanelComponent implements OnInit {
 
     this.filter = {
       batch: this.batch,
-      city: this.city,
+      location: this.location,
       gender: tempGender,
       batchMinimumPercentage: null, // Not implemented
       isCompletelyUnassigned: this.vacantRoomsOnly,
       hasBedAvailable: null, // Not implemented
+      unassigned: this.unassignedUsers,
     };
 
     this.sort = {

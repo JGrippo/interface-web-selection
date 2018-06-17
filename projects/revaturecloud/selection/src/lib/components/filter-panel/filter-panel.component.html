@@ -20,14 +20,14 @@
 
       <div>
         <mat-form-field>
-          <mat-select placeholder="City"
-              [(ngModel)]="city"
+          <mat-select placeholder="Location"
+              [(ngModel)]="location"
               (selectionChange)="update()">
             <mat-option>All cities</mat-option>
             <mat-option
-                *ngFor="let c of cities"
-                [value]="c">
-              {{ c }}
+                *ngFor="let l of locations"
+                [value]="l">
+              {{ l }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -83,18 +83,20 @@
         </li>
         <li>
           <mat-checkbox
-            [(ngModel)]="unhousedUsersOnly"
+            [(ngModel)]="unassignedUsers"
             (change)="update()">
           Unhoused Users Only
         </mat-checkbox>
         </li>
       </ul>
     </div>
-    <div *ngIf="this._router.url === '/content-wrapper' || this._router.url === '/'">
-      <button mat-raised-button style="background-color: orange" routerLink='/table' routerLinkActive='active'>Table</button>
-    </div>
-    <div *ngIf="this._router.url === '/table'">
-      <button mat-raised-button style="background-color: orange" routerLink='/content-wrapper' routerLinkActive='active'>Content</button>
+    <div align="center">
+      <div *ngIf="this._router.url === '/content-wrapper' || this._router.url === '/'">
+        <button mat-raised-button routerLink='/table' routerLinkActive='active'>Table</button>
+      </div>
+      <div *ngIf="this._router.url === '/table'">
+        <button mat-raised-button routerLink='/content-wrapper' routerLinkActive='active'>Content</button>
+      </div>
     </div>
 
   </mat-sidenav>
@@ -108,4 +110,3 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-

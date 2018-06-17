@@ -2,8 +2,8 @@ import { SearchPipe } from './search.pipe';
 import { User } from '../models/user.model';
 
 
-describe('Pipe: SearchPipe', () => {
-  it('should find the input string', () => {
+// describe('Pipe: SearchPipe', () => {
+//   it('should find the input string', () => {
     // let searchPipe = new SearchPipe();
     // let testUsers: User[] = [
     //   {
@@ -72,9 +72,8 @@ describe('Pipe: SearchPipe', () => {
     // ]
 
     // expect(searchPipe.transform(testUsers[0], 'Petty').toEqual(testUsers[0]));
+describe('SearchPipe', () => {
+  it('should find the inputs', () => {
+    //let searchString = new SearchPipe();
   });
-
-
 });
-
-
