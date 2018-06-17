@@ -41,6 +41,7 @@ export class RoomCardComponent implements OnInit {
           address: null
         });
     }
+
   }
 
   /**
@@ -52,6 +53,25 @@ export class RoomCardComponent implements OnInit {
   unassign(user: User): void {
     this.putService.unassign(user, this.room);
   }
+
+  /**
+   * Forwards the output of the User static funciton
+   * 
+   * @param user the user to check
+   */
+  private isMale(user: User): boolean {
+    return User.isMale(user);
+  }
+  private isFemale(user: User): boolean {
+    return User.isFemale(user);
+  }
+
+  /**
+   * Checks if the user is a fake filler user.
+   * 
+   * @param user the user to check
+   */
+  private isFill(user: User): boolean {
+    return user.gender.toLowerCase() === 'fill';
+  }
 }
-
-
