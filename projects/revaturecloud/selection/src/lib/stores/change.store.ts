@@ -16,7 +16,7 @@ import { Room } from '../models/room.model';
 export class ChangeStore {
 
   private _changeTracker: BehaviorSubject<Tracker[]> = new BehaviorSubject<Tracker[]>([]);
-  private _changeArray: Tracker[];
+  private _changeArray: Tracker[] = [];
   constructor() {
   }
   /**
@@ -27,7 +27,7 @@ export class ChangeStore {
    * @memberof ChangeStore
    */
   addUserToRoom(user: User, room: Room) {
-    let tracker: Tracker;
+    let tracker: Tracker=new Tracker();
     tracker.User = user;
     tracker.Room = room;
     tracker.Action = 'Add';
@@ -42,7 +42,7 @@ export class ChangeStore {
    * @memberof ChangeStore
    */
   removeUserFromRoom(user: User, room: Room) {
-    let tracker: Tracker;
+    let tracker: Tracker = new Tracker();
     tracker.User = user;
     tracker.Room = room;
     tracker.Action = 'Remove';

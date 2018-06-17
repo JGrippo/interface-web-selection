@@ -41,6 +41,7 @@ export class SelectionService {
   *    API documentation.
   */
   addUserToRoom(roomAssociation: RoomAssociation) {
+    console.log(JSON.stringify(roomAssociation));
     return this.http.put(this.rootUrl + this.apiEpAddToRoom, roomAssociation, {
       headers: this.sentAsJson
     })
@@ -54,6 +55,7 @@ export class SelectionService {
   *    API documentation.
   */
   removeUserFromRoom(roomAssociation: RoomAssociation) {
+    console.log(JSON.stringify(roomAssociation));
     return this.http.put(this.rootUrl + this.apiEpRemoveFromRoom, roomAssociation, {
       headers: this.sentAsJson
     })
