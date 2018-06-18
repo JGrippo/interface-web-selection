@@ -3,9 +3,33 @@ table {
   height: 100%;
 }
 
+.table-padding{
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.mat-sort-header-container {
+  display:flex;
+  justify-content:center;
+}
+
+.centered-cell {
+  text-align: center;
+}
+
+td{
+  text-align: center;
+}
+
 .confirm-div {
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: 30px;
   margin-left: 30px;
+}
+
+button {
+  margin: 10px;
+  background-color: #F06932;
+  color: white;
 }
