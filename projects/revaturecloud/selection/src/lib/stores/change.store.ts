@@ -16,7 +16,7 @@ import { Room } from '../models/room.model';
 export class ChangeStore {
 
   private _changeTracker: BehaviorSubject<Tracker[]> = new BehaviorSubject<Tracker[]>([]);
-  private _changeArray: Tracker[];
+  private _changeArray: Tracker[] = [];
   constructor() {
   }
   /**
@@ -27,10 +27,12 @@ export class ChangeStore {
    * @memberof ChangeStore
    */
   addUserToRoom(user: User, room: Room) {
-    let tracker: Tracker;
+    let tracker: Tracker=new Tracker();
     tracker.User = user;
     tracker.Room = room;
     tracker.Action = 'Add';
+    const i = this._changeArray.filter(tkr => tkr.User.id === user.id );
+    tracker.Iteration = i.length;
     this._changeArray.push(tracker);
     this._changeTracker.next(this._changeArray);
   }
@@ -42,10 +44,12 @@ export class ChangeStore {
    * @memberof ChangeStore
    */
   removeUserFromRoom(user: User, room: Room) {
-    let tracker: Tracker;
+    let tracker: Tracker = new Tracker();
     tracker.User = user;
     tracker.Room = room;
     tracker.Action = 'Remove';
+    const i = this._changeArray.filter(tkr => tkr.User.id === user.id );
+    tracker.Iteration = i.length;
     this._changeArray.push(tracker);
     this._changeTracker.next(this._changeArray);
   }
@@ -60,5 +64,14 @@ export class ChangeStore {
   }
   get changes$() {
     return this._changeTracker.asObservable();
+  }
+
+  confirmAllChanges() {
+    this._changeTracker.next([]);
+  }
+
+  confirmChanges( tracker: Tracker ) {
+    this._changeArray = this._changeArray.filter(tkr => tkr.User.id !== tracker.User.id );
+    this._changeTracker.next(this._changeArray);
   }
 }

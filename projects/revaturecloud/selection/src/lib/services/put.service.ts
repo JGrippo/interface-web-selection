@@ -37,7 +37,7 @@ export class PutService {
   assign(user: User, room: Room): void {
 
     this.service.addUserToRoom(
-      {userId: user.id, roomId: room.roomId}
+      {userId: user.id, roomId: room.id}
     ).subscribe((res) => {
       this.store.addUserToRoom(user, room);
       this.uStore.updateUsers();
@@ -57,7 +57,7 @@ export class PutService {
    */
   unassign(user: User, room: Room): void {
     this.service.removeUserFromRoom(
-      {userId: user.id, roomId: room.roomId}
+      {userId: user.id, roomId: room.id}
     ).subscribe((res) => {
       this.store.removeUserFromRoom(user, room);
       this.uStore.updateUsers();

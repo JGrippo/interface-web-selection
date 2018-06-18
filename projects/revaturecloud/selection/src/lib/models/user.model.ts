@@ -24,4 +24,16 @@ export class User {
   type: string;
   name: Name;
   address: Address;
+
+  /**
+   * Answers the question.
+   */
+  static isMale(user: User): boolean {
+    let g: string = user.gender.toLowerCase();
+    return g === 'male' || g === 'm';
+  }
+  static isFemale(user: User): boolean {
+    let g: string = user.gender.toLowerCase();
+    return g === 'female' || g === 'f';
+  }
 }
