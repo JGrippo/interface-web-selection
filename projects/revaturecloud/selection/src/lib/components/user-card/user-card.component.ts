@@ -29,9 +29,9 @@ export class UserCardComponent implements OnInit {
    * Adds this user to the first available room.
    */
   addToFirstAvailable() {
-    let room: Room = this.roomStoreService.roomsValue.find((value) => {
-      if (value.vacancy) {
-        return value.vacancy > 0;
+    let room: Room = this.roomStoreService.roomsValue.find((room) => {
+      if (room.vacancy && room.gender && room.location) {
+        return room.vacancy > 0 && room.gender === this.user.gender && room.location === this.user.location;
       } else {
         return false;
       }
@@ -42,7 +42,7 @@ export class UserCardComponent implements OnInit {
 
   /**
    * Forwards the output of the User static function.
-   * 
+   *
    * @param user the user to check
    */
   private isMale(user: User): boolean {
