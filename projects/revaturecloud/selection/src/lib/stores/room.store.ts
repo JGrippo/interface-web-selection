@@ -9,7 +9,9 @@ import { Room } from '../models/room.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { SelectionService } from '../services/selection.service';
 import { SearchParameters } from '../models/searchParameters.model';
+import { SortParameters } from '../models/sortParameters.model';
 import { FilterService } from '../services/filter.service';
+import { FilterSortService } from '../services/filter-sort.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,11 +20,12 @@ export class RoomStore {
 
   private _roomSubject: BehaviorSubject<Room[]> = new BehaviorSubject<Room[]>([]);
   private _filter: SearchParameters;
-
+  private _sortFilter: SortParameters;
 
   constructor(
     private backendService: SelectionService,
-    private filterService: FilterService
+    private filterService: FilterService,
+    private filterSortService: FilterSortService
   ) {
     this.loadInitData();
   }
@@ -46,6 +49,26 @@ export class RoomStore {
           this._filter = res;
         }
       );
+
+    this.filterSortService.getFilter()
+      .subscribe(
+        res => {
+          this._sortFilter = res;
+        }
+      );
+  }
+
+  private sort(users: Room[]): Room[] {
+    if (this._sortFilter) {
+      if (this._sortFilter.sortByMostVacancies) {
+        return users.sort(
+          (a, b) => {
+            return a.vacancy - b.vacancy;
+          }
+        );
+      }
+    }
+    return users;
   }
 
   /**
@@ -72,9 +95,8 @@ export class RoomStore {
   updateRooms(): void {
     this.backendService.getComplexRequestOfRooms(this._filter)
       .subscribe(
-        (res) => this._roomSubject.next(res),
+        (res) => this._roomSubject.next(this.sort(res)),
         (err: any) => { console.log(err); }
       );
   }
-
 }

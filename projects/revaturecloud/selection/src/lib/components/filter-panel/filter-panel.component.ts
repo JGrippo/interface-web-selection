@@ -135,15 +135,19 @@ export class FilterPanelComponent implements OnInit {
 
     this.AssignValuesToFilter();
 
-    this.sort = {
-      sortByMostVacancies: this.sortByMostVacancies,
-    };
-
     this.filterService.setFilter(this.filter);
-    this.filterSortService.setFilter(this.sort);
     this.userStore.updateUsers();
     this.roomStore.updateRooms();
     this.batchStore.updateBatches();
+  }
+
+  updateSort(): void {
+    this.sort = {
+      sortByMostVacancies: this.sortByMostVacancies
+    };
+
+    this.filterSortService.setFilter(this.sort);
+    this.roomStore.updateRooms();
   }
 
   /**
