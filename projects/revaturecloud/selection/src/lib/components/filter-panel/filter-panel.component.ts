@@ -46,11 +46,11 @@ export class FilterPanelComponent implements OnInit {
   tempGender: string;
 
   // Check box booleans
-  vacantRoomsOnly: boolean;
-  sortByMostVacancies: boolean;
-  unhousedUsersOnly: boolean;
-  assignedUsers: boolean;
-  hasBedAvailable: boolean;
+  vacantRoomsOnly: boolean = false;
+  sortByMostVacancies: boolean = true;
+  // unhousedUsersOnly: boolean = true;
+  assignedUsers: boolean = true;
+  hasBedAvailable: boolean = false;
 
   // Output object
   filter: SearchParameters;
