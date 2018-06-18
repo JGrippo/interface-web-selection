@@ -18,7 +18,7 @@ export class FilterService {
     batchMinimumPercentage: 0,
     isCompletelyUnassigned: false,
     hasBedAvailable: false,
-    unassigned: false,
+    assigned: false,
   };
 
   subject: BehaviorSubject<SearchParameters>;

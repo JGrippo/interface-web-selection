@@ -6,7 +6,7 @@
 
 import { Injectable } from '@angular/core';
 import { Room } from '../models/room.model';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { SelectionService } from '../services/selection.service';
 import { SearchParameters } from '../models/searchParameters.model';
 import { FilterService } from '../services/filter.service';
@@ -51,8 +51,15 @@ export class RoomStore {
   /**
    * Returns an observable for the room data
    */
-  get rooms() {
+  get rooms(): Observable<Room[]> {
     return this._roomSubject.asObservable();
+  }
+
+  /**
+   * Returns the current list of Rooms
+   */
+  get roomsValue(): Room[] {
+    return this._roomSubject.value;
   }
 
   /**
@@ -62,7 +69,7 @@ export class RoomStore {
    *
    * @memberof RoomStore
    */
-  updateRooms() {
+  updateRooms(): void {
     this.backendService.getComplexRequestOfRooms(this._filter)
       .subscribe(
         (res) => this._roomSubject.next(res),

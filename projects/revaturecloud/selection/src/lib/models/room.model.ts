@@ -20,7 +20,7 @@ import { Address } from './address.model';
 import { User } from './user.model';
 
 export class Room {
-  roomId: string;
+  id: string;
   location: string;
   vacancy: number;
   occupancy: number;
