@@ -1,7 +1,7 @@
 <mat-card-header>
   <div class="flex-vert-center">
     <mat-card-title class="user-name">{{user.name.first}} {{user.name.last}}</mat-card-title>
-    <button class="mat-icon-button"  mat-icon-button (click)="addToFirstAvailable()">
+    <button *ngIf="!isHoused()" class="mat-icon-button"  mat-icon-button (click)="addToFirstAvailable()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -20,10 +20,10 @@
       </div>
     </mat-grid-tile>
     <mat-grid-tile>
-      <div *ngIf="isMale(user)">
+      <div *ngIf="isMale()">
         <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/male.png" style="width:50px; border-radius: 50%">
       </div>
-      <div *ngIf="isFemale(user)">
+      <div *ngIf="isFemale()">
         <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/female.png" style="width:50px; border-radius: 50%">
       </div>
     </mat-grid-tile>

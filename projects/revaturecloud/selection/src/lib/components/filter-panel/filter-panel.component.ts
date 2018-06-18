@@ -69,10 +69,10 @@ export class FilterPanelComponent implements OnInit {
   gender: string = null;
 
 
-  housingSituation = false;
+  housingSituation = null;
   // Check box booleans
   vacantRoomsOnly: boolean = false;
-  sortByMostVacancies: boolean = true;
+  sortByMostVacancies: boolean = false;
   // unhousedUsersOnly: boolean = true;
   assignedUsers: boolean = false;
   hasBedAvailable: boolean = false;
@@ -135,15 +135,22 @@ export class FilterPanelComponent implements OnInit {
 
     this.AssignValuesToFilter();
 
-    this.sort = {
-      sortByMostVacancies: this.sortByMostVacancies,
-    };
-
     this.filterService.setFilter(this.filter);
-    this.filterSortService.setFilter(this.sort);
     this.userStore.updateUsers();
     this.roomStore.updateRooms();
     this.batchStore.updateBatches();
+  }
+
+  /**
+   * Sort version of Update.  Only acts on the stores affected by the sort filter.
+   */
+  updateSort(): void {
+    this.sort = {
+      sortByMostVacancies: this.sortByMostVacancies
+    };
+
+    this.filterSortService.setFilter(this.sort);
+    this.roomStore.updateRooms();
   }
 
   /**
