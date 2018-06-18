@@ -49,7 +49,7 @@ export class FilterPanelComponent implements OnInit {
   vacantRoomsOnly: boolean = false;
   sortByMostVacancies: boolean = true;
   // unhousedUsersOnly: boolean = true;
-  assignedUsers: boolean = true;
+  assignedUsers: boolean = false;
   hasBedAvailable: boolean = false;
 
   // Output object
