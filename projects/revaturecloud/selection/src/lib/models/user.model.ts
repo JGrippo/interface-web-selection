@@ -9,8 +9,8 @@
 *
 * The service-hub-housing-wiki's page on this object:
 * "https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/User-Model"
- * @export
- * @class User
+ * @'export
+ * @'class User
 */
 
 import { Address } from './address.model';
