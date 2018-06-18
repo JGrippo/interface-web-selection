@@ -10,4 +10,5 @@ export class Tracker {
   User: User;
   Room: Room;
   Action: string;
+  Iteration: number;
 }
