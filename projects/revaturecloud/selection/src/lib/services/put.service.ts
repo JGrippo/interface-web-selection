@@ -31,8 +31,8 @@ export class PutService {
    * On successful response, updates the changes,
    * user, and room stores.
    *
-   * @param user The user to be assigned
-   * @param room The room the user is being assigned to
+   * param user The user to be assigned
+   * param room The room the user is being assigned to
    */
   assign(user: User, room: Room): void {
 
@@ -52,8 +52,8 @@ export class PutService {
    * On successful response, updates the changes,
    * user, and rooms stores.
    *
-   * @param user the user to be unassigned
-   * @param room the room the user is being unassigned from
+   * param user the user to be unassigned
+   * param room the room the user is being unassigned from
    */
   unassign(user: User, room: Room): void {
     this.service.removeUserFromRoom(
