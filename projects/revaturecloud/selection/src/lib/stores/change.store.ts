@@ -31,6 +31,7 @@ export class ChangeStore {
     tracker.User = user;
     tracker.Room = room;
     tracker.Action = 'Add';
+    this._changeArray = this._changeArray.filter(tkr => tkr.User.id !== user.id );
     this._changeArray.push(tracker);
     this._changeTracker.next(this._changeArray);
   }
@@ -46,6 +47,7 @@ export class ChangeStore {
     tracker.User = user;
     tracker.Room = room;
     tracker.Action = 'Remove';
+    this._changeArray = this._changeArray.filter(tkr => tkr.User.id !== user.id );
     this._changeArray.push(tracker);
     this._changeTracker.next(this._changeArray);
   }
