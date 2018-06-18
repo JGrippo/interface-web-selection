@@ -141,6 +141,9 @@ export class FilterPanelComponent implements OnInit {
     this.batchStore.updateBatches();
   }
 
+  /**
+   * Sort version of Update.  Only acts on the stores affected by the sort filter.
+   */
   updateSort(): void {
     this.sort = {
       sortByMostVacancies: this.sortByMostVacancies

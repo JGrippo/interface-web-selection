@@ -58,12 +58,15 @@ export class RoomStore {
       );
   }
 
+  /**
+   * Sorts the given room list by most vacancies.
+   */
   private sort(users: Room[]): Room[] {
     if (this._sortFilter) {
       if (this._sortFilter.sortByMostVacancies) {
         return users.sort(
           (a, b) => {
-            return a.vacancy - b.vacancy;
+            return b.vacancy - a.vacancy;
           }
         );
       }
