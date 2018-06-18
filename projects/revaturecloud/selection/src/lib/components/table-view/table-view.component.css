@@ -27,3 +27,9 @@ td{
   margin-right: 30px;
   margin-left: 30px;
 }
+
+button {
+  margin: 10px;
+  background-color: #F06932;
+  color: white;
+}
