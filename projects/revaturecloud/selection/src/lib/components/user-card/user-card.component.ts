@@ -53,17 +53,17 @@ export class UserCardComponent implements OnInit {
   /**
    * Forwards the output of the User static function.
    */
-  private isMale(): boolean {
+  isMale(): boolean {
     return User.isMale(this.user);
   }
-  private isFemale(): boolean {
+  isFemale(): boolean {
     return User.isFemale(this.user);
   }
 
   /**
    * Checks the user's address field to see if the user is assigned housing.
    */
-  private isHoused(): boolean {
+  isHoused(): boolean {
     return this.user.address !== null;
   }
 
