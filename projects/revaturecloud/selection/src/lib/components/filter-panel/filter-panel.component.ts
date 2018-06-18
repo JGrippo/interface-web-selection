@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { BatchStore } from '../../stores/batch.store';
 import { Batch } from '../../models/batch.model';
 import { LocationStore } from '../../stores/location.store';
-
 /**
  * The filter panel of the housing selection front-end.
  *
@@ -28,23 +27,49 @@ export class FilterPanelComponent implements OnInit {
   // Drop down select - options
   batches: Batch[];
   locations: Set<string>;
-  //buildings: string[]; Not implemented
+  // buildings: string[]; Not implemented
 
   // Drop down select - currently selected
   batchId: string;
   location: string;
-  //building: string; Not implemented
+  // building: string; Not implemented
 
   // Gender radio
-  readonly genders: object[] = [
-    {name: 'All', value: null},
-    {name: 'Male', value: 'M'},
-    {name: 'Female', value: 'F'},
-    {name: 'Other', value: 'U'}
+  readonly genders: object[] = [{
+    name: 'All',
+    value: null
+  },
+  {
+    name: 'Male',
+    value: 'M'
+  },
+  {
+    name: 'Female',
+    value: 'F'
+  },
+  {
+    name: 'Other',
+    value: 'U'
+  }
   ];
-  gender: string;
-  tempGender: string;
+  // Housing Situation radio options
+  readonly housingSituationOptions: object[] = [{
+    name: 'All',
+    value: null
+  },
+  {
+    name: 'Unhoused',
+    value: false
+  },
+  {
+    name: 'Housed',
+    value: true
+  }
+  ];
+  gender: string = null;
 
+
+  housingSituation = false;
   // Check box booleans
   vacantRoomsOnly: boolean = false;
   sortByMostVacancies: boolean = true;
@@ -85,9 +110,11 @@ export class FilterPanelComponent implements OnInit {
       this.batches = res;
     });
     this.locationStore.locations.subscribe((res) => {
-      this.locations = new Set<string>(res.map((el) => {return el.location}));
+      this.locations = new Set<string>(res.map((el) => {
+        return el.location;
+      }));
     });
-    //this.buildings = ['Not', 'Implemented', 'Yet'];
+    // this.buildings = ['Not', 'Implemented', 'Yet'];
   }
 
   /**
@@ -95,12 +122,6 @@ export class FilterPanelComponent implements OnInit {
    * filterService given in the constructor.
    */
   update(): void {
-
-    if (this.gender) {
-      this.tempGender = this.gender;
-    } else {
-      this.tempGender = this.gender;
-    }
 
     // this.filter = {
     //   batch: this.batchId,
@@ -130,35 +151,29 @@ export class FilterPanelComponent implements OnInit {
    * If a value is falsy it assigns it as null.
    */
   private AssignValuesToFilter() {
-    if(this.batchId) {
+    if (this.batchId) {
       this.filter.batch = this.batchId;
     } else {
       this.filter.batch = null;
     }
-    if(this.location) {
+    if (this.location) {
       this.filter.location = this.location;
     } else {
       this.filter.location = null;
     }
-    if(this.gender) {
-      this.filter.gender = this.tempGender;
-    } else {
-      this.filter.gender = null;
-    }
-    if(this.vacantRoomsOnly) {
+    if (this.vacantRoomsOnly) {
       this.filter.isCompletelyUnassigned = this.vacantRoomsOnly;
     } else {
       this.filter.isCompletelyUnassigned = null;
     }
-    if(this.hasBedAvailable) {
+    if (this.hasBedAvailable) {
       this.filter.hasBedAvailable = this.hasBedAvailable;
     } else {
       this.filter.hasBedAvailable = null;
     }
-    if(this.assignedUsers) {
-      this.filter.assigned = this.assignedUsers;
-    } else {
-      this.filter.assigned = null;
-    }
+    this.filter.gender = this.gender;
+    this.filter.assigned = this.housingSituation;
+
   }
 }
+
