@@ -41,7 +41,6 @@ export class UserCardComponent implements OnInit {
         return false;
       }
     });
-
     this.putService.assign(this.user, room);
   }
 
