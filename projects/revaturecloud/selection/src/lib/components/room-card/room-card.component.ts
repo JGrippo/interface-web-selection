@@ -48,7 +48,7 @@ export class RoomCardComponent implements OnInit {
    * Called upon clicking the minus button next to a user portrait in the room card.
    * Unassigns that user from this room.
    *
-   * @param user the user to be unassigned.
+   * param user the user to be unassigned.
    */
   unassign(user: User): void {
     this.putService.unassign(user, this.room);
@@ -56,22 +56,22 @@ export class RoomCardComponent implements OnInit {
 
   /**
    * Forwards the output of the User static funciton
-   * 
-   * @param user the user to check
+   *
+   * param user the user to check
    */
-  private isMale(user: User): boolean {
+  isMale(user: User): boolean {
     return User.isMale(user);
   }
-  private isFemale(user: User): boolean {
+  isFemale(user: User): boolean {
     return User.isFemale(user);
   }
 
   /**
    * Checks if the user is a fake filler user.
-   * 
-   * @param user the user to check
+   *
+   * param user the user to check
    */
-  private isFill(user: User): boolean {
+  isFill(user: User): boolean {
     return user.gender.toLowerCase() === 'fill';
   }
 }

@@ -30,7 +30,7 @@ export class FilterService {
   /**
    * Updates the SearchParameters and pushes the update to all subscribers
    *
-   * @param filter The updated set of parameters
+   * param filter The updated set of parameters
    */
   setFilter(filter: SearchParameters) {
     this.subject.next(filter);

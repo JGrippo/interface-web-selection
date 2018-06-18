@@ -18,8 +18,8 @@
   * char Gender
   * bool IsCompletelyUnassigned
   * }
-  * @export
-  * @class SearchParameters
+  * @'export
+  * @'class SearchParameters
   */
 
 export class SearchParameters {

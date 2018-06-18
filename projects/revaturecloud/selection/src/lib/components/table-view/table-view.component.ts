@@ -21,7 +21,7 @@ export class TableViewComponent implements OnInit {
   constructor(private changeStore: ChangeStore) { }
 
   ngOnInit() {
-    this.changeStore.changes$.subscribe(changes => this.dataSource = new MatTableDataSource(changes));
+    this.changeStore.changes.subscribe(changes => this.dataSource = new MatTableDataSource(changes));
   }
 
   undo(tracker: Tracker) {

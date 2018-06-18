@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Tracker } from '../models/tracker.model';
 import { User } from '../models/user.model';
 import { Room } from '../models/room.model';
 /**
  * Store to keep track of changes for the current session.
  *
- * @export
- * @class ChangeStore
+ * @'export
+ * @'class ChangeStore
  */
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,8 @@ export class ChangeStore {
   /**
    * Method that adds User, Room, and Action as "Add" to store, and updates
    * observable for those subscribed.
-   * @param {User} user
-   * @param {Room} room
+   * param {User} user
+   * param {Room} room
    * @memberof ChangeStore
    */
   addUserToRoom(user: User, room: Room) {
@@ -39,8 +39,8 @@ export class ChangeStore {
   /**
    * Method that adds User, Room, and Action as "Remove" to store, and updates
    * observable for those subscribed.
-   * @param {User} user
-   * @param {Room} room
+   * param {User} user
+   * param {Room} room
    * @memberof ChangeStore
    */
   removeUserFromRoom(user: User, room: Room) {
@@ -62,7 +62,7 @@ export class ChangeStore {
     this._changeArray = [];
     this._changeTracker.next(this._changeArray);
   }
-  get changes$() {
+  get changes(): Observable<Tracker[]> {
     return this._changeTracker.asObservable();
   }
 

@@ -12,8 +12,8 @@
  *
  * The service-hub-housing-wiki's page on this object:
  * "https://github.com/mjbradvica/service-hub-housing-ui-wiki/wiki/Room-Model"
- * @export
- * @class Room
+ * @'export
+ * @'class Room
  */
 
 import { Address } from './address.model';
