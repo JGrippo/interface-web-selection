@@ -31,7 +31,8 @@ export class ChangeStore {
     tracker.User = user;
     tracker.Room = room;
     tracker.Action = 'Add';
-    this._changeArray = this._changeArray.filter(tkr => tkr.User.id !== user.id );
+    const i = this._changeArray.filter(tkr => tkr.User.id === user.id );
+    tracker.Iteration = i.length;
     this._changeArray.push(tracker);
     this._changeTracker.next(this._changeArray);
   }
@@ -47,7 +48,8 @@ export class ChangeStore {
     tracker.User = user;
     tracker.Room = room;
     tracker.Action = 'Remove';
-    this._changeArray = this._changeArray.filter(tkr => tkr.User.id !== user.id );
+    const i = this._changeArray.filter(tkr => tkr.User.id === user.id );
+    tracker.Iteration = i.length;
     this._changeArray.push(tracker);
     this._changeTracker.next(this._changeArray);
   }
@@ -62,5 +64,14 @@ export class ChangeStore {
   }
   get changes$() {
     return this._changeTracker.asObservable();
+  }
+
+  confirmAllChanges() {
+    this._changeTracker.next([]);
+  }
+
+  confirmChanges( tracker: Tracker ) {
+    this._changeArray = this._changeArray.filter(tkr => tkr.User.id !== tracker.User.id );
+    this._changeTracker.next(this._changeArray);
   }
 }
