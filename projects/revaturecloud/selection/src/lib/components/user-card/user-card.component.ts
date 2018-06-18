@@ -18,12 +18,17 @@ export class UserCardComponent implements OnInit {
 
   @Input() user: User;
 
+  rooms: Room[];
+  dropDownValue: Room;
+
   constructor(
     private putService: PutService,
     private roomStoreService: RoomStore
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.initRooms();
+  }
 
   /**
    * Adds this user to the first available room.
@@ -40,6 +45,11 @@ export class UserCardComponent implements OnInit {
     this.putService.assign(this.user, room);
   }
 
+  addUserToRoom()
+  {
+    this.putService.assign(this.user, this.dropDownValue);
+  }
+
   /**
    * Forwards the output of the User static function.
    */
@@ -54,7 +64,12 @@ export class UserCardComponent implements OnInit {
    * Checks the user's address field to see if the user is assigned housing.
    */
   private isHoused(): boolean {
-    console.log(this.user.name.last + " | " + this.user.address);
     return this.user.address !== null;
+  }
+
+  initRooms(){
+    this.roomStoreService.rooms.subscribe((res) => {
+      this.rooms = res.filter((room) => room.gender === this.user.gender && room.location === this.user.location && room.vacancy > 0);
+    });
   }
 }
