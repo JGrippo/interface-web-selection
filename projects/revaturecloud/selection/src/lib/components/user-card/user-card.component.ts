@@ -42,13 +42,19 @@ export class UserCardComponent implements OnInit {
 
   /**
    * Forwards the output of the User static function.
-   *
-   * @param user the user to check
    */
-  private isMale(user: User): boolean {
-    return User.isMale(user);
+  private isMale(): boolean {
+    return User.isMale(this.user);
   }
-  private isFemale(user: User): boolean {
-    return User.isFemale(user);
+  private isFemale(): boolean {
+    return User.isFemale(this.user);
+  }
+
+  /**
+   * Checks the user's address field to see if the user is assigned housing.
+   */
+  private isHoused(): boolean {
+    console.log(this.user.name.last + " | " + this.user.address);
+    return this.user.address !== null;
   }
 }
