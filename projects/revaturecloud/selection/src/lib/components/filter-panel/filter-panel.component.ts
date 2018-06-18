@@ -69,10 +69,10 @@ export class FilterPanelComponent implements OnInit {
   gender: string = null;
 
 
-  housingSituation = false;
+  housingSituation = null;
   // Check box booleans
   vacantRoomsOnly: boolean = false;
-  sortByMostVacancies: boolean = true;
+  sortByMostVacancies: boolean = false;
   // unhousedUsersOnly: boolean = true;
   assignedUsers: boolean = false;
   hasBedAvailable: boolean = false;
