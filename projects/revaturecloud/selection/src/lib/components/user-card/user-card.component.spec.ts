@@ -71,7 +71,7 @@ fdescribe('UserCardComponent', () => {
     });
   });
 
-  it('should create the app', () => {
+  xit('should create the app', () => {
     let fixture = TestBed.createComponent(UserCardComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
