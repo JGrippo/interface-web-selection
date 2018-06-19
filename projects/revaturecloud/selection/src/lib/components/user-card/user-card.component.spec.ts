@@ -9,7 +9,9 @@ import { of } from "rxjs/internal/observable/of";
 import { PutService } from "../../services/put.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { User } from "../../models/user.model";
-
+import { NgxPaginationModule } from "ngx-pagination";
+import { MatPaginatorModule } from "@angular/material";
+import { RoomSearchPipe } from "../../shared/roomsearch.pipe";
 
 fdescribe('UserCardComponent', () => {
   let testRooms: Room[];
@@ -62,8 +64,8 @@ fdescribe('UserCardComponent', () => {
     mockRoomStore = jasmine.createSpyObj(['rooms']);
 
     TestBed.configureTestingModule({
-        declarations: [UserCardComponent],
-        imports: [HttpClientModule, BrowserModule, BrowserAnimationsModule],
+        declarations: [UserCardComponent, RoomSearchPipe],
+        imports: [HttpClientModule, BrowserModule, BrowserAnimationsModule, NgxPaginationModule, MatPaginatorModule],
         providers: [{provide: PutService, useValue: mockPutService},
           {provide: RoomStore, useValue: mockRoomStore}
         ],
