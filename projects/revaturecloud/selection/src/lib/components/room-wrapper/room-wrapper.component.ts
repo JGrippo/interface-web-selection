@@ -13,7 +13,7 @@ import { RoomStore } from '../../stores/room.store';
   templateUrl: './room-wrapper.component.html',
   styleUrls: ['./room-wrapper.component.css']
 })
-export class RoomWrapperComponent implements OnInit, OnDestroy {
+export class RoomWrapperComponent implements OnInit {
 
   rooms: Room[];
   searchRooms = '';
@@ -29,8 +29,5 @@ export class RoomWrapperComponent implements OnInit, OnDestroy {
       .subscribe((rooms: Room[]) => {
         this.rooms = rooms;
       });
-  }
-
-  ngOnDestroy() {
   }
 }
