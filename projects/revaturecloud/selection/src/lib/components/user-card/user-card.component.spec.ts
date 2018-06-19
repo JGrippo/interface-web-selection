@@ -71,45 +71,45 @@ fdescribe('UserCardComponent', () => {
     });
   });
 
-  xit('should create the app', () => {
+  it('should create the app', () => {
     let fixture = TestBed.createComponent(UserCardComponent);
     let app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  // it('should call addToFirstAvailable', fakeAsync(() => {
-  //   let userA: User;
-  //   userA =     {
-  //     id: '1',
-  //     location: 'Reston',
-  //     email: "a@a.com",
-  //     gender: "female",
-  //     type: "Known",
-  //     name: {
-  //       id: "1000",
-  //       first: "Petty",
-  //       middle: "Meagan",
-  //       last: "Barber"
-  //     },
-  //     address: {
-  //       address1: "Fowler",
-  //       address2: "411",
-  //       city: "Reston",
-  //       state: "Virginia",
-  //       postalCode: "43417",
-  //       country: "USA"
-  //     }
-  //   };
+  it('should call addToFirstAvailable', fakeAsync(() => {
+    let userA: User;
+    userA =     {
+      id: '1',
+      location: 'Reston',
+      email: "a@a.com",
+      gender: "female",
+      type: "Known",
+      name: {
+        id: "1000",
+        first: "Petty",
+        middle: "Meagan",
+        last: "Barber"
+      },
+      address: {
+        address1: "Fowler",
+        address2: "411",
+        city: "Reston",
+        state: "Virginia",
+        postalCode: "43417",
+        country: "USA"
+      }
+    };
 
-  //   let fixture = TestBed.createComponent(UserCardComponent);
-  //   fixture.componentInstance.user = userA;
+    let fixture = TestBed.createComponent(UserCardComponent);
+    fixture.componentInstance.user = userA;
 
-  //   spyOn(fixture.componentInstance, 'addToFirstAvailable');
-  //   tick();
-  //   fixture.detectChanges();
+    spyOn(fixture.componentInstance, 'addToFirstAvailable');
+    tick();
+    fixture.detectChanges();
 
-  //   expect(fixture.componentInstance.addToFirstAvailable).toHaveBeenCalled();
-  // }));
+    expect(fixture.componentInstance.addToFirstAvailable).toHaveBeenCalled();
+  }));
 
   // //Integration test
   // it(`should call putService.assign when the UserCard Component's addToFirstAvailable button is clicked`, fakeAsync(() => {
