@@ -55,8 +55,7 @@ describe('FilterPanelComponent', () => {
       MockBatchStore,
       MockLocationStore,
       MockFilter,
-      MockFilterSort,
-      MockRouter
+      MockFilterSort
     );
     component = fixture.componentInstance;
     fixture.detectChanges();
