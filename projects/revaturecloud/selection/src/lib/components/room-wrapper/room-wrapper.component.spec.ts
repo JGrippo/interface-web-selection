@@ -12,7 +12,7 @@ import { MatPaginatorModule } from "@angular/material";
 import { RoomSearchPipe } from "../../shared/roomsearch.pipe";
 
 
-fdescribe('RoomWrapperComponent', () => {
+describe('RoomWrapperComponent', () => {
   let testRooms: Room[];
   let mockRoomStore;
 

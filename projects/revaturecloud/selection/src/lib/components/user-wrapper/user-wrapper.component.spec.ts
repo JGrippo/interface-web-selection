@@ -13,7 +13,7 @@ import { MatPaginatorModule } from "@angular/material";
 import { SearchPipe } from "../../shared/search.pipe";
 
 
-fdescribe('UserWrapperComponent', () => {
+describe('UserWrapperComponent', () => {
   let testUsers: User[];
   let mockUserStore;
 
