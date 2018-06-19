@@ -1,120 +1,149 @@
-// import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-// import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
-// import { FilterPanelComponent } from './filter-panel.component';
-// import { FilterService } from '../../services/filter.service';
-// import { FilterSortService } from '../../services/filter-sort.service';
-// import { UserStore } from '../../stores/user.store';
-// import { RoomStore } from '../../stores/room.store';
-// import { BatchStore } from '../../stores/batch.store';
-// import { LocationStore } from '../../stores/location.store';
+import { FilterPanelComponent } from './filter-panel.component';
+import { FilterService } from '../../services/filter.service';
+import { FilterSortService } from '../../services/filter-sort.service';
+import { UserStore } from '../../stores/user.store';
+import { RoomStore } from '../../stores/room.store';
+import { BatchStore } from '../../stores/batch.store';
+import { LocationStore } from '../../stores/location.store';
+import { SearchParameters } from '../../models/searchParameters.model';
+import { SortParameters } from '../../models/sortParameters.model';
+import { Batch } from '../../models/batch.model';
+import { Room } from '../../models/room.model';
 
-// describe('FilterPanelComponent', () => {
-//   let component: FilterPanelComponent;
-//   let fixture: ComponentFixture<FilterPanelComponent>;
-//   let componentwith: FilterPanelComponent;
-//   let MockUserStore;
-//   let MockRoomStore;
-//   let MockBatchStore;
-//   let MockLocationStore;
-//   let MockFilter;
-//   let MockFilterSort;
-//   let MockRouter;
+class MockUserStore {
+  updateUsers(): void {}
+}
+class MockRoomStore {
+  updateRooms(): void {}
+  get rooms(): Observable<Room[]> {
+    return new BehaviorSubject<Room[]>([]).asObservable();
+  }
+}
+class MockBatchStore {
+  updateBatches(): void {}
+  get batches(): Observable<Batch[]> {
+    return new BehaviorSubject<Batch[]>([]).asObservable();
+  }
+}
+class MockLocationStore {
+  get locations(): Observable<Room[]> {
+    return new BehaviorSubject<Room[]>([]).asObservable();
+  }
+}
+class MockFilterService {
+  setFilter(params: SearchParameters): void {}
+}
+class MockFilterSortService {
+  setFilter(params: SortParameters): void {}
+}
 
-//   beforeEach(async(() => {
-//     MockUserStore = jasmine.createSpyObj(['updateUsers']);
-//     MockRoomStore = jasmine.createSpyObj(['updateRooms']);
-//     MockBatchStore = jasmine.createSpyObj(['batches', 'updateBatches']);
-//     MockLocationStore = jasmine.createSpyObj(['locations']);
-//     MockFilter = jasmine.createSpyObj(['getFilter', 'setFilter']);
-//     MockFilterSort = jasmine.createSpyObj(['getFilter', 'setFilter']);
-//     MockRouter = jasmine.createSpyObj(['url']);
+describe('FilterPanelComponent', () => {
+  let component: FilterPanelComponent;
+  let fixture: ComponentFixture<FilterPanelComponent>;
+  let filSer: FilterService;
+  let filSorSer: FilterSortService;
+  let userStore: UserStore;
+  let roomStore: RoomStore;
+  let batchStore: BatchStore;
+  let locStore: LocationStore;
 
-//     TestBed.configureTestingModule({
-//       imports: [
-//         FormsModule,
-//       ],
-//       declarations: [ FilterPanelComponent ],
-//       providers: [
-//         {provide: FilterService, useValue: MockFilter},
-//         {provide: FilterSortService, useValue: MockFilterSort},
-//         {provide: UserStore, useValue: MockUserStore},
-//         {provide: RoomStore, useValue: MockRoomStore},
-//         {provide: BatchStore, useValue: MockBatchStore},
-//         {provide: LocationStore, useValue: MockLocationStore}
-//       ]
-//     })
-//     .compileComponents();
-//   }));
+  beforeEach(async(() => {
 
-//   beforeEach(() => {
-//     fixture = TestBed.createComponent(FilterPanelComponent);
-//     componentwith = new FilterPanelComponent(
-//       MockUserStore,
-//       MockRoomStore,
-//       MockBatchStore,
-//       MockLocationStore,
-//       MockFilter,
-//       MockFilterSort,
-//       MockRouter
-//     );
-//     component = fixture.componentInstance;
-//     fixture.detectChanges();
-//   });
+    TestBed.configureTestingModule({
+      imports: [
+        FormsModule,
+        HttpClientModule,
+        HttpModule,
+        CommonModule,
+      ],
+      declarations: [ FilterPanelComponent ],
+      providers: [
+        {provide: FilterService, useClass: MockFilterService},
+        {provide: FilterSortService, useClass: MockFilterSortService},
+        {provide: UserStore, useClass: MockUserStore},
+        {provide: RoomStore, useClass: MockRoomStore},
+        {provide: BatchStore, useClass: MockBatchStore},
+        {provide: LocationStore, useClass: MockLocationStore}
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    })
+    .compileComponents();
+  }));
 
-//   it('should create', () => {
-//     expect(component).toBeTruthy();
-//   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(FilterPanelComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
-//   it('should assign values to filter', () => {
-//     let expectedBatchId = "batchId";
-//     let expectedLocation = "Location";
-//     let expectedGender = "male";
-//     let expectedVRO = true;
-//     let expectedHBA = false;
-//     let expectedAssigned = true;
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
-//     component.batchId = expectedBatchId;
-//     component.location = expectedLocation;
-//     component.gender = expectedGender;
-//     component.vacantRoomsOnly = expectedVRO;
-//     component.hasBedAvailable = expectedHBA;
-//     component.housingSituation = expectedAssigned;
+  it('should assign values to filter', () => {
+    let expectedBatchId = "batchId";
+    let expectedLocation = "Location";
+    let expectedGender = "male";
+    let expectedVRO = true;
+    let expectedHBA = true;
+    let expectedAssigned = true;
 
-//     component.AssignValuesToFilter();
+    component.batchId = expectedBatchId;
+    component.location = expectedLocation;
+    component.gender = expectedGender;
+    component.vacantRoomsOnly = expectedVRO;
+    component.hasBedAvailable = expectedHBA;
+    component.housingSituation = expectedAssigned;
 
-//     expect(component.filter.batch).toBe(expectedBatchId);
-//     expect(component.filter.location).toBe(expectedLocation);
-//     expect(component.filter.gender).toBe(expectedGender);
-//     expect(component.filter.isCompletelyUnassigned).toBe(expectedVRO);
-//     expect(component.filter.hasBedAvailable).toBe(expectedHBA);
-//     expect(component.filter.assigned).toBe(expectedAssigned);
-//   });
+    component.AssignValuesToFilter();
 
-//   it('should publish to filter service', () => {
-//     componentwith.batchId = '1002';
+    expect(component.filter.batch).toBe(expectedBatchId);
+    expect(component.filter.location).toBe(expectedLocation);
+    expect(component.filter.gender).toBe(expectedGender);
+    expect(component.filter.isCompletelyUnassigned).toBe(expectedVRO);
+    expect(component.filter.hasBedAvailable).toBe(expectedHBA);
+    expect(component.filter.assigned).toBe(expectedAssigned);
+  });
 
-//     componentwith.update();
+  it('should publish to filter service', () => {
+    let filterSer = TestBed.get(FilterService);
+    let setFilterSpy = spyOn(filterSer, 'setFilter');
+    component.batchId = '1002';
 
-//     expect(MockFilter.setFilter).toHaveBeenCalledWith(componentwith.filter);
-//   });
+    component.update();
 
-//   it('should publish to sort filter serivce', () => {
-//     let expectSortByMV = true;
+    expect(setFilterSpy).toHaveBeenCalledWith(component.filter);
+  });
 
-//     componentwith.sortByMostVacancies = expectSortByMV;
+  it('should publish to sort filter serivce', () => {
+    let expectSortByMV = true;
+    let setFilterSpy = spyOn(TestBed.get(FilterSortService), 'setFilter');
 
-//     componentwith.updateSort();
+    component.sortByMostVacancies = expectSortByMV;
 
-//     expect(componentwith.sort.sortByMostVacancies).toBe(expectSortByMV);
-//     expect(MockFilterSort.setFilter).toHaveBeenCalledWith(componentwith.sort);
-//   });
+    component.updateSort();
 
-//   it('should update the stores', () => {
-//     componentwith.update();
+    expect(component.sort.sortByMostVacancies).toBe(expectSortByMV);
+    expect(setFilterSpy).toHaveBeenCalledWith(component.sort);
+  });
 
-//     expect(MockUserStore.updateUsers).toHaveBeenCalled();
-//     expect(MockRoomStore.updateRooms).toHaveBeenCalled();
-//     expect(MockBatchStore.updateBatches).toHaveBeenCalled();
-//   });
-// });
+  it('should update the stores', () => {
+    let userUpdateSpy = spyOn(TestBed.get(UserStore), 'updateUsers');
+    let roomUpdateSpy = spyOn(TestBed.get(RoomStore), 'updateRooms');
+    let batcUpdateSpy = spyOn(TestBed.get(BatchStore), 'updateBatches');
+
+    component.update();
+
+    expect(userUpdateSpy).toHaveBeenCalled();
+    expect(roomUpdateSpy).toHaveBeenCalled();
+    expect(batcUpdateSpy).toHaveBeenCalled();
+  });
+});

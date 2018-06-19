@@ -13,7 +13,7 @@ import { NgxPaginationModule } from "ngx-pagination";
 import { MatPaginatorModule } from "@angular/material";
 import { RoomSearchPipe } from "../../shared/roomsearch.pipe";
 
-fdescribe('UserCardComponent', () => {
+describe('UserCardComponent', () => {
   let testRooms: Room[];
   let mockPutService;
   let mockRoomStore;

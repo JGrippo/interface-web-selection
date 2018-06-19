@@ -70,11 +70,11 @@ export class FilterPanelComponent implements OnInit {
 
   housingSituation = null;
   // Check box booleans
-  vacantRoomsOnly: boolean = false;
-  sortByMostVacancies: boolean = false;
+  vacantRoomsOnly: boolean = null;
+  sortByMostVacancies: boolean = null;
   // unhousedUsersOnly: boolean = true;
-  assignedUsers: boolean = false;
-  hasBedAvailable: boolean = false;
+  assignedUsers: boolean = null;
+  hasBedAvailable: boolean = null;
 
   // Output object
   filter: SearchParameters;
@@ -96,7 +96,7 @@ export class FilterPanelComponent implements OnInit {
       batchMinimumPercentage: null,
       isCompletelyUnassigned: null,
       hasBedAvailable: null,
-      assigned: false,
+      assigned: null,
     };
 
     this.sort = {
