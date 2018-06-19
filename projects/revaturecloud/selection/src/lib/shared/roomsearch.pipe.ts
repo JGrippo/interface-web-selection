@@ -21,9 +21,10 @@ export class RoomSearchPipe implements PipeTransform {
         || room.address.city.toLowerCase().includes(searchString)
         || room.address.state.toLowerCase().includes(searchString)
         || room.address.postalCode == searchString
-        || room.address.country.toLowerCase().includes(searchString)
-        || room.users.filter(function (e) { return e.name.first.toLowerCase().includes(searchString); }).length > 0
-        || room.users.filter(function (e) { return e.name.last.toLowerCase().includes(searchString); }).length > 0) {
+        || room.users.filter(function (e) {
+          let fullname = e.name.first.toLowerCase() + ' ' + e.name.last.toLowerCase();
+          return fullname.includes(searchString);
+        }).length > 0) {
         foundRooms.push(room);
       }
     }
