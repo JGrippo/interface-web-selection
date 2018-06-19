@@ -74,8 +74,11 @@
       <button type="button my-mini-fab" mat-mini-fab (click)="sidenav.toggle()">
         <i class="material-icons">menu</i>
       </button>
+      <div style="height: 10px"></div>
+      <mat-tab-group [selectedIndex]='1' class='tab-group'>
 
-      <mat-tab-group class='tab-group'>
+        <mat-tab disabled>
+        </mat-tab>
 
         <mat-tab label='Content'>
           <ng-template matTabContent>
