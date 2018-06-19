@@ -1,4 +1,4 @@
-import { PipeTransform, Pipe} from '@angular/core';
+import { PipeTransform, Pipe } from '@angular/core';
 import { Room } from '../models/room.model';
 
 @Pipe({
@@ -21,7 +21,9 @@ export class RoomSearchPipe implements PipeTransform {
         || room.address.city.toLowerCase().includes(searchString)
         || room.address.state.toLowerCase().includes(searchString)
         || room.address.postalCode == searchString
-        || room.address.country.toLowerCase().includes(searchString)) {
+        || room.address.country.toLowerCase().includes(searchString)
+        || room.users.filter(function (e) { return e.name.first.toLowerCase().includes(searchString); }).length > 0
+        || room.users.filter(function (e) { return e.name.last.toLowerCase().includes(searchString); }).length > 0) {
         foundRooms.push(room);
       }
     }
