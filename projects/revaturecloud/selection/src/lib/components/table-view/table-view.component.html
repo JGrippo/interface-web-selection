@@ -9,7 +9,7 @@
 
       <ng-container matColumnDef="Room">
         <th class="centered-cell" mat-header-cell *matHeaderCellDef> Room </th>
-        <td mat-cell *matCellDef="let tracker"> {{tracker.Room.address.address1}} </td>
+        <td mat-cell *matCellDef="let tracker"> {{tracker.Room.address.address1}} {{tracker.Room.address.address2}} </td>
       </ng-container>
 
       <ng-container matColumnDef="Action">
