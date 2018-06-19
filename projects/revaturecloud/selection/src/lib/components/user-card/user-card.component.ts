@@ -45,7 +45,20 @@ export class UserCardComponent implements OnInit {
   }
 
   addUserToRoom(): void {
+    if ( this.dropDownValue !== null ) {
     this.putService.assign(this.user, this.dropDownValue);
+  } else {
+    let myroom: Room = this.roomStoreService.roomsValue.find((myroom) => {
+      if (myroom.address) {
+        return (myroom.address.address1 === this.user.address.address1 && myroom.address.address2 === this.user.address.address2);
+      } else {
+        return false;
+      }
+    });
+
+    this.putService.unassign(this.user, myroom);
+  }
+
   }
 
   /**

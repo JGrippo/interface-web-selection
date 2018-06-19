@@ -87,8 +87,8 @@ export class FilterPanelComponent implements OnInit {
     private batchStore: BatchStore,
     private locationStore: LocationStore,
     private filterService: FilterService,
-    private filterSortService: FilterSortService,
-    public _router: Router) {
+    private filterSortService: FilterSortService
+    ) {
 
     this.filter = {
       batch: null,
