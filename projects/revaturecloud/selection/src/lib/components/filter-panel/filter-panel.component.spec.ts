@@ -3,18 +3,16 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
-import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 import { FilterPanelComponent } from './filter-panel.component';
 import { FilterService } from '../../services/filter.service';
 import { FilterSortService } from '../../services/filter-sort.service';
-import { PutService } from '../../services/put.service';
 import { UserStore } from '../../stores/user.store';
 import { RoomStore } from '../../stores/room.store';
 import { BatchStore } from '../../stores/batch.store';
 import { LocationStore } from '../../stores/location.store';
-import { ChangeStore } from '../../stores/change.store';
 import { SearchParameters } from '../../models/searchParameters.model';
 import { SortParameters } from '../../models/sortParameters.model';
 import { Batch } from '../../models/batch.model';
@@ -50,12 +48,6 @@ class MockFilterSortService {
 describe('FilterPanelComponent', () => {
   let component: FilterPanelComponent;
   let fixture: ComponentFixture<FilterPanelComponent>;
-  // let mockFilSer;
-  // let mockFilSorSer;
-  // let mockUserStore;
-  // let mockRoomStore;
-  // let mockBatchStore;
-  // let mockLocStore;
   let filSer: FilterService;
   let filSorSer: FilterSortService;
   let userStore: UserStore;
@@ -64,15 +56,6 @@ describe('FilterPanelComponent', () => {
   let locStore: LocationStore;
 
   beforeEach(async(() => {
-    // let mockFilSer = jasmine.createSpyObj('FilterService', ['setFilter']);
-    // let mockFilSorSer = jasmine.createSpyObj('FilterSortService', ['setFilter']);
-    // let mockUserStore = jasmine.createSpyObj('UserStore', ['updateUsers']);
-    // let mockRoomStore = jasmine.createSpyObj('RoomStore', ['updateRooms']);
-    // let mockBatchStore = jasmine.createSpyObj('BatchStore', ['updateBatches', 'batches']);
-    // let mockLocStore = jasmine.createSpyObj('LocationStore', ['locations']);
-    // filSer = new FilterService();
-    // filSorSer = new FilterSortService();
-    // userStore = new UserStore();
 
     TestBed.configureTestingModule({
       imports: [
