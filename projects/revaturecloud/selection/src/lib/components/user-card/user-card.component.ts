@@ -33,7 +33,7 @@ export class UserCardComponent implements OnInit {
   /**
    * Adds this user to the first available room.
    */
-  addToFirstAvailable() {
+  addToFirstAvailable(): void {
     let room: Room = this.roomStoreService.roomsValue.find((room) => {
       if (room.vacancy && room.gender && room.location) {
         return room.vacancy > 0 && room.gender === this.user.gender && room.location === this.user.location;
@@ -41,11 +41,10 @@ export class UserCardComponent implements OnInit {
         return false;
       }
     });
-
     this.putService.assign(this.user, room);
   }
 
-  addUserToRoom() {
+  addUserToRoom(): void {
     if ( this.dropDownValue !== null ) {
     this.putService.assign(this.user, this.dropDownValue);
   } else {
@@ -79,7 +78,7 @@ export class UserCardComponent implements OnInit {
     return this.user.address !== null;
   }
 
-  initRooms() {
+  initRooms(): void {
     this.roomStoreService.rooms.subscribe((res) => {
       this.rooms = res.filter((room) => room.gender === this.user.gender && room.location === this.user.location && room.vacancy > 0);
     });
