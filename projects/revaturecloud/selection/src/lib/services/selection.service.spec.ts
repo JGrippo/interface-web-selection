@@ -85,7 +85,7 @@ describe('SelectionService Tests', () => {
 
     // tslint:disable-next-line:prefer-const
     let roomsRequest: TestRequest = httpTestingController.expectOne(selectionService.rootUrl + selectionService.apiEpRooms);
-    expect(roomsRequest.request.method).toEqual('GET');
+    expect(roomsRequest.request.method).toEqual('PUT');
 
     roomsRequest.flush(mockRooms);
   });
@@ -98,20 +98,8 @@ describe('SelectionService Tests', () => {
 
     // tslint:disable-next-line:prefer-const
     let usersRequest: TestRequest = httpTestingController.expectOne(selectionService.rootUrl + selectionService.apiEpUsers);
-    expect(usersRequest.request.method).toEqual('GET');
+    expect(usersRequest.request.method).toEqual('PUT');
 
     usersRequest.flush(mockUsers);
-  });
-  it('should GET all batches with search params', () => {
-    selectionService.getComplexRequestOfBatches(filter)
-      .subscribe((data: Batch[]) => {
-        expect(data.length).toBe(6);
-      });
-
-    // tslint:disable-next-line:prefer-const
-    let batchesRequest: TestRequest = httpTestingController.expectOne(selectionService.rootUrl + selectionService.apiEpBatches);
-    expect(batchesRequest.request.method).toEqual('GET');
-
-    batchesRequest.flush(mockBatches);
   });
 });
