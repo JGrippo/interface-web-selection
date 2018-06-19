@@ -11,7 +11,7 @@ import { User } from "../../models/user.model";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 
-fdescribe('UserCardComponent', () => {
+describe('UserCardComponent', () => {
   let testRooms: Room[];
   let mockPutService;
   let mockRoomStore;

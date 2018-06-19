@@ -1,5 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { FilterPanelComponent } from './filter-panel.component';
 import { FilterService } from '../../services/filter.service';
@@ -8,56 +13,52 @@ import { UserStore } from '../../stores/user.store';
 import { RoomStore } from '../../stores/room.store';
 import { BatchStore } from '../../stores/batch.store';
 import { LocationStore } from '../../stores/location.store';
+import { SearchParameters } from '../../models/searchParameters.model';
+import { SortParameters } from '../../models/sortParameters.model';
+import { Batch } from '../../models/batch.model';
+import { Room } from '../../models/room.model';
 
 describe('FilterPanelComponent', () => {
   let component: FilterPanelComponent;
   let fixture: ComponentFixture<FilterPanelComponent>;
-  let componentwith: FilterPanelComponent;
-  let MockUserStore;
-  let MockRoomStore;
-  let MockBatchStore;
-  let MockLocationStore;
-  let MockFilter;
-  let MockFilterSort;
-  let MockRouter;
+  let mockFilSer;
+  let mockFilSorSer;
+  let mockUserStore;
+  let mockRoomStore;
+  let mockBatchStore;
+  let mockLocStore;
 
   beforeEach(async(() => {
-    MockUserStore = jasmine.createSpyObj(['updateUsers']);
-    MockRoomStore = jasmine.createSpyObj(['updateRooms']);
-    MockBatchStore = jasmine.createSpyObj(['batches', 'updateBatches']);
-    MockLocationStore = jasmine.createSpyObj(['locations']);
-    MockFilter = jasmine.createSpyObj(['getFilter', 'setFilter']);
-    MockFilterSort = jasmine.createSpyObj(['getFilter', 'setFilter']);
-    MockRouter = jasmine.createSpyObj(['url']);
+    let mockFilSer = jasmine.createSpyObj('FilterService', ['setFilter', 'getFilter']);
+    let mockFilSorSer = jasmine.createSpyObj('FilterSortService', ['setFilter']);
+    let mockUserStore = jasmine.createSpyObj('UserStore', ['']);
+    let mockRoomStore = jasmine.createSpyObj('RoomStore', ['']);
+    let mockBatchStore = jasmine.createSpyObj('BatchStore', ['']);
+    let mockLocStore = jasmine.createSpyObj('LocationStore', ['']);
 
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
+        HttpClientModule,
+        HttpModule,
+        CommonModule,
       ],
       declarations: [ FilterPanelComponent ],
       providers: [
-        {provide: FilterService, useValue: MockFilter},
-        {provide: FilterSortService, useValue: MockFilterSort},
-        {provide: UserStore, useValue: MockUserStore},
-        {provide: RoomStore, useValue: MockRoomStore},
-        {provide: BatchStore, useValue: MockBatchStore},
-        {provide: LocationStore, useValue: MockLocationStore}
-      ]
+        {provide: FilterService, usevalue: mockFilSer},
+        {provide: FilterSortService, usevalue: mockFilSorSer},
+        {provide: UserStore, usevalue: mockUserStore},
+        {provide: RoomStore, usevalue: mockRoomStore},
+        {provide: BatchStore, usevalue: mockBatchStore},
+        {provide: LocationStore, usevalue: mockLocStore}
+      ],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FilterPanelComponent);
-    componentwith = new FilterPanelComponent(
-      MockUserStore,
-      MockRoomStore,
-      MockBatchStore,
-      MockLocationStore,
-      MockFilter,
-      MockFilterSort,
-      MockRouter
-    );
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -92,29 +93,29 @@ describe('FilterPanelComponent', () => {
   });
 
   it('should publish to filter service', () => {
-    componentwith.batchId = '1002';
+    component.batchId = '1002';
 
-    componentwith.update();
+    component.update();
 
-    expect(MockFilter.setFilter).toHaveBeenCalledWith(componentwith.filter);
+    expect(TestBed.get(MockFilterService).setFilter).toHaveBeenCalledWith(component.filter);
   });
 
   it('should publish to sort filter serivce', () => {
     let expectSortByMV = true;
 
-    componentwith.sortByMostVacancies = expectSortByMV;
+    component.sortByMostVacancies = expectSortByMV;
 
-    componentwith.updateSort();
+    component.updateSort();
 
-    expect(componentwith.sort.sortByMostVacancies).toBe(expectSortByMV);
-    expect(MockFilterSort.setFilter).toHaveBeenCalledWith(componentwith.sort);
+    expect(component.sort.sortByMostVacancies).toBe(expectSortByMV);
+    expect(TestBed.get(MockFilterSortService).setFilter).toHaveBeenCalledWith(component.sort);
   });
 
   it('should update the stores', () => {
-    componentwith.update();
+    component.update();
 
-    expect(MockUserStore.updateUsers).toHaveBeenCalled();
-    expect(MockRoomStore.updateRooms).toHaveBeenCalled();
-    expect(MockBatchStore.updateBatches).toHaveBeenCalled();
+    expect(TestBed.get(MockUserStore).updateUsers).toHaveBeenCalled();
+    expect(TestBed.get(MockRoomStore).updateRooms).toHaveBeenCalled();
+    expect(TestBed.get(MockBatchStore).updateBatches).toHaveBeenCalled();
   });
 });
