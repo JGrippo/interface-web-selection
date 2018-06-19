@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FilterService } from '../../services/filter.service';
 import { FilterSortService } from '../../services/filter-sort.service';
 import { SearchParameters } from '../../models/searchParameters.model';
