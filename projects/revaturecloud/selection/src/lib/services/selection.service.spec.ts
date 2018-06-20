@@ -102,17 +102,4 @@ describe('SelectionService Tests', () => {
 
     usersRequest.flush(mockUsers);
   });
-
-  it('should GET all batches with search params', () => {
-    selectionService.getComplexRequestOfBatches(filter)
-      .subscribe((data: Batch[]) => {
-        expect(data.length).toBe(6);
-      });
-
-    // tslint:disable-next-line:prefer-const
-    let batchesRequest: TestRequest = httpTestingController.expectOne(selectionService.rootUrl + selectionService.apiEpBatches);
-    expect(batchesRequest.request.method).toEqual('PUT');
-
-    batchesRequest.flush(mockBatches);
-  });
 });
