@@ -10,7 +10,9 @@
 
     <mat-grid-tile>
       <div *ngIf="isMale(user)">
-        <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/male.png" style="width:50px; border-radius: 50%">
+        <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/male.png"
+          style="width:50px; border-radius: 50%"
+          alt="Male">
         <div>
           <font size='2'>{{user.name.first}}</font>
         </div>
@@ -20,7 +22,9 @@
       </div>
 
       <div *ngIf="isFemale(user)">
-        <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/female.png" style="width:50px; border-radius: 50%">
+        <img src="https://s3.us-east-2.amazonaws.com/kbaynardbucket/female.png"
+          style="width:50px; border-radius: 50%"
+          alt="Female">
         <div>
           <font size='2'>{{user.name.first}}</font>
         </div>
@@ -36,7 +40,9 @@
       </div>
 
       <div *ngIf="isFill(user)">
-        <img src="https://254-online.com/wp-content/uploads/one-grey-circle.jpg" style="width:50px; border-radius: 50%">
+        <img src="https://254-online.com/wp-content/uploads/one-grey-circle.jpg"
+          style="width:50px; border-radius: 50%"
+          alt="Unassigned">
         <div>
           <font size='2'>unassigned</font>
         </div>
