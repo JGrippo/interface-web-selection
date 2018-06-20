@@ -102,7 +102,6 @@ describe('SelectionService Tests', () => {
 
     usersRequest.flush(mockUsers);
   });
-<<<<<<< HEAD
 
   it('should GET all batches with search params', () => {
     selectionService.getComplexRequestOfBatches(filter)
@@ -116,6 +115,4 @@ describe('SelectionService Tests', () => {
 
     batchesRequest.flush(mockBatches);
   });
-=======
->>>>>>> 0092d570c9953f2fe910160ec2c72c66a8ff1540
 });
