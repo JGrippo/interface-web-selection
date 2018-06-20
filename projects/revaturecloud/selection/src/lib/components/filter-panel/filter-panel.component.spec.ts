@@ -39,6 +39,17 @@ class MockLocationStore {
   }
 }
 class MockFilterService {
+  getFilter(): Observable<SearchParameters> {
+    return new BehaviorSubject<SearchParameters>({
+        batch: null,
+        location: null,
+        gender: null,
+        batchMinimumPercentage: null,
+        isCompletelyUnassigned: null,
+        hasBedAvailable: null,
+        assigned: null,
+    }).asObservable();
+  }
   setFilter(params: SearchParameters): void {}
 }
 class MockFilterSortService {
