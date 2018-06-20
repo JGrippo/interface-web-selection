@@ -28,7 +28,7 @@ class MockFilterService {
   }
 }
 
-fdescribe('UserStore', () => {
+describe('UserStore', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
