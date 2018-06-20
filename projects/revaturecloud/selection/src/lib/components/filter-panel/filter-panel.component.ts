@@ -89,15 +89,10 @@ export class FilterPanelComponent implements OnInit {
     private filterSortService: FilterSortService
     ) {
 
-    this.filter = {
-      batch: null,
-      location: null,
-      gender: null,
-      batchMinimumPercentage: null,
-      isCompletelyUnassigned: null,
-      hasBedAvailable: null,
-      assigned: null,
-    };
+    filterService.getFilter().subscribe((res) => {
+      this.filter = res;
+      this.assignFilterToValues();
+    }).unsubscribe();
 
     this.sort = {
       sortByMostVacancies: false,
@@ -179,6 +174,15 @@ export class FilterPanelComponent implements OnInit {
     }
     this.filter.gender = this.gender;
     this.filter.assigned = this.housingSituation;
+  }
+
+  assignFilterToValues(): void {
+    this.batchId = this.filter.batch;
+    this.location = this.filter.location;
+    this.vacantRoomsOnly = this.filter.isCompletelyUnassigned;
+    this.hasBedAvailable = this.filter.hasBedAvailable;
+    this.gender = this.filter.gender;
+    this.housingSituation = this.filter.assigned;
   }
 }
 
