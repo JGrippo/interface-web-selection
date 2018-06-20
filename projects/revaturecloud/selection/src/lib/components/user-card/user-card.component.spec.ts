@@ -1,10 +1,10 @@
 import { TestBed, fakeAsync, tick } from "@angular/core/testing";
 import { UserCardComponent } from "./user-card.component";
 import { Room } from "../../models/room.model";
-import { By, BrowserModule } from "@angular/platform-browser";
+import {BrowserModule } from "@angular/platform-browser";
 import { NO_ERRORS_SCHEMA} from "@angular/core";
 import { RoomStore } from "../../stores/room.store";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HttpClientModule} from "@angular/common/http";
 import { of } from "rxjs/internal/observable/of";
 import { PutService } from "../../services/put.service";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -115,5 +115,3 @@ describe('UserCardComponent', () => {
 
 });
 
-
-//Add more
