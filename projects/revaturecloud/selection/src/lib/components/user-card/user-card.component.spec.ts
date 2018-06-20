@@ -1,8 +1,8 @@
 import { TestBed, fakeAsync, tick } from "@angular/core/testing";
 import { UserCardComponent } from "./user-card.component";
 import { Room } from "../../models/room.model";
-import {BrowserModule } from "@angular/platform-browser";
-import { NO_ERRORS_SCHEMA} from "@angular/core";
+import { By, BrowserModule } from "@angular/platform-browser";
+import { NO_ERRORS_SCHEMA } from "@angular/core";
 import { RoomStore } from "../../stores/room.store";
 import { HttpClientModule} from "@angular/common/http";
 import { of } from "rxjs/internal/observable/of";
@@ -17,6 +17,8 @@ describe('UserCardComponent', () => {
   let testRooms: Room[];
   let mockPutService;
   let mockRoomStore;
+  let componentwith: UserCardComponent;
+  let userA: User;
 
   beforeEach(() => {
     testRooms = [
@@ -59,29 +61,7 @@ describe('UserCardComponent', () => {
         ]
       }
     ];
-
-    mockPutService = jasmine.createSpyObj(['assign']);
-    mockRoomStore = jasmine.createSpyObj(['rooms']);
-
-    TestBed.configureTestingModule({
-        declarations: [UserCardComponent, RoomSearchPipe],
-        imports: [HttpClientModule, BrowserModule, BrowserAnimationsModule, NgxPaginationModule, MatPaginatorModule],
-        providers: [{provide: PutService, useValue: mockPutService},
-          {provide: RoomStore, useValue: mockRoomStore}
-        ],
-        schemas: [NO_ERRORS_SCHEMA]
-    });
-  });
-
-  it('should create the app', () => {
-    let fixture = TestBed.createComponent(UserCardComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it('should call initRooms during initialization', fakeAsync(() => {
-    let userA: User;
-    userA =     {
+    userA = {
       id: '1',
       location: 'Reston',
       email: "a@a.com",
@@ -103,6 +83,27 @@ describe('UserCardComponent', () => {
       }
     };
 
+    mockPutService = jasmine.createSpyObj(['assign']);
+    mockRoomStore = jasmine.createSpyObj(['rooms', 'roomsValue']);
+    componentwith = new UserCardComponent(mockPutService, mockRoomStore);
+
+    TestBed.configureTestingModule({
+      declarations: [UserCardComponent, RoomSearchPipe],
+      imports: [HttpClientModule, BrowserModule, BrowserAnimationsModule, NgxPaginationModule, MatPaginatorModule],
+      providers: [{ provide: PutService, useValue: mockPutService },
+      { provide: RoomStore, useValue: mockRoomStore }
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
+    });
+  });
+
+  it('should create the app', () => {
+    let fixture = TestBed.createComponent(UserCardComponent);
+    let app = fixture.debugElement.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it('should call initRooms during initialization', fakeAsync(() => {
     let fixture = TestBed.createComponent(UserCardComponent);
     fixture.componentInstance.user = userA;
 
@@ -113,5 +114,18 @@ describe('UserCardComponent', () => {
     expect(fixture.componentInstance.initRooms).toHaveBeenCalled();
   }));
 
+  it('should call assign from service with addUserToRoom call', () => {
+    componentwith.dropDownValue = testRooms[0];
+    componentwith.user = userA;
+
+    componentwith.addUserToRoom();
+
+    expect(mockPutService.assign).toHaveBeenCalledWith(userA, testRooms[0]);
+  })
+
+  it('should be housed', () => {
+    componentwith.user = userA;
+    expect(componentwith.isHoused()).toBeTruthy();
+  })
 });
 
