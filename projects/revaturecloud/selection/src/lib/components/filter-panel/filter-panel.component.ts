@@ -89,15 +89,9 @@ export class FilterPanelComponent implements OnInit {
     private filterSortService: FilterSortService
     ) {
 
-    this.filter = {
-      batch: null,
-      location: null,
-      gender: null,
-      batchMinimumPercentage: null,
-      isCompletelyUnassigned: null,
-      hasBedAvailable: null,
-      assigned: null,
-    };
+    filterService.getFilter().subscribe((res) => {
+      this.filter = res;
+    }).unsubscribe();
 
     this.sort = {
       sortByMostVacancies: false,
