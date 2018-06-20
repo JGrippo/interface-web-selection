@@ -12,7 +12,7 @@ import {
   MatDividerModule,
   MatIconModule,
   } from '@angular/material';
-fdescribe('RoomCardComponent', () => {
+describe('RoomCardComponent', () => {
   let fixture;
   let comp;
   beforeEach(async(() => {
