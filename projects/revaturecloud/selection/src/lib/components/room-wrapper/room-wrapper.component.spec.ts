@@ -13,7 +13,7 @@ import {
   MatDividerModule,
   MatIconModule,
   } from '@angular/material';
-fdescribe('RoomWrapperComponent', () => {
+describe('RoomWrapperComponent', () => {
   let fixture;
   let comp;
   beforeEach(async(() => {
