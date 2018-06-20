@@ -28,13 +28,13 @@ class MockFilterService {
   }
 }
 
-describe('UserStore', () => {
+fdescribe('UserStore', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        UserStore,
         {provide: SelectionService, useClass: MockSelectionService},
-        {provide: FilterService, useClass: MockFilterService}
+        {provide: FilterService, useClass: MockFilterService},
+        UserStore
       ]
     });
   });
@@ -49,8 +49,8 @@ describe('UserStore', () => {
     }).unsubscribe();
   }));
 
-  it('should call from SelectionService on updateUsers', inject([UserStore], (service: UserStore) => {
-    let spyGetComUsers = spyOn(TestBed.get(SelectionService), 'getComplexRequestOfUsers');
+  it('should call from SelectionService on updateUsers', inject([UserStore, FilterService, SelectionService], (service: UserStore) => {
+    let spyGetComUsers = spyOn(TestBed.get(SelectionService), 'getComplexRequestOfUsers').and.callThrough();
 
     service.updateUsers();
 

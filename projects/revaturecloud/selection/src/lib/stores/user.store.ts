@@ -62,7 +62,6 @@ export class UserStore {
     * @memberof UserStore
     */
   updateUsers(): void {
-    console.log(this.backendService.getComplexRequestOfUsers(null));
     this.backendService.getComplexRequestOfUsers(this._filter)
       .subscribe(
         (res) => {
